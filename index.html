@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://cdn.intermine.org/js/intermine/imjs/3.14.0/im.js"></script>
+  </head>
+  <body>
+    
+    <script>
+      var flymine   = new imjs.Service({root: 'www.flymine.org/query'});
+      var query     = {
+        from: 'Gene',
+        select: [
+          'exons.symbol',
+          'chromosome.primaryIdentifier',
+          'exons.chromosomeLocation.start',
+          'exons.chromosomeLocation.end'
+        ],
+        where: {
+          symbol: 'eve',
+          organism: {lookup: 'D. melanogaster'}}
+      };
+
+      flymine.rows(query).then(function(rows) {
+        console.log("No. of exons: " + rows.length);
+        rows.forEach(function printRow(row) {
+          console.log("[" + row[0] + "] " + row[1] + ":" + row[2] + ".." + row[3]);
+        });
+      });
+    </script>
+
+  </body>
+</html>
