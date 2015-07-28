@@ -1,32 +1,108 @@
+
 <!doctype html>
 <html>
   <head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script src="http://cdn.intermine.org/js/intermine/imjs/3.14.0/im.js"></script>
+    <script src="bower_components/cytoscape/dist/cytoscape.min.js"></script>
   </head>
   <body>
-    
+
     <script>
-      var flymine   = new imjs.Service({root: 'www.flymine.org/query'});
-      var query     = {
-        from: 'Gene',
-        select: [
-          'exons.symbol',
-          'chromosome.primaryIdentifier',
-          'exons.chromosomeLocation.start',
-          'exons.chromosomeLocation.end'
+      //Todo: generify query.
+      var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
+      query = {
+        "name": "Gene_Interactions",
+        "title": "Gene --> Interactions",
+        "description": "Show all interactions for a given gene.",
+        "constraintLogic": "A and B",
+        "from": "Gene",
+        "select": [
+          "symbol",
+          "interactions.gene2.symbol",
+          "interactions.details.name",
+          "interactions.details.role1",
+          "interactions.details.role2",
+          "interactions.details.type",
+          "interactions.details.experiment.interactionDetectionMethods.name",
+          "interactions.details.experiment.publication.pubMedId",
+          "interactions.details.relationshipType.name",
+          "interactions.details.dataSets.name"
         ],
-        where: {
-          symbol: 'eve',
-          organism: {lookup: 'D. melanogaster'}}
+        "orderBy": [
+          {
+            "path": "symbol",
+            "direction": "ASC"
+          }
+        ],
+        "where": [
+          {
+            "path": "Gene",
+            "op": "LOOKUP",
+            "value": "PPARG",
+            "extraValue": "H. sapiens",
+            "code": "A",
+            "editable": true,
+            "switched": "LOCKED",
+            "switchable": false
+          }
+        ]
       };
 
-      flymine.rows(query).then(function(rows) {
-        console.log("No. of exons: " + rows.length);
-        rows.forEach(function printRow(row) {
-          console.log("[" + row[0] + "] " + row[1] + ":" + row[2] + ".." + row[3]);
-        });
+      humanmine.rows(query).then(function(totalrows) {
+        if (totalrows) {
+          console.log("totalrows", totalrows.length);
+          totalrows.forEach(function(row) {
+            console.log("nextrow", row);
+          });
+        } else {
+          console.log("No results.");
+        }
       });
+
+    //listen for doc ready and call cytoscape
+    document.addEventListener('DOMContentLoaded', function() {
+      cy = cytoscape({
+        container: document.getElementById('cy'),
+        layout: { name: 'grid'},
+        elements: [
+          {
+            group: 'nodes',
+            data : {id : 'testnode'}
+          },{
+            group: 'nodes',
+            data : {id : 'testnode2'}
+          },{
+            group: 'nodes',
+            data : {id : 'testnode3'}
+          },{
+            group: 'edges',
+            data : {
+              id : 'edge1',
+              source: 'testnode',
+              target: 'testnode3'
+            }
+          },{
+            group: 'edges',
+            data : {
+              id : 'edge2',
+              source: 'testnode',
+              target: 'testnode2'
+            }
+          }
+        ],
+        ready: function(){
+          window.cy = this;
+          }
+      });
+
+    }, false);
+
+
+
     </script>
+
+  <div id="cy"></div>
 
   </body>
 </html>
