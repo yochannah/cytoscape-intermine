@@ -10,7 +10,7 @@
 
     <script>
       //Todo: generify query.
-      var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
+      var cymine, cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
       query = {
         "name": "Gene_Interactions",
         "title": "Gene --> Interactions",
@@ -49,52 +49,97 @@
         ]
       };
 
-      humanmine.rows(query).then(function(totalrows) {
-        if (totalrows) {
-          console.log("totalrows", totalrows.length);
-          totalrows.forEach(function(row) {
-            console.log("nextrow", row);
-          });
+      humanmine.records(query).then(function(response) {
+        if (response) {
+          try {
+            console.debug(response);
+            var graphdata = cymine.toNodesAndEdges(response);
+            console.debug(graphdata);
+            cy = cytoscape({
+              container: document.getElementById('cy'),
+              layout: { name: 'grid'},
+              elements: graphdata,
+              ready: function(){
+                window.cy = this;
+                }
+            });
+
+          } catch(e) {console.error(e);}
         } else {
           console.log("No results.");
         }
       });
 
+      cymine = {
+        toNodesAndEdges : function(records, parentNode){
+          var d = {
+            nodes : [],
+            edges : []
+          },
+          parentNode = parentNode;
+
+          for (var i in records) {
+//            debugger;
+            var thisNode, row = records[i];
+            thisNode = this.recordToNode(row);
+
+            //TODO: add test to make sure we're getting the correct number of
+            //nodes and the correct data structure. It's too easy to break.
+            if(row.interactions) {
+              //recursively make the interactions into nodes,
+              //because node entities are nested at two levels.
+              d = this.mergeObjects(d, this.toNodesAndEdges(row.interactions, thisNode));
+            } else {
+              //if it doesn't have an interaction list, it probably *is* an interaction
+              //and thus needs to be an edge
+              d.edges.push(this.interactionToEdge(parentNode, thisNode));
+
+            }
+            d.nodes.push(thisNode);
+
+          }
+
+          return d;
+        },
+        recordToNode : function (obj) {
+          var ret;
+          ret = obj.gene2 ? obj.gene2 : obj;
+          return {
+            class : ret.class,
+            symbol : ret.symbol,
+            data : {
+              id : ret.objectId.toString() //cytoscape needs strings
+            }
+          }
+        },
+        interactionToEdge : function(node, node2) {
+          //todo: we almost certainly want to add more complexity to the return object
+          return {
+            data : {
+              source : node.data.id,
+              target : node2.data.id
+            }
+          };
+        },
+        /**
+        * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+        * @param obj1
+        * @param obj2
+        * @returns obj3 a new object based on obj1 and obj2
+        */
+
+        //TODO: make sure we handle edge cases better, e.g. duplicate values.
+        mergeObjects : function(obj1,obj2){
+          var obj3 = {};
+          for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+          for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+          return obj3;
+        }
+
+      };
+
     //listen for doc ready and call cytoscape
     document.addEventListener('DOMContentLoaded', function() {
-      cy = cytoscape({
-        container: document.getElementById('cy'),
-        layout: { name: 'grid'},
-        elements: [
-          {
-            group: 'nodes',
-            data : {id : 'testnode'}
-          },{
-            group: 'nodes',
-            data : {id : 'testnode2'}
-          },{
-            group: 'nodes',
-            data : {id : 'testnode3'}
-          },{
-            group: 'edges',
-            data : {
-              id : 'edge1',
-              source: 'testnode',
-              target: 'testnode3'
-            }
-          },{
-            group: 'edges',
-            data : {
-              id : 'edge2',
-              source: 'testnode',
-              target: 'testnode2'
-            }
-          }
-        ],
-        ready: function(){
-          window.cy = this;
-          }
-      });
 
     }, false);
 
