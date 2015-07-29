@@ -52,15 +52,28 @@
       humanmine.records(query).then(function(response) {
         if (response) {
           try {
+
+            var graphdata = cymine.toNodesAndEdges(response),
+            targetElem = document.getElementById('cy');
+
             console.debug(response);
-            var graphdata = cymine.toNodesAndEdges(response);
             console.debug(graphdata);
+
             cy = cytoscape({
-              container: document.getElementById('cy'),
-              layout: { name: 'grid'},
+              container: targetElem,
+              layout: { name: 'cose'},
+              style: [
+                {
+                  selector: 'node',
+                  style: {
+                    'content': 'data(symbol)',
+                  }
+                }
+              ],
               elements: graphdata,
               ready: function(){
                 window.cy = this;
+                targetElem.querySelector('.loader').remove();
                 }
             });
 
@@ -79,7 +92,6 @@
           parentNode = parentNode;
 
           for (var i in records) {
-//            debugger;
             var thisNode, row = records[i];
             thisNode = this.recordToNode(row);
 
@@ -105,9 +117,9 @@
           var ret;
           ret = obj.gene2 ? obj.gene2 : obj;
           return {
-            class : ret.class,
-            symbol : ret.symbol,
             data : {
+              class : ret.class,
+              symbol : ret.symbol,
               id : ret.objectId.toString() //cytoscape needs strings
             }
           }
@@ -147,7 +159,10 @@
 
     </script>
 
-  <div id="cy"></div>
+  <div id="cy">
+    <div class="loader"></div>
+  </div>
+
 
   </body>
 </html>
