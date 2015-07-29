@@ -56,7 +56,7 @@
             var graphdata = cymine.toNodesAndEdges(response),
             targetElem = document.getElementById('cy');
 
-            console.debug(response);
+            console.debug(response, JSON.stringify(response));
             console.debug(graphdata);
 
             cy = cytoscape({
