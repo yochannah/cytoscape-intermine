@@ -37,13 +37,14 @@ var cymine = {
     }
   },
   nameNode : function(obj) {
-    console.log(obj);
     if (obj.gene2 && obj.gene2.symbol) {
       return obj.gene2.symbol;
     } else if (obj.symbol) {
       return obj.symbol;
-    } else {
+    } else if (obj.details) {
       return obj.details[0].name;
+    } else {
+      return "NAME MISSING"
     }
   },
   interactionToEdge : function(node, node2) {

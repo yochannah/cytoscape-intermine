@@ -52,20 +52,6 @@ humanmine.records(query).then(function(response) {
         graph.statusBar = graph.targetElem.querySelector('.status');
 
       console.debug('response:', response, 'graph data', graph.data);
-      //checking if we have names for the nodes:
-      for(var i in graph.data.nodes){
-        console.log(graph.data.nodes[i].data.symbol);
-      }
-
-      for(var i in response[0].interactions){
-        var node = response[0].interactions[i];
-        if(node.gene2.symbol) {
-          console.log(node.gene2.symbol);
-        } else {
-          console.log(node);
-        }
-      }
-
 
       cy = cytoscape({
         container: graph.targetElem,
