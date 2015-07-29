@@ -46,13 +46,29 @@ humanmine.records(query).then(function(response) {
   if (response) {
     try {
 
-      var graphdata = cymine.toNodesAndEdges(response),
-      targetElem = document.getElementById('cy');
+      var graph = {};
+        graph.data = cymine.toNodesAndEdges(response),
+        graph.targetElem = document.getElementById('cy'),
+        graph.statusBar = graph.targetElem.querySelector('.status');
 
-      console.debug('response:', response, 'graph data', graphdata);
+      console.debug('response:', response, 'graph data', graph.data);
+      //checking if we have names for the nodes:
+      for(var i in graph.data.nodes){
+        console.log(graph.data.nodes[i].data.symbol);
+      }
+
+      for(var i in response[0].interactions){
+        var node = response[0].interactions[i];
+        if(node.gene2.symbol) {
+          console.log(node.gene2.symbol);
+        } else {
+          console.log(node);
+        }
+      }
+
 
       cy = cytoscape({
-        container: targetElem,
+        container: graph.targetElem,
         layout: { name: 'cose'},
         style: [
           {
@@ -62,15 +78,15 @@ humanmine.records(query).then(function(response) {
             }
           }
         ],
-        elements: graphdata,
+        elements: graph.data,
         ready: function(){
           window.cy = this;
-          targetElem.querySelector('.loader').remove();
+          graph.statusBar.remove();
           }
       });
 
     } catch(e) {console.error(e);}
   } else {
-    console.log("No results.");
+    graph.statusBar.class = "status no-results";
   }
 });

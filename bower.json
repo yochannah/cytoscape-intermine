@@ -1,0 +1,21 @@
+{
+  "name": "cytoscape-network",
+  "version": "0.0.1",
+  "authors": [
+    "Yo Yehudi <yochannah@gmail.com>"
+  ],
+  "description": "network veiwer for intermine gene interactions",
+  "main": "js/bundle.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cytoscape": "~2.4.4",
+    "imjs": "~3.14.0"
+  }
+}

@@ -3,15 +3,12 @@ var cymine = {
     var d = {
       nodes : [],
       edges : []
-    },
-    parentNode = parentNode;
+    };
 
     for (var i in records) {
       var thisNode, row = records[i];
       thisNode = this.recordToNode(row);
 
-      //TODO: add test to make sure we're getting the correct number of
-      //nodes and the correct data structure. It's too easy to break.
       if(row.interactions) {
         //recursively make the interactions into nodes,
         //because node entities are nested at two levels.
@@ -34,9 +31,19 @@ var cymine = {
     return {
       data : {
         class : ret.class,
-        symbol : ret.symbol,
+        symbol : this.nameNode(obj),
         id : ret.objectId.toString() //cytoscape needs strings
       }
+    }
+  },
+  nameNode : function(obj) {
+    console.log(obj);
+    if (obj.gene2 && obj.gene2.symbol) {
+      return obj.gene2.symbol;
+    } else if (obj.symbol) {
+      return obj.symbol;
+    } else {
+      return obj.details[0].name;
     }
   },
   interactionToEdge : function(node, node2) {
