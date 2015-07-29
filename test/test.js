@@ -1,11 +1,13 @@
 var assert = require("assert");
+var cymine = require("./../js/cymine");
 var dummyData = require("./dummyQuery.json");
 
-describe('', function(){
-  describe('#indexOf()', function() {
-    it('should be awesome',function() {
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
+describe('Node processing', function(){
+  describe('#recordsToNodes()', function() {
+    it('should return expected number of nodes and edges',function() {
+      var processedData = cymine.toNodesAndEdges(dummyData);
+      assert.equal(processedData.nodes.length, 28);
+      assert.equal(processedData.edges.length, 27);
     });
   });
 });
