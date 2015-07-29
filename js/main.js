@@ -1,4 +1,6 @@
-var cymine = require('./cymine');
+var cymine = require('./cymine'),
+cytoscape = require('./../bower_components/cytoscape/dist/cytoscape'),
+imjs = require('./../bower_components/imjs/js/im.js');
 
 //Todo: generify query.
 var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
