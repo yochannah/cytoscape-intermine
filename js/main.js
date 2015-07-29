@@ -1,3 +1,5 @@
+var cymine = require('./cymine');
+
 //Todo: generify query.
 var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
 query = {
