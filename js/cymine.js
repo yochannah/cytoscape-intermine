@@ -31,7 +31,8 @@ var cymine = {
     return {
       data : {
         class : ret.class,
-        symbol : this.nameNode(obj),
+        label : this.nameNode(obj),
+        symbol : ret.symbol,
         id : ret.objectId.toString() //cytoscape needs strings
       }
     }

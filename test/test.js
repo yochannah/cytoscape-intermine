@@ -12,11 +12,11 @@ describe('Node processing', function(){
       assert.equal(graph.edges.length, 27);
     });
 
-    it('should give every node a name',function() {
+    it('should give every node a label',function() {
       var hasNames = true;
       for(var i in graph.nodes){
         //hasNames becomes falsey if there is a null value
-        hasNames = graph.nodes[i].data.symbol && hasNames;
+        hasNames = graph.nodes[i].data.label && hasNames;
       }
       assert(hasNames);
     });

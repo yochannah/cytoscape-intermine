@@ -60,7 +60,7 @@ humanmine.records(query).then(function(response) {
           {
             selector: 'node',
             style: {
-              'content': 'data(symbol)',
+              'content': 'data(label)',
             }
           }
         ],
