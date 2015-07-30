@@ -11,7 +11,7 @@ var nodeInfo = {
     title.innerHTML = this.node.label;
   },
   listProperties : function() {
-    //todo: make this more sane
+    //todo: make this more sane. bold tags and inline html, not so brainy
     var display = this.expandPropertyVals(this.node);
     nodeInfo.targetElem.querySelector('.nodeInfo').innerHTML = display;
   },
