@@ -30,12 +30,16 @@ var cymine = {
     ret = obj.gene2 ? obj.gene2 : obj;
     return {
       data : {
-        class : ret.class,
-        label : this.nameNode(obj),
-        symbol : ret.symbol,
-        id : ret.objectId.toString() //cytoscape needs strings
+        details : this.addDetails(obj),
+        label   : this.nameNode(obj),
+        class   : ret.class,
+        symbol  : ret.symbol,
+        id : ret.objectId.toString() //cytoscape needs strings, not ints
       }
     }
+  },
+  addDetails : function(obj) {
+    return obj.details ? obj.details[0] : {};
   },
   nameNode : function(obj) {
     if (obj.gene2 && obj.gene2.symbol) {

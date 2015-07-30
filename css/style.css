@@ -64,18 +64,24 @@ main {
 }
 .module {
   border: solid 1px #ccc;
-  width: 300px;
-  height: 300px;
+  min-width: 350px;
+  height: 350px;
   flex-direction: row;
   margin: 1em;
+  padding: 1em;
   border-radius: 3px;
 }
-#cy,
+#graph,
 #nodeDetails {
   border: solid 1px #ccc;
-  width: 300px;
-  height: 300px;
+  min-width: 350px;
+  height: 350px;
   flex-direction: row;
   margin: 1em;
+  padding: 1em;
   border-radius: 3px;
+}
+#cy {
+  width: 100%;
+  height: 100%;
 }

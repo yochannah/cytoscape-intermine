@@ -1,6 +1,7 @@
 var cymine = require('./cymine'),
 cytoscape = require('./../bower_components/cytoscape/dist/cytoscape'),
-imjs = require('./../bower_components/imjs/js/im.js');
+imjs = require('./../bower_components/imjs/js/im.js'),
+nodeDataDisplay = require('./nodeDataDisplay');
 
 //Todo: generify query.
 var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
@@ -56,23 +57,34 @@ humanmine.records(query).then(function(response) {
       cy = cytoscape({
         container: graph.targetElem,
         layout: { name: 'cose'},
-        style: [
-          {
-            selector: 'node',
-            style: {
-              'content': 'data(label)',
-            }
-          }
-        ],
+        style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'content': 'data(label)'
+      })
+    .selector(':selected')
+      .css({
+        'background-color': 'black',
+        'line-color': 'black',
+        'target-arrow-color': 'black',
+        'source-arrow-color': 'black',
+        'text-outline-color': 'black'
+      }),
         elements: graph.data,
         ready: function(){
           window.cy = this;
           graph.statusBar.remove();
-          }
+        }
       });
+
+      cy.on('tap', 'node', function(){
+        nodeDataDisplay.display(this.data());
+      });
+
 
     } catch(e) {console.error(e);}
   } else {
+    //todo make sure error handling works
     graph.statusBar.class = "status no-results";
   }
 });
