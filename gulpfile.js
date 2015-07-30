@@ -40,7 +40,10 @@ gulp.task('watch-mocha', function() {
  */
 
 
-var b = watchify(browserify({}));
+var b = watchify(browserify({
+    entries: './entry.js',
+    debug: true
+  }));
 gulp.task('js', bundle);
 
 function bundle() {

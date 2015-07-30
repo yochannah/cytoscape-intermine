@@ -1,5 +1,5 @@
 ##About
-This project integrates [Intermine](https://github.com/intermine/intermine) gene interaction data with [cytoscape.js](http://js.cytoscape.org/) to visualise the interactions.
+This project takes gene interaction data from [Intermine](https://github.com/intermine/intermine) and visualises it using [cytoscape.js](http://js.cytoscape.org/), a fabulous network visualisation tool.
 
 ##Setup
 ###Dependencies
@@ -10,11 +10,15 @@ We'll assume you have the following installed:
 
 ###Installation
 
-    npm install
-    bower install
+In terminal:
 
-That should be it
+    $ npm install
+    $ bower install
+
+That should be it!
 
 ###Running the project
 
-    gulp
+In terminal:
+
+    $ gulp
