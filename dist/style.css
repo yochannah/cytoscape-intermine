@@ -69,7 +69,7 @@ main {
   flex-direction: row;
   margin: 1em;
   padding: 1em;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 #graph,
 #nodeDetails {
@@ -79,7 +79,7 @@ main {
   flex-direction: row;
   margin: 1em;
   padding: 1em;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 #cy {
   width: 100%;

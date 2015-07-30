@@ -1,23 +1,14 @@
-var gulp = require('gulp'),
-    connect = require('gulp-connect'),
-    browserify = require('browserify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    gutil = require('gulp-util'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-    mocha = require('mocha'),
-    uglify = require('gulp-uglify'),
-    watchify = require('watchify');
-
-/**
- * loads a server at the specified port
- */
-
-gulp.task('connect', function () {
-  connect.server({
-    port: 8888
-  });
-});
+var gulp        = require('gulp'),
+    less        = require('gulp-less'),
+    browserify  = require('browserify'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    gutil       = require('gulp-util'),
+    source      = require('vinyl-source-stream'),
+    buffer      = require('vinyl-buffer'),
+    mocha       = require('mocha'),
+    uglify      = require('gulp-uglify'),
+    watchify    = require('watchify'),
+    browserSync = require('browser-sync').create();
 
 /**
 * runs tests in the specified folder
@@ -36,13 +27,10 @@ gulp.task('watch-mocha', function() {
 });
 
 /**
- * Bundles JS up using browserify fort
+ * Bundles and uglifys the JS
  */
-
-
 var b = watchify(browserify({
-    entries: './entry.js',
-    debug: true
+  debug: true
   }));
 gulp.task('js', bundle);
 
@@ -62,8 +50,35 @@ function bundle() {
     .pipe(gulp.dest('./../dist/bundle.js'));
 }
 
+// create a task that ensures the `js` task is complete before
+// reloading browsers
+gulp.task('js-watch', ['js'], browserSync.reload);
+
+gulp.task('serve', ['less', 'js'], function() {
+
+    browserSync.init({
+        server: "./"
+    });
+
+    gulp.watch("./less/**/*.less", ['less']);
+    gulp.watch("./js/*.js", ['js-watch']);
+    gulp.watch("./*.html").on('change', browserSync.reload);
+});
+
+/*
+Compiles less but excludes partials starting with underscore, e.g. _loader.less
+ */
+gulp.task('less', function() {
+  return gulp.src(['./less/**/*.less', '!./less/**/_*'])
+      .pipe(less('style.less'))
+      .pipe(gulp.dest('./dist'))
+      .pipe(browserSync.stream());
+});
+
+
 gulp.task('default', [
-  'connect',
+//  'connect',
 //  'watch-mocha',
+  'serve',
   'js'
 ]);
