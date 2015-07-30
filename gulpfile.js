@@ -8,6 +8,7 @@ var gulp        = require('gulp'),
     mocha       = require('mocha'),
     uglify      = require('gulp-uglify'),
     watchify    = require('watchify'),
+    minifyCSS   = require('gulp-minify-css'),
     browserSync = require('browser-sync').create();
 
 /**
@@ -70,7 +71,8 @@ Compiles less but excludes partials starting with underscore, e.g. _loader.less
  */
 gulp.task('less', function() {
   return gulp.src(['./less/**/*.less', '!./less/**/_*'])
-      .pipe(less('style.less'))
+      .pipe(less())
+      .pipe(minifyCSS())
       .pipe(gulp.dest('./dist'))
       .pipe(browserSync.stream());
 });
