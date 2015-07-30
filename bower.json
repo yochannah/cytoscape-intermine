@@ -4,7 +4,7 @@
   "authors": [
     "Yo Yehudi <yochannah@gmail.com>"
   ],
-  "description": "network veiwer for intermine gene interactions",
+  "description": "Network viewer for intermine gene interactions",
   "main": "js/bundle.js",
   "license": "MIT",
   "ignore": [
