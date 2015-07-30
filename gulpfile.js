@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     mocha = require('mocha'),
+    uglify = require('gulp-uglify'),
     watchify = require('watchify');
 
 /**
@@ -51,9 +52,11 @@ function bundle() {
     .pipe(buffer())
     // optional, remove if you dont want sourcemaps
     .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-       // Add transformation tasks to the pipeline here.
+    // Add transformation tasks to the pipeline here.
+    .pipe(uglify()).on('error', gutil.log)
     .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('js/bundle.js'));
+    //uglify
+    .pipe(gulp.dest('./../dist/bundle.js'));
 }
 
 gulp.task('default', [
