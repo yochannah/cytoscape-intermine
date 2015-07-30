@@ -6,7 +6,7 @@
   ],
   "description": "Network viewer for intermine gene interactions",
   "main": "js/bundle.js",
-  "license": "MIT",
+  "license": "LGPL3.0",
   "ignore": [
     "**/.*",
     "node_modules",
