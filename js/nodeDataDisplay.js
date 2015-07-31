@@ -16,16 +16,15 @@ var nodeInfo = {
     nodeInfo.targetElem.querySelector('.nodeInfo').innerHTML = display;
   },
   addProperty : function(prop, key) {
-    return '<b> ' + key + '</b>: ' + prop[key] + "<br />";
+    return '<dt> ' + key + '</dt><dd>' + prop[key] + "</dd>";
   },
   expandPropertyVals : function(obj) {
     var display = "";
     for (var prop in obj) {
       if(typeof obj[prop] === "object") {
-        display += this.addProperty(this.expandPropertyVals(obj[prop]), prop);
-        console.log('object:', obj[prop], 'prop:', prop);
+        display = "<dt>" + prop + "</dt><dd class='child'><dl>" + this.expandPropertyVals(obj[prop]) + "</dl></dd>" + display;
       } else{
-        display += this.addProperty(obj, prop);
+        display = this.addProperty(obj, prop) + display;
       }
     }
     return display;
