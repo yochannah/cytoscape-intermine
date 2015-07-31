@@ -1,33 +1,17 @@
 var gulp        = require('gulp'),
     less        = require('gulp-less'),
-    browserify  = require('browserify'),
     sourcemaps  = require('gulp-sourcemaps'),
     gutil       = require('gulp-util'),
-    source      = require('vinyl-source-stream'),
-    buffer      = require('vinyl-buffer'),
-    mocha       = require('mocha'),
+    minifyCSS   = require('gulp-minify-css'),
     uglify      = require('gulp-uglify'),
     watchify    = require('watchify'),
-    minifyCSS   = require('gulp-minify-css'),
-    browserSync = require('browser-sync').create();
+    browserify  = require('browserify'),
+    browserSync = require('browser-sync').create(),
+    source      = require('vinyl-source-stream'),
+    buffer      = require('vinyl-buffer');
 
-/**
-* runs tests in the specified folder
-*/
-gulp.task('mocha', function() {
-    return gulp.src(['test/*.js'], { read: false })
-        .pipe(mocha({ reporter: 'list' }))
-        .on('error', gutil.log);
-});
 
-/**
- * watches test files and re-runs the tests if the files change
- */
-gulp.task('watch-mocha', function() {
-    gulp.watch(['js/**', 'test/**'], ['mocha']);
-});
-
-/**
+/*
  * Bundles and uglifys the JS
  */
 var b = watchify(browserify({
@@ -55,6 +39,9 @@ function bundle() {
 // reloading browsers
 gulp.task('js-watch', ['js'], browserSync.reload);
 
+/*
+This is the one that makes a live server with autorefresh for all your debuggy needs.
+ */
 gulp.task('serve', ['less', 'js'], function() {
 
     browserSync.init({
@@ -77,10 +64,21 @@ gulp.task('less', function() {
       .pipe(browserSync.stream());
 });
 
+//These are the tasks most likely to be run by a user?
 
+/*
+starts server for dev use
+ */
+gulp.task('dev', [
+  'serve', //includes css
+  'js'
+]);
+
+
+/*
+Build for prod use
+ */
 gulp.task('default', [
-//  'connect',
-//  'watch-mocha',
-  'serve',
+  'less',
   'js'
 ]);
