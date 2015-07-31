@@ -43,11 +43,6 @@ var gulp        = require('gulp'),
         .pipe(gulp.dest('./dist'));
     }
 
-
-// create a task that ensures the `js` task is complete before
-// reloading browsers
-gulp.task('js-watch', ['js'], browserSync.reload);
-
 /*
 This is the one that makes a live server with autorefresh for all your debuggy needs.
  */

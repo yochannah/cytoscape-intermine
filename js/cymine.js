@@ -28,13 +28,14 @@ var cymine = {
   recordToNode : function (obj) {
     var ret;
     ret = obj.gene2 ? obj.gene2 : obj;
+    console.log(ret, ret.primaryIdentifier);
     return {
       data : {
         details : this.addDetails(obj),
         label   : this.nameNode(obj),
         class   : ret.class,
         symbol  : ret.symbol,
-        id : ret.objectId.toString() //cytoscape needs strings, not ints
+        id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
     }
   },

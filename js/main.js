@@ -11,8 +11,10 @@ query = {
   "constraintLogic": "A and B",
   "from": "Gene",
   "select": [
+    "primaryIdentifier",
     "symbol",
     "interactions.gene2.symbol",
+    "interactions.gene2.primaryIdentifier",
     "interactions.details.name",
     "interactions.details.role1",
     "interactions.details.role2",
@@ -32,7 +34,7 @@ query = {
     {
       "path": "Gene",
       "op": "LOOKUP",
-      "value": "PPARG",
+      "value": "ZYX",
       "extraValue": "H. sapiens",
       "code": "A",
       "editable": true,
