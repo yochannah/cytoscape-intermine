@@ -87,6 +87,7 @@ gulp.task('dev', [
   gutil.log(gutil.colors.yellow('| Browsersync is running on the ports below and will'));
   gutil.log(gutil.colors.yellow('| Live-reload your js and CSS as you work.'));
   gutil.log(gutil.colors.yellow('| ____________________________________________'));
+  gutil.log(gutil.colors.yellow('|'));
   gutil.log(gutil.colors.yellow('| To run tests while working, open a new terminal and run:'));
   gutil.log(gutil.colors.yellow('| mocha --watch'));
   gutil.log(gutil.colors.yellow('| =================================================='));
@@ -100,9 +101,9 @@ gulp.task('default', [
   'less',
   'js'
 ], function() {
-  gutil.log(gutil.colors.green('| ===================|'));
-  gutil.log(gutil.colors.green('| Project built.     |'));
-  gutil.log(gutil.colors.green('| ===================|'));
+  gutil.log(gutil.colors.green('| =====================|'));
+  gutil.log(gutil.colors.green('|   Project built! :)  |'));
+  gutil.log(gutil.colors.green('| =====================|'));
 });
 
 //todo: add error handling to the messages above?
