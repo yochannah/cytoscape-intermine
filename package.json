@@ -17,6 +17,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6",
+    "lodash.assign": "^3.2.0",
     "mocha": "^2.2.5",
     "uglify": "^0.1.5",
     "vinyl-buffer": "^1.0.0",
@@ -30,7 +31,7 @@
     "type": "git",
     "url": "git+https://github.com/yochannah/cytoscape-intermine.git"
   },
-  "author": "Yo Yehudi",
+  "author": "Yo Yehudi yochannah@gmail.com",
   "license": "LGPL-3.0",
   "bugs": {
     "url": "https://github.com/yochannah/cytoscape-intermine/issues"
