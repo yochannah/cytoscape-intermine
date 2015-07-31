@@ -47,6 +47,9 @@ dl {
 }
 
 dt {
+  &:after {
+    content: ": ";
+  }
   font-weight:bold;
   float:left;
   clear:left
@@ -54,8 +57,4 @@ dt {
 
 dd.child {
   clear:left;
-}
-
-dt:after {
-  content: ": ";
 }
