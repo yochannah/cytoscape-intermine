@@ -1,5 +1,4 @@
 var cymine = require('./cymine'),
-cytoscape = require('./../bower_components/cytoscape/dist/cytoscape'),
 imjs = require('./../bower_components/imjs/js/im.js'),
 nodeDataDisplay = require('./nodeDataDisplay');
 
