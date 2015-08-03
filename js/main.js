@@ -1,9 +1,10 @@
-var cymine = require('./cymine'),
+var cymineDataFormatter = require('./cymineDataFormatter'),
 imjs = require('./../bower_components/imjs/js/im.js'),
-nodeDataDisplay = require('./nodeDataDisplay');
+cymineDisplay = require('./ui');
 
 //Todo: generify query.
-var cy, humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
+var cy,
+humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
 query = {
   "name": "Gene_Interactions",
   "title": "Gene --> Interactions",
@@ -34,7 +35,7 @@ query = {
     {
       "path": "Gene",
       "op": "LOOKUP",
-      "value": "ZYX",
+      "value": "PPARG",
       "extraValue": "H. sapiens",
       "code": "A",
       "editable": true,
@@ -42,50 +43,23 @@ query = {
       "switchable": false
     }
   ]
+},
+strings = {
+  noResults : "No interaction results for this query"
 };
 
 humanmine.records(query).then(function(response) {
-  if (response) {
-    try {
+  var ui, graph = {};
+  graph.targetElem = document.getElementById('cy');
+  graph.statusBar = graph.targetElem.querySelector('.status');
 
-      var graph = {};
-        graph.targetElem = document.getElementById('cy');
-        graph.data = new cymine(response);
-        graph.statusBar = graph.targetElem.querySelector('.status');
+  ui = new cymineDisplay(graph);
 
-      console.debug('response:', response, 'graph data', graph.data);
-
-      cy = cytoscape({
-        container: graph.targetElem,
-        layout: { name: 'cose'},
-        style: cytoscape.stylesheet()
-    .selector('node')
-      .css({
-        'content': 'data(label)'
-      })
-    .selector(':selected')
-      .css({
-        'background-color': 'black',
-        'line-color': 'black',
-        'target-arrow-color': 'black',
-        'source-arrow-color': 'black',
-        'text-outline-color': 'black'
-      }),
-        elements: graph.data,
-        ready: function(){
-          window.cy = this;
-          graph.statusBar.remove();
-        }
-      });
-
-      cy.on('tap', 'node', function(){
-        nodeDataDisplay.display(this.data());
-      });
-
-
-    } catch(e) {console.error(e);}
+  if (response.length > 0) {
+    graph.data = new cymineDataFormatter(response);
+    ui.init(graph);
+    console.debug('response:', response, 'graph data', graph);
   } else {
-    //todo make sure error handling works
-    graph.statusBar.class = "status no-results";
+    ui.noResults(strings.noResults);
   }
 });

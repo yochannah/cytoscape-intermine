@@ -20,6 +20,7 @@
     "lodash.assign": "^3.2.0",
     "mocha": "^2.2.5",
     "uglify": "^0.1.5",
+    "underscore": "^1.8.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.3.1"

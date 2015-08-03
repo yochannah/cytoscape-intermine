@@ -1,4 +1,5 @@
-var Cymine = function(records) {
+var _ = require('underscore'),
+Cymine = function(records) {
   this.records = records;
   function toNodesAndEdges(records, parentNode){
     var d = {
@@ -13,7 +14,7 @@ var Cymine = function(records) {
       if(row.interactions) {
         //recursively make the interactions into nodes,
         //because node entities are nested at two levels.
-        d = mergeObjects(d, toNodesAndEdges(row.interactions, thisNode));
+        d = _.extend(d, toNodesAndEdges(row.interactions, thisNode));
       } else {
         //if it doesn't have an interaction list, it probably *is* an interaction
         //and thus needs to be an edge
@@ -61,22 +62,7 @@ var Cymine = function(records) {
         target : node2.data.id
       }
     };
-  },
-  /**
-  * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
-  * @param obj1
-  * @param obj2
-  * @returns obj3 a new object based on obj1 and obj2
-  */
-
-  //TODO: make sure we handle edge cases better, e.g. duplicate values.
-  mergeObjects = function(obj1,obj2){
-    var obj3 = {};
-    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
-    return obj3;
   }
-
   return toNodesAndEdges(records);
 
 };

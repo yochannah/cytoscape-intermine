@@ -1,6 +1,8 @@
 @import '_loader';
 @import '_clearfix';
 
+@cySize : 350px;
+
 body {
   font-family : arial, sans-serif;
 }
@@ -11,8 +13,8 @@ main {
 }
 
 .module {
-  min-width:350px;
-  min-height:350px;
+  min-width:@cySize;
+  min-height:@cySize;
   flex-direction:row;
   margin:1em;
   border-radius:4px;
@@ -27,9 +29,10 @@ main {
 }
 
 //without a height and a width, cytoscape doesn't display properly.
+
 #cy {
-  width:350px;
-  height:350px;
+  width:@cySize;
+  height:@cySize;
 }
 
 dt, dd {
@@ -57,4 +60,13 @@ dt {
 
 dd.child {
   clear:left;
+}
+
+.status {
+  text-align:center;
+  &.no-results {
+    .module;
+    background-color:#fff;
+    line-height: @cySize;
+  }
 }
