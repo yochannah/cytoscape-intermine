@@ -22,7 +22,8 @@ var gulp        = require('gulp'),
     var b = watchify(browserify(opts));
 
     // add transformations here
-    // i.e. b.transform(coffeeify);
+    // todo: stripify the prod build to remove console.log 
+    //  i.e. b.transform(coffeeify);
 
     gulp.task('js', bundle); // so you can run `gulp js` to build the file
     b.on('update', bundle); // on any dep update, runs the bundler

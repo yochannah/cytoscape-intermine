@@ -49,8 +49,8 @@ humanmine.records(query).then(function(response) {
     try {
 
       var graph = {};
-        graph.data = cymine.toNodesAndEdges(response),
-        graph.targetElem = document.getElementById('cy'),
+        graph.targetElem = document.getElementById('cy');
+        graph.data = new cymine(response);
         graph.statusBar = graph.targetElem.querySelector('.status');
 
       console.debug('response:', response, 'graph data', graph.data);

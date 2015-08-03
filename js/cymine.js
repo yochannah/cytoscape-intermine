@@ -1,5 +1,6 @@
-var cymine = {
-  toNodesAndEdges : function(records, parentNode){
+var Cymine = function(records) {
+  this.records = records;
+  function toNodesAndEdges(records, parentNode){
     var d = {
       nodes : [],
       edges : []
@@ -7,16 +8,16 @@ var cymine = {
 
     for (var i in records) {
       var thisNode, row = records[i];
-      thisNode = this.recordToNode(row);
+      thisNode = recordToNode(row);
 
       if(row.interactions) {
         //recursively make the interactions into nodes,
         //because node entities are nested at two levels.
-        d = this.mergeObjects(d, this.toNodesAndEdges(row.interactions, thisNode));
+        d = mergeObjects(d, toNodesAndEdges(row.interactions, thisNode));
       } else {
         //if it doesn't have an interaction list, it probably *is* an interaction
         //and thus needs to be an edge
-        d.edges.push(this.interactionToEdge(parentNode, thisNode));
+        d.edges.push(interactionToEdge(parentNode, thisNode));
 
       }
       d.nodes.push(thisNode);
@@ -24,25 +25,24 @@ var cymine = {
     }
 
     return d;
-  },
-  recordToNode : function (obj) {
+  };
+  var recordToNode = function (obj) {
     var ret;
     ret = obj.gene2 ? obj.gene2 : obj;
-    console.log(ret, ret.primaryIdentifier);
     return {
       data : {
-        details : this.addDetails(obj),
-        label   : this.nameNode(obj),
+        details : addDetails(obj),
+        label   : nameNode(obj),
         class   : ret.class,
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
     }
-  },
-  addDetails : function(obj) {
+  };
+  function addDetails (obj) {
     return obj.details ? obj.details[0] : {};
-  },
-  nameNode : function(obj) {
+  };
+  var nameNode = function(obj) {
     if (obj.gene2 && obj.gene2.symbol) {
       return obj.gene2.symbol;
     } else if (obj.symbol) {
@@ -53,7 +53,7 @@ var cymine = {
       return "NAME MISSING"
     }
   },
-  interactionToEdge : function(node, node2) {
+  interactionToEdge = function(node, node2) {
     //todo: we almost certainly want to add more complexity to the return object
     return {
       data : {
@@ -70,13 +70,15 @@ var cymine = {
   */
 
   //TODO: make sure we handle edge cases better, e.g. duplicate values.
-  mergeObjects : function(obj1,obj2){
+  mergeObjects = function(obj1,obj2){
     var obj3 = {};
     for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
     for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
     return obj3;
   }
 
+  return toNodesAndEdges(records);
+
 };
 
-module.exports = cymine;
+module.exports = Cymine;

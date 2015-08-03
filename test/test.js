@@ -4,7 +4,7 @@ var dummyData = require("./dummyQuery.json");
 
 describe('Node processing', function(){
   describe('#recordsToNodes()', function() {
-    var graph = cymine.toNodesAndEdges(dummyData);
+    var graph = new cymine(dummyData);
 
     //I suspect this will need to be revised when I expand it to more advanced use cases
     it('should return expected number of nodes and edges',function() {
