@@ -37,7 +37,6 @@ ui = function (graph) {
     initGraph();
   },
   initHtml = function () {
-    console.log(graph, getTemplate());
     graph.parentElem.innerHTML = getTemplate();
     graph.parentElem.className += " cymine";
   },

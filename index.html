@@ -4,13 +4,16 @@
     <link href="dist/style.css" rel="stylesheet" type="text/css">
     <script src="bower_components/cytoscape/dist/cytoscape.js"></script>
     <script src="dist/bundle.js"></script>
-
-    <script>
-      cymine();
-    </script>
-
   </head>
   <body>
+    <div id="cyminetwo"></div>
     <div id="cymine"></div>
   </body>
+
+  <script>
+  cymine({parentElem : document.getElementById('cyminetwo')});
+//  cymine();
+  </script>
+
+
 </html>

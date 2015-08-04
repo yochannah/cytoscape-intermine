@@ -1,10 +1,12 @@
 var cymineDataFormatter = require('./dataFormatter'),
 imjs = require('./../bower_components/imjs/js/im.js'),
+_ = require('underscore'),
 cymineDisplay = require('./ui');
 
 //Todo: generify query.
-function Cymine() {
+function Cymine(args) {
   var cy,
+  graph,
   humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
   query = {
     "name": "Gene_Interactions",
@@ -51,18 +53,30 @@ function Cymine() {
 
 humanmine.records(query).then(function(response) {
 
-  var ui, graph = {};
-  graph.parentElem = document.getElementById('cymine');
+  var ui;
+  graph = _.extend({},args);
+  validateParent();
   ui = new cymineDisplay(graph);
   if (response.length > 0) {
     graph.data = new cymineDataFormatter(response);
     ui.init(graph);
-    console.debug('response:', response, 'graph data', graph);
+    console.debug('response:', response, 'graphdata:', graph);
   } else {
     ui.noResults(strings.noResults);
   }
 });
 
+  function validateParent() {
+    if(!graph.parentElem){
+      var defaultElem = document.getElementById('cymine');
+      if(defaultElem) {
+        graph.parentElem = defaultElem;
+        console.info('Cymine: No parent element specified for Cymine. Using default #cymine');
+      } else {
+        console.error('Cymine: No parent element specified, and default "#cymine" not available.');
+      }
+    }
+  }
 }
 
 module.exports = Cymine;
