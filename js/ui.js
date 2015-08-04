@@ -77,7 +77,6 @@ ui = function (graph) {
 
   },
   noResults = function (message) {
-      console.log('no results', graph.statusBar);
     graph.statusBar.className = "status no-results";
     graph.statusBar.innerHTML = message;
   }
