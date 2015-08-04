@@ -46,39 +46,43 @@ function Cymine(args) {
     ]
   },
   strings = {
-    noResults : "No interaction results for this query"
+    noResults : "No interaction results for this query",
+    noParentUsingDefault : 'Cymine: No parent element specified for Cymine. Using default "#cymine"',
+    noParentNoDefault : 'Cymine: No parent element specified, and default "#cymine" not available.'
   };
 
-  console.log('hullo2');
-prepQuery();
+makeQuery();
 
-mine.records(query).then(function(response) {
-  console.log('hullo');
-  var ui;
-  validateParent();
-  ui = new cymineDisplay(graph);
-  if (response.length > 0) {
-    graph.data = new cymineDataFormatter(response);
-    ui.init(graph);
-    console.debug('response:', response, 'graphdata:', graph);
-  } else {
-    ui.noResults(strings.noResults);
-  }
-});
+
 
   function validateParent() {
     if(!graph.parentElem){
       var defaultElem = document.getElementById('cymine');
       if(defaultElem) {
         graph.parentElem = defaultElem;
-        console.info('Cymine: No parent element specified for Cymine. Using default #cymine');
+        console.info(strings.noParentUsingDefault);
       } else {
-        console.error('Cymine: No parent element specified, and default "#cymine" not available.');
+        console.error(strings.noParentNoDefault);
       }
     }
   }
   function prepQuery() {
-    _.extend(query.where[0],graph.query.where);
+    _.extend(query.where[0],graph.queryOn);
+  }
+  function makeQuery(){
+    prepQuery();
+    mine.records(query).then(function(response) {
+      var ui;
+      validateParent();
+      ui = new cymineDisplay(graph);
+      if (response.length > 0) {
+        graph.data = new cymineDataFormatter(response);
+        ui.init();
+        console.debug('response:', response, 'graphdata:', graph);
+      } else {
+        ui.init(strings.noResults);
+      }
+    });
   }
 }
 module.exports = Cymine;

@@ -32,17 +32,21 @@ ui = function (graph) {
     }
     return display;
   },
-  init = function() {
+  init = function(errorMessage) {
     initHtml();
-    initGraph();
+    if(!errorMessage) {
+      initGraph();
+    } else {
+      noResults(errorMessage);
+    }
   },
   initHtml = function () {
     graph.parentElem.innerHTML = getTemplate();
     graph.parentElem.className += " cymine";
+    graph.statusBar = graph.parentElem.querySelector('.status');
   },
   initGraph = function() {
     graph.targetElem = graph.parentElem.querySelector('.cy');
-    graph.statusBar = graph.targetElem.querySelector('.status');
 
     cy = cytoscape({
       container: graph.targetElem,
@@ -73,6 +77,7 @@ ui = function (graph) {
 
   },
   noResults = function (message) {
+      console.log('no results', graph.statusBar);
     graph.statusBar.className = "status no-results";
     graph.statusBar.innerHTML = message;
   }
