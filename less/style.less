@@ -7,12 +7,13 @@ body {
   font-family : arial, sans-serif;
 }
 
-main {
+.cymine {
   display:flex;
-  background-color:#fcfcfc;
+  background-color:#f0f0f0;
 }
 
 .module {
+  background-color:white;
   min-width:@cySize;
   min-height:@cySize;
   flex-direction:row;
@@ -20,7 +21,7 @@ main {
   border-radius:4px;
 }
 
-#graph, #nodeDetails {
+.graph, .nodeDetails {
   .module;
 }
 
@@ -30,7 +31,7 @@ main {
 
 //without a height and a width, cytoscape doesn't display properly.
 
-#cy {
+.cy {
   width:@cySize;
   height:@cySize;
 }

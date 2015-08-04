@@ -1,21 +1,25 @@
-var ui = function (graph) {
+var cymineHtml = require('./../template/cytomine.html'),
+ui = function (graph) {
   this.graph = graph;
   var display = function(node) {
-    targetElem = document.getElementById('nodeDetails'),
+    targetElem = graph.parentElem.querySelector('nodeDetails'),
     setTitle(node);
     listProperties(node);
   },
   setTitle = function (node) {
-    var title = targetElem.querySelector('.nodeTitle');
+    var title = graph.parentElem.querySelector('.nodeTitle');
     title.innerHTML = node.label;
   },
   listProperties = function(node) {
     //todo: make this more sane. bold tags and inline html, not so brainy
     var display = expandPropertyVals(node);
-    targetElem.querySelector('.nodeInfo').innerHTML = display;
+    graph.parentElem.querySelector('.nodeInfo').innerHTML = display;
   },
   addProperty = function(prop, key) {
     return '<dt> ' + key + '</dt><dd>' + prop[key] + "</dd>";
+  },
+  getTemplate = function(){
+    return cymineHtml;
   },
   expandPropertyVals = function(obj) {
     var display = "";
@@ -29,6 +33,18 @@ var ui = function (graph) {
     return display;
   },
   init = function() {
+    initHtml();
+    initGraph();
+  },
+  initHtml = function () {
+    console.log(graph, getTemplate());
+    graph.parentElem.innerHTML = getTemplate();
+    graph.parentElem.className += " cymine";
+  },
+  initGraph = function() {
+    graph.targetElem = graph.parentElem.querySelector('.cy');
+    graph.statusBar = graph.targetElem.querySelector('.status');
+
     cy = cytoscape({
       container: graph.targetElem,
       layout: { name: 'cose'},
@@ -58,7 +74,6 @@ var ui = function (graph) {
 
   },
   noResults = function (message) {
-  //  console.log("Test",graph.statusBar, graph, message);
     graph.statusBar.className = "status no-results";
     graph.statusBar.innerHTML = message;
   }

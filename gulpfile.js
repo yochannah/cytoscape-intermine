@@ -7,6 +7,7 @@ var gulp        = require('gulp'),
     minifyCSS   = require('gulp-minify-css'),
     uglify      = require('gulp-uglify'),
     watchify    = require('watchify'),
+    stringify   = require('stringify'),
     browserify  = require('browserify'),
     browserSync = require('browser-sync').create(),
     source      = require('vinyl-source-stream'),
@@ -16,7 +17,8 @@ var gulp        = require('gulp'),
 
     var customOpts = {
       entries: ['./js/main.js'],
-        debug: true
+        debug: true,
+        standalone : 'cymine'
     };
     var opts = assign({}, watchify.args, customOpts);
     var b = watchify(browserify(opts));
@@ -30,7 +32,9 @@ var gulp        = require('gulp'),
     b.on('log', gutil.log); // output build logs to terminal
 
     function bundle() {
-      return b.bundle()
+      return b
+        .transform(stringify(['.html']))
+        .bundle()
         // log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
@@ -69,7 +73,7 @@ gulp.task('less', function() {
       .pipe(browserSync.stream());
 });
 
-//These are the tasks most likely to be run by a user?
+//These are the tasks most likely to be run by a user
 
 /*
 starts server for dev use
