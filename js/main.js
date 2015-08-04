@@ -5,9 +5,9 @@ cymineDisplay = require('./ui');
 
 //Todo: generify query.
 function Cymine(args) {
-  var cy,
-  graph,
-  humanmine = new imjs.Service({root: 'www.humanmine.org/humanmine'}),
+
+  graph = _.extend({},args);
+  var mine = new imjs.Service({root: graph.serviceUrl}),
   query = {
     "name": "Gene_Interactions",
     "title": "Gene --> Interactions",
@@ -38,12 +38,10 @@ function Cymine(args) {
       {
         "path": "Gene",
         "op": "LOOKUP",
-        "value": "PPARG",
-        "extraValue": "H. sapiens",
         "code": "A",
         "editable": true,
         "switched": "LOCKED",
-        "switchable": false
+        "switchable": false,
       }
     ]
   },
@@ -51,10 +49,12 @@ function Cymine(args) {
     noResults : "No interaction results for this query"
   };
 
-humanmine.records(query).then(function(response) {
+  console.log('hullo2');
+prepQuery();
 
+mine.records(query).then(function(response) {
+  console.log('hullo');
   var ui;
-  graph = _.extend({},args);
   validateParent();
   ui = new cymineDisplay(graph);
   if (response.length > 0) {
@@ -77,6 +77,8 @@ humanmine.records(query).then(function(response) {
       }
     }
   }
+  function prepQuery() {
+    _.extend(query.where[0],graph.query.where);
+  }
 }
-
 module.exports = Cymine;
