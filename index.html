@@ -12,9 +12,10 @@
 
   <script>
   cymine({
-    parentElem : document.getElementById('cyminetwo'),
-//    serviceUrl : 'www.humanmine.org/humanmine',
-    queryOn : { "value" : "ENSG00000110422" }
+    parentElem : document.getElementById('cyminetwo'),  //optional. Will default to '#cymine' if not specified.
+    serviceUrl : 'www.humanmine.org/humanmine',         //
+    queryOn : { "value" : "ENSG00000110422" },
+    layout : 'vertical'
   });
   </script>
 

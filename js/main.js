@@ -3,7 +3,6 @@ imjs = require('./../bower_components/imjs/js/im.js'),
 _ = require('underscore'),
 cymineDisplay = require('./ui');
 
-//Todo: generify query.
 function Cymine(args) {
 
   var ui,
@@ -21,7 +20,8 @@ function Cymine(args) {
         noDefault : 'Cymine: No parent element specified, and default "#cymine" not available.'
       },
       noQueryData : 'Cymine: No queryOn values supplied!',
-      noServiceUrl : 'Cymine: No serviceUrl defined, unable to query for interactions.'
+      noServiceUrl : 'Cymine: No serviceUrl defined, unable to query for interactions.',
+      badServiceUrl : 'Cymine: bad serviceUrl. Please check for typos and check this host is up.'
     }
   },
   query = {
@@ -84,10 +84,12 @@ function Cymine(args) {
   }
   function validateServiceRoot(){
     if(graph.serviceUrl){
-      return new imjs.Service({root: graph.serviceUrl});
+      return new imjs.Service({
+        root: graph.serviceUrl,
+        errorHandler : badServiceError
+      });
     } else {
-      console.error(strings.dev.noServiceUrl);
-      ui.init(strings.user.noQueryData);
+      throw new initError('noServiceUrl');
       return false;
     }
 
@@ -97,8 +99,7 @@ function Cymine(args) {
       _.extend(query.where[0],graph.queryOn);
       return true;
     } else {
-      console.error(strings.dev.noQueryData);
-      ui.init(strings.user.noQueryData);
+      throw new initError('noQueryData');
       return false;
     }
   }
@@ -119,5 +120,23 @@ function Cymine(args) {
       }
     }
   }
+  /**
+   * throw this error to console.error and display a user-facing error too
+   * @param  {string} devMessage  this should be the key to a string in the strings.dev object.
+   * @param  {[type]} userMessage optional - this should be the key to a string in the strings.user object. If not set, it will use the generic strings.user.noQuery message.
+   */
+  function initError(devMessage, userMessage){
+    var um = userMessage ? userMessage : "noQueryData";
+    ui.init(strings.user[um]);
+    console.error(strings.dev[devMessage]);
+  }
 }
+/**
+ * helper method for calling services from imjs. Useful because we can only pass a reference to a functtion (without args) to imjs, so passing initError wouldn't allow us to set the dev error message.
+ * @return {[type]} [description]
+ */
+function badServiceError(){
+    throw new initError('badServiceUrl');
+}
+
 module.exports = Cymine;
