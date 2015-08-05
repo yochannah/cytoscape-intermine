@@ -14,7 +14,6 @@ var gulp        = require('gulp'),
     buffer      = require('vinyl-buffer'),
     assign      = require('lodash.assign');
 
-
     var customOpts = {
       entries: ['./js/main.js'],
         debug: true,

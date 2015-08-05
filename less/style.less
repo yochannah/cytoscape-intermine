@@ -10,64 +10,106 @@ body {
 .cymine {
   display:flex;
   background-color:#f0f0f0;
-}
+  flex-wrap : wrap;
 
-.module {
-  background-color:white;
-  min-width:@cySize;
-  min-height:@cySize;
-  flex-direction:row;
-  margin:1em;
-  border-radius:4px;
-}
-
-.graph, .nodeDetails {
-  .module;
-}
-
-.nodeTitle {
-  margin:0.2em;
-}
-
-//without a height and a width, cytoscape doesn't display properly.
-
-.cy {
-  width:@cySize;
-  height:@cySize;
-}
-
-dt, dd {
-  float:left;
-  margin-left:0.5em;
-  margin-top:0.1em;
-}
-
-dl {
-  .cf;
-  border-left:solid 1px #ccc;
-  margin:0;
-  clear:left;
-  float:left;
-}
-
-dt {
-  &:after {
-    content: ": ";
+  .module {
+    background-color:white;
+    min-width:@cySize;
+    min-height:@cySize;
+    flex-direction:row;
+    margin:1em;
+    border-radius:4px;
+    flex-grow:1;
   }
-  font-weight:bold;
-  float:left;
-  clear:left
-}
 
-dd.child {
-  clear:left;
-}
-
-.status {
-  text-align:center;
-  &.no-results {
+  .graph, .nodeDetails {
     .module;
-    background-color:#fff;
-    line-height: @cySize;
   }
+
+  .nodeTitle {
+    margin:0.2em;
+  }
+
+  //without a height and a width, cytoscape doesn't display properly.
+
+  .cy {
+  //  border:solid 1px seagreen; //this line is useful for debugging
+    width:@cySize;
+    height:@cySize;
+  }
+
+  dt, dd {
+    float:left;
+    margin-left:0.5em;
+    margin-top:0.1em;
+  }
+
+  dl {
+    .cf;
+    border-left:solid 1px #ccc;
+    margin:0;
+    clear:left;
+    float:left;
+  }
+
+  dt {
+    &:after {
+      content: ": ";
+    }
+    font-weight:bold;
+    float:left;
+    clear:left
+  }
+
+  dd.child {
+    clear:left;
+  }
+
+  .status {
+    text-align:center;
+    &.no-results {
+      .module;
+      background-color:#fff;
+      line-height: @cySize;
+    }
+  }
+
+  .controls {
+    padding : 1em;
+    flex-direction:column;
+    justify-content : center;
+    align-items: center;
+    margin:auto;
+    div {text-align:center;}
+
+    button {
+      background-color:darkseagreen;
+      border:0;
+      padding:0.5em 1.5em;
+      color: #fff;
+      margin:0;
+
+      &:first-child {
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        -moz-border-radius-topleft: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-right: solid 1px seagreen;
+        margin:0;
+      }
+      &:last-child {
+        margin:0;
+        border-left: solid 1px seagreen;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -moz-border-radius-topright: 4px;
+        -moz-border-radius-bottomright: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
 }
