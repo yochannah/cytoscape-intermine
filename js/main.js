@@ -1,5 +1,6 @@
 var cymineDataFormatter = require('./dataFormatter'),
 imjs = require('./../bower_components/imjs/js/im.js'),
+cytoscape = require('./../bower_components/cytoscape/dist/cytoscape'),
 _ = require('underscore'),
 cymineDisplay = require('./ui');
 
