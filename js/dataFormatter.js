@@ -22,28 +22,35 @@ Cymine = function(records) {
 
       }
       d.nodes.push(thisNode);
-
     }
 
     return d;
   };
   var recordToNode = function (obj) {
-    var ret;
+    var ret, data = {};
     ret = obj.gene2 ? obj.gene2 : obj;
     return {
       data : {
-        details : addDetails(obj),
+        details : getDetails(obj),
         label   : nameNode(obj),
         class   : ret.class,
+        interactionType : getInteraction(obj),
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
     }
   };
-  function addDetails (obj) {
+  var getDetails = function(obj) {
     return obj.details ? obj.details[0] : {};
-  };
-  var nameNode = function(obj) {
+  }
+  getInteraction = function(obj){
+    var ret;
+    if (obj.details) {
+      ret = obj.details[0].type;
+    }
+    return ret;
+  },
+  nameNode = function(obj) {
     if (obj.gene2 && obj.gene2.symbol) {
       return obj.gene2.symbol;
     } else if (obj.symbol) {
@@ -51,7 +58,7 @@ Cymine = function(records) {
     } else if (obj.details) {
       return obj.details[0].name;
     } else {
-      return "NAME MISSING"
+      return "NAME MISSING";
     }
   },
   interactionToEdge = function(node, node2) {

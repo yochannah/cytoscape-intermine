@@ -1,7 +1,8 @@
 var cymineHtml = require('./../template/cytomine.html'),
 ui = function (graph) {
   this.graph = graph;
-  var display = function(node) {
+  var cy,
+  display = function(node) {
     targetElem = graph.parentElem.querySelector('nodeDetails'),
     setTitle(node);
     listProperties(node);
@@ -41,7 +42,8 @@ ui = function (graph) {
     }
   },
   controls = function() {
-    var getControls = function() {
+    var hiddenElems,
+    getControls = function() {
       return graph.parentElem.querySelector('.controls');
     },
     selectInteractionType = function(e){
@@ -49,10 +51,16 @@ ui = function (graph) {
       if((elem !== e.currentTarget) && (elem.nodeName.toLowerCase() === "button")) {
         //visual button response
         removeAllButtonSelections();
+        var elemClass = elem.className;//at this point we've stripped selected off. Should only be the type.
         addClass(elem, 'selected');
 
         //affect the graph:
-        //TODO:pre-req: edges need to have classes!
+        //old ones back:
+        if(hiddenElems) {
+          hiddenElems.restore();
+        }
+        //new ones gone:
+        hiddenElems = cy.elements('[interactionType="' + elemClass + '"]').remove();
       }
     },
     listen = function() {
@@ -69,6 +77,7 @@ ui = function (graph) {
     removeAllButtonSelections = function() {
       var theButtons = getControls().querySelectorAll('button');
       for (var i = 0; i < theButtons.length; i++) {
+        removeClass(theButtons[i], ' selected');
         removeClass(theButtons[i], 'selected');
       }
     }
