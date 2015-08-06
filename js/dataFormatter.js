@@ -55,11 +55,11 @@ Cymine = function(records) {
     }
   },
   interactionToEdge = function(node, node2) {
-    //todo: we almost certainly want to add more complexity to the return object
     return {
       data : {
         source : node.data.id,
-        target : node2.data.id
+        target : node2.data.id,
+        interactionType : node2.data.details.type
       }
     };
   }

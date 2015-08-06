@@ -40,6 +40,44 @@ ui = function (graph) {
       noResults(errorMessage);
     }
   },
+  controls = function() {
+    var getControls = function() {
+      return graph.parentElem.querySelector('.controls');
+    },
+    selectInteractionType = function(e){
+      var elem = e.target;
+      if((elem !== e.currentTarget) && (elem.nodeName.toLowerCase() === "button")) {
+        //visual button response
+        removeAllButtonSelections();
+        addClass(elem, 'selected');
+
+        //affect the graph:
+        //TODO:pre-req: edges need to have classes!
+      }
+    },
+    listen = function() {
+      getControls().addEventListener('click', selectInteractionType, false);
+    },
+    addClass = function(elem, classToAdd) {
+      if (!hasClass(elem, classToAdd)) {
+        elem.className += " " + classToAdd;
+      }
+    },
+    removeClass = function(elem, classToRemove) {
+      elem.className = elem.className.replace(classToRemove, "");
+    },
+    removeAllButtonSelections = function() {
+      var theButtons = getControls().querySelectorAll('button');
+      for (var i = 0; i < theButtons.length; i++) {
+        removeClass(theButtons[i], 'selected');
+      }
+    }
+    hasClass = function(elem, classToCheckFor) {
+      var classes = elem.className.split(" ");
+      return (classes.indexOf(classToCheckFor) >= 0);
+    }
+    return {listen : listen};
+  },
   initHtml = function () {
     graph.parentElem.innerHTML = getTemplate();
     graph.parentElem.className += " cymine";
@@ -47,7 +85,13 @@ ui = function (graph) {
   },
   initGraph = function() {
     graph.targetElem = graph.parentElem.querySelector('.cy');
-
+    try{
+      var interactionControls = controls();
+      interactionControls.listen();
+    } catch(e) {
+      console.error(e);
+    }
+    //make the graph
     cy = cytoscape({
       container: graph.targetElem,
       layout: { name: 'cose'},
@@ -63,17 +107,29 @@ ui = function (graph) {
       'target-arrow-color': 'black',
       'source-arrow-color': 'black',
       'text-outline-color': 'black'
-    }),
-      elements: graph.data,
+    })
+    .selector('edge')
+      .css({ 'width': '2px' })
+    .selector('edge[interactionType @= "genetic"]')
+      .css({ 'line-color': '#2c79be' })
+    .selector('edge[interactionType @= "physical"]')
+      .css({ 'line-color': 'red' }),
+          elements: graph.data,
       ready: function(){
         window.cy = this;
         graph.statusBar.remove();
       }
     });
 
+    //event listener for node taps
     cy.on('tap', 'node', function(){
       display(this.data());
     });
+
+    cy.on('tap', 'edge', function(){
+      display(this.data());
+    });
+
 
   },
   noResults = function (message) {

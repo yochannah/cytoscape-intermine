@@ -12,10 +12,15 @@
 
   <script>
   cymine({
-    parentElem : document.getElementById('cyminetwo'),  //optional. Will default to '#cymine' if not specified.
-    serviceUrl : 'www.humanmine.org/humanmine',         //
-    queryOn : { "value" : "ENSG00000110422" },
-    layout : 'vertical'
+    //optional. Will default to '#cymine' if not specified:
+    parentElem : document.getElementById('cyminetwo'),
+    //required. can't query without this! :)
+    serviceUrl : 'http://www.flymine.org/flymine/service/',
+    //required
+    queryOn : {
+      "value": "zen",
+      "extraValue": "D. melanogaster"
+    }
   });
   </script>
 

@@ -2,7 +2,9 @@
 @import '_clearfix';
 
 @cySize : 350px;
-
+@primaryColor : #eee;
+@secondaryColor : #2c79be;
+@highlightColor : #ec971f;
 body {
   font-family : arial, sans-serif;
 }
@@ -20,6 +22,9 @@ body {
     margin:1em;
     border-radius:4px;
     flex-grow:1;
+    flex-direction:column;
+    justify-content : center;
+    align-items: center;
   }
 
   .graph, .nodeDetails {
@@ -36,6 +41,7 @@ body {
   //  border:solid 1px seagreen; //this line is useful for debugging
     width:@cySize;
     height:@cySize;
+    margin:auto;
   }
 
   dt, dd {
@@ -76,18 +82,41 @@ body {
 
   .controls {
     padding : 1em;
-    flex-direction:column;
-    justify-content : center;
-    align-items: center;
     margin:auto;
     div {text-align:center;}
 
     button {
-      background-color:darkseagreen;
+      background-color:@primaryColor;
       border:0;
+      border-bottom:solid 3px #fff;
       padding:0.5em 1.5em;
-      color: #fff;
+      color: #000;
       margin:0;
+      transition: border 1s ease;
+      position: relative;
+
+      &:after{
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 3px;
+        background-color: @highlightColor;
+        content: "";
+        transition: width 0.2s;
+      }
+
+      &:hover {
+        &:after {
+          width: 100%;
+        }
+      }
+
+      &.selected {
+        transition: border 1s ease;
+        border-bottom:solid 3px @secondaryColor;
+      }
 
       &:first-child {
         -webkit-border-top-left-radius: 4px;
@@ -96,12 +125,12 @@ body {
         -moz-border-radius-bottomleft: 4px;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
-        border-right: solid 1px seagreen;
+        border-right: solid 1px darken(@primaryColor, 10%);
         margin:0;
       }
       &:last-child {
         margin:0;
-        border-left: solid 1px seagreen;
+        border-left: solid 1px darken(@primaryColor, 10%);
         -webkit-border-top-right-radius: 4px;
         -webkit-border-bottom-right-radius: 4px;
         -moz-border-radius-topright: 4px;
