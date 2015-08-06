@@ -21,6 +21,15 @@ describe('Node processing', function(){
       }
       assert(hasNames);
     });
+    it('should give every edge an interaction type',function() {
+      var hasTypes = true;
+      for(var i in graph.edges){
+        //hasNames becomes falsey if there is a null value
+        hasTypes = graph.edges[i].data.interactionType && hasTypes;
+      }
+      assert(hasTypes);
+    });
+
     console.log("===");
   });
 });
