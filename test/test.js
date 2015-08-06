@@ -1,5 +1,5 @@
 var assert = require("assert");
-var cymine = require("./../js/cymine");
+var cymine = require("./../js/dataFormatter");
 var dummyData = require("./dummyQuery.json");
 
 describe('Node processing', function(){
