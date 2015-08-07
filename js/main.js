@@ -1,68 +1,15 @@
 var cymineDataFormatter = require('./dataFormatter'),
-imjs = require('./../bower_components/imjs/js/im.js'),
-cytoscape = require('./../bower_components/cytoscape/dist/cytoscape'),
-_ = require('underscore'),
+imjs          = require('./../bower_components/imjs/js/im.js'),
+cytoscape     = require('cytoscape'),
+_             = require('underscore'),
+strings       = require('./strings'),
+query         = require('./query'),
 cymineDisplay = require('./ui');
 
 function Cymine(args) {
 
   var ui,
-  graph = _.extend({},args),
-  strings = {
-    //use for messages that a user will see
-    user : {
-      noResults : "No interaction results for this query",
-      noQueryData : "Problem loading query results"
-    },
-    //use for messages intended towards the dev, e.g. console.error();
-    dev : {
-      noParent : {
-        usingDefault : 'Cymine: No parent element specified for Cymine. Using default "#cymine"',
-        noDefault : 'Cymine: No parent element specified, and default "#cymine" not available.'
-      },
-      noQueryData : 'Cymine: No queryOn values supplied!',
-      noServiceUrl : 'Cymine: No serviceUrl defined, unable to query for interactions.',
-      badServiceUrl : 'Cymine: bad serviceUrl. Please check for typos and check this host is up.'
-    }
-  },
-  query = {
-    "name": "Gene_Interactions",
-    "title": "Gene --> Interactions",
-    "description": "Show all interactions for a given gene.",
-    "constraintLogic": "A and B",
-    "from": "Gene",
-    "select": [
-      "primaryIdentifier",
-      "symbol",
-      "interactions.gene2.symbol",
-      "interactions.gene2.primaryIdentifier",
-      "interactions.details.name",
-      "interactions.details.role1",
-      "interactions.details.role2",
-      "interactions.details.type",
-      "interactions.details.experiment.interactionDetectionMethods.name",
-      "interactions.details.experiment.publication.pubMedId",
-      "interactions.details.relationshipType.name",
-      "interactions.details.dataSets.name"
-    ],
-    "orderBy": [
-      {
-        "path": "symbol",
-        "direction": "ASC"
-      }
-    ],
-    "where": [
-      {
-        "path": "Gene",
-        "op": "LOOKUP",
-        "code": "A",
-        "editable": true,
-        "switched": "LOCKED",
-        "switchable": false,
-      }
-    ]
-  };
-
+  graph = _.extend({},args);
   init();
 
 /**

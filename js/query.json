@@ -1,0 +1,37 @@
+{
+  "name": "Gene_Interactions",
+  "title": "Gene --> Interactions",
+  "description": "Show all interactions for a given gene.",
+  "constraintLogic": "A and B",
+  "from": "Gene",
+  "select": [
+    "primaryIdentifier",
+    "symbol",
+    "interactions.gene2.symbol",
+    "interactions.gene2.primaryIdentifier",
+    "interactions.details.name",
+    "interactions.details.role1",
+    "interactions.details.role2",
+    "interactions.details.type",
+    "interactions.details.experiment.interactionDetectionMethods.name",
+    "interactions.details.experiment.publication.pubMedId",
+    "interactions.details.relationshipType.name",
+    "interactions.details.dataSets.name"
+  ],
+  "orderBy": [
+    {
+      "path": "symbol",
+      "direction": "ASC"
+    }
+  ],
+  "where": [
+    {
+      "path": "Gene",
+      "op": "LOOKUP",
+      "code": "A",
+      "editable": true,
+      "switched": "LOCKED",
+      "switchable": false,
+    }
+  ]
+}

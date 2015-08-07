@@ -13,24 +13,32 @@ ui = function (graph) {
   },
   listProperties = function(node) {
     //todo: make this more sane. bold tags and inline html, not so brainy
-    var display = expandPropertyVals(node);
-    graph.parentElem.querySelector('.nodeInfo').innerHTML = display;
-  },
-  addProperty = function(prop, key) {
-    return '<dt> ' + key + '</dt><dd>' + prop[key] + "</dd>";
+    var display = expandPropertyVals(node),
+    oldNodeInfo = graph.parentElem.querySelector('.nodeInfo');
+    console.log('display', display);
+    display.setAttribute('class', 'nodeInfo');
+    oldNodeInfo.parentElement.replaceChild(display, oldNodeInfo);
   },
   getTemplate = function(){
     return cymineHtml;
   },
   expandPropertyVals = function(obj) {
-    var display = "";
+    var display = document.createElement('dl'),
+    dtTemp, ddTemp;
     for (var prop in obj) {
+      dtTemp = document.createElement("dt");
+      dtTemp.appendChild(document.createTextNode(prop));
+      display.appendChild(dtTemp);
+      ddTemp = document.createElement("dd");
+      ddTemp.setAttribute("class","child");
       if(typeof obj[prop] === "object") {
-        display = "<dt>" + prop + "</dt><dd class='child'><dl>" + expandPropertyVals(obj[prop]) + "</dl></dd>" + display;
-      } else{
-        display = addProperty(obj, prop) + display;
+        ddTemp.appendChild(expandPropertyVals(obj[prop]));
+      } else {
+        ddTemp.appendChild(document.createTextNode(obj[prop]));
       }
+      display.appendChild(ddTemp);
     }
+    console.log('deeper',display);
     return display;
   },
   init = function(errorMessage) {
@@ -112,7 +120,7 @@ ui = function (graph) {
   .selector(':selected')
     .css({
       'background-color': 'black',
-      'line-color': 'black',
+      'line-color': 'gold',
       'target-arrow-color': 'black',
       'source-arrow-color': 'black',
       'text-outline-color': 'black'

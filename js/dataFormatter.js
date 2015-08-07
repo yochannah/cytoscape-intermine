@@ -27,14 +27,16 @@ Cymine = function(records) {
     return d;
   };
   var recordToNode = function (obj) {
-    var ret, data = {};
+    var ret, data = {}, interaction;
     ret = obj.gene2 ? obj.gene2 : obj;
+    interaction = getInteraction(obj);
     return {
+      classes : interaction,
       data : {
         details : getDetails(obj),
         label   : nameNode(obj),
         class   : ret.class,
-        interactionType : getInteraction(obj),
+        interactionType : interaction,
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
@@ -63,6 +65,7 @@ Cymine = function(records) {
   },
   interactionToEdge = function(node, node2) {
     return {
+      classes : node2.data.details.type,
       data : {
         source : node.data.id,
         target : node2.data.id,
