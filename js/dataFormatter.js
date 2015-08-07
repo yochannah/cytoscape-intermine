@@ -19,7 +19,6 @@ Cymine = function(records) {
         //if it doesn't have an interaction list, it probably *is* an interaction
         //and thus needs to be an edge
         d.edges.push(interactionToEdge(parentNode, thisNode));
-
       }
       d.nodes.push(thisNode);
     }
@@ -43,8 +42,29 @@ Cymine = function(records) {
     }
   };
   var getDetails = function(obj) {
-    return obj.details ? obj.details[0] : {};
-  }
+    var details = obj.details ? obj.details[0] : {};
+    details = collapseArrays(details);
+    return details;
+  },
+  /**
+   * While it's usefuly to see array indices if there are multiple elements,
+   * There's not much point showing an index for just one array element.
+   * This function collapses arrays with only one member and returns the member instead.
+   * @param  {object} obj an object with arrays in its properties. Can be nested.
+   * @return {object} the same object, just with 1-length arrays collapsed.
+   */
+  collapseArrays = function(obj){
+    var ret = obj;
+    for (var detail in ret){
+      var theProp = ret[detail];
+      if(Array.isArray(theProp)) {
+        ret[detail] = (theProp.length === 1) ? theProp[0] : theProp;
+      } else if(typeof theProp === "object") {
+        theProp = collapseArrays(theProp);
+      } // no need for a final else. Just leave string/int values as is.
+    }
+    return ret;
+  },
   getInteraction = function(obj){
     var ret;
     if (obj.details) {

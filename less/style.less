@@ -29,6 +29,8 @@ body {
 
   .graph, .nodeDetails {
     .module;
+    font-size:0.9em;
+
   }
 
   .nodeTitle {
@@ -48,19 +50,35 @@ body {
     float:left;
     margin-left:0.5em;
     margin-top:0.1em;
+    text-transform:capitalize;
   }
 
   dl {
+    &.intro {border:0;}
     .cf;
-    border-left:solid 1px #ccc;
+    border-left:solid 3px #ddd;
+    border-bottom: solid 1px #ccc;
+    border-bottom-left-radius: 4px;
     margin:0;
     clear:left;
+    width:100%;
     float:left;
   }
 
   dt {
     &:after {
       content: ": ";
+      text-align:center;
+    }
+    &.intro {
+      text-transform:none;
+      &:after {content: ""}
+      box-sizing:border-box;
+      font-weight:normal;
+      color:#666;
+      line-height:@cySize;
+      text-align:center;
+      width:100%;
     }
     font-weight:bold;
     float:left;
@@ -140,5 +158,4 @@ body {
       }
     }
   }
-
 }

@@ -1,4 +1,5 @@
 var cymineHtml = require('./../template/cytomine.html'),
+cyStyle = require('./cytoscapeStyle');
 ui = function (graph) {
   this.graph = graph;
   var cy,
@@ -15,7 +16,6 @@ ui = function (graph) {
     //todo: make this more sane. bold tags and inline html, not so brainy
     var display = expandPropertyVals(node),
     oldNodeInfo = graph.parentElem.querySelector('.nodeInfo');
-    console.log('display', display);
     display.setAttribute('class', 'nodeInfo');
     oldNodeInfo.parentElement.replaceChild(display, oldNodeInfo);
   },
@@ -28,17 +28,17 @@ ui = function (graph) {
     for (var prop in obj) {
       dtTemp = document.createElement("dt");
       dtTemp.appendChild(document.createTextNode(prop));
-      display.appendChild(dtTemp);
       ddTemp = document.createElement("dd");
-      ddTemp.setAttribute("class","child");
       if(typeof obj[prop] === "object") {
+        ddTemp.setAttribute("class","child");
         ddTemp.appendChild(expandPropertyVals(obj[prop]));
       } else {
         ddTemp.appendChild(document.createTextNode(obj[prop]));
       }
+      //insert the new row at the END of the list:
+      display.appendChild(dtTemp);
       display.appendChild(ddTemp);
     }
-    console.log('deeper',display);
     return display;
   },
   init = function(errorMessage) {
@@ -112,26 +112,9 @@ ui = function (graph) {
     cy = cytoscape({
       container: graph.targetElem,
       layout: { name: 'cose'},
-      style: cytoscape.stylesheet()
-  .selector('node')
-    .css({
-      'content': 'data(label)'
-    })
-  .selector(':selected')
-    .css({
-      'background-color': 'black',
-      'line-color': 'gold',
-      'target-arrow-color': 'black',
-      'source-arrow-color': 'black',
-      'text-outline-color': 'black'
-    })
-    .selector('edge')
-      .css({ 'width': '2px' })
-    .selector('edge[interactionType @= "genetic"]')
-      .css({ 'line-color': '#2c79be' })
-    .selector('edge[interactionType @= "physical"]')
-      .css({ 'line-color': 'red' }),
-          elements: graph.data,
+      elements: graph.data,
+      style: cyStyle,
+
       ready: function(){
         window.cy = this;
         graph.statusBar.remove();
