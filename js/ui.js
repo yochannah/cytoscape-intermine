@@ -13,7 +13,6 @@ ui = function (graph) {
     title.innerHTML = node.label;
   },
   listProperties = function(node) {
-    //todo: make this more sane. bold tags and inline html, not so brainy
     var display = expandPropertyVals(node),
     oldNodeInfo = graph.parentElem.querySelector('.nodeInfo');
     display.setAttribute('class', 'nodeInfo');
@@ -35,7 +34,6 @@ ui = function (graph) {
       } else {
         ddTemp.appendChild(document.createTextNode(obj[prop]));
       }
-      //insert the new row at the END of the list:
       display.appendChild(dtTemp);
       display.appendChild(ddTemp);
     }

@@ -66,7 +66,7 @@ Cymine = function(records) {
     return ret;
   },
   getInteraction = function(obj){
-    var ret;
+    var ret = "master";
     if (obj.details) {
       ret = obj.details[0].type;
     }
