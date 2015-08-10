@@ -5,7 +5,7 @@ Demo at [yochannah.github.io/cytoscape-intermine/](http://yochannah.github.io/cy
 
 ## Quick Start
 
-TL;DR: See the [demo page](http://yochannah.github.io/cytoscape-intermine/).
+TL;DR: See the [source](https://github.com/yochannah/cytoscape-intermine/blob/master/index.html) of the [demo page](http://yochannah.github.io/cytoscape-intermine/).
 
 ### Detailed steps:
 If you don't care about building the script, just download or check out **dist/bundle.js** and **dist/style.css**.
@@ -14,11 +14,13 @@ Include links to both in your project page, e.g.:
     <link href="dist/style.css" rel="stylesheet" type="text/css">
     <script src="dist/bundle.js"></script>
 
-#### To initialise the graph, you'll need the following things:
+#### To initialise the graph:
 
-* **A [URL to an Intermine Service](http://iodocs.labs.intermine.org/)**.
-* **A term to query on** (e.g. a gene name or 'primaryIdentifier'). This is in the format of an object, such as `{"value" : "FBgn0034249"}` or `{"value" : "PPARG", "extraValue" : "H. sapiens"}` .
-* **An element to insert the graph into**, e.g. `document.getElementById('anAwesomeElement');`. If this isn't specified, the graph will try to find an element with the ID `cymine`.
+You'll need to pass an object that contains the following properties:
+
+* `parentElem`: The URL of an [Intermine Service](http://iodocs.labs.intermine.org/).
+* `serviceUrl`: This is a **term to query on** (e.g. a gene name or 'primaryIdentifier'). This is in the format of an object, such as `{"value" : "FBgn0034249"}` or `{"value" : "PPARG", "extraValue" : "H. sapiens"}` .
+* `parentElem`: An **element to insert the graph into**, e.g. `document.getElementById('myAwesomeElement');`. If this isn't specified, the graph will try to find an element with the ID `cymine`.
 
 #### Gluing them all together, the body of your HTML page might look something like this:
 
