@@ -5,23 +5,22 @@
     <script src="dist/bundle.js"></script>
   </head>
   <body>
-    <div id="cyminetwo"></div>
-    <div id="cymine"></div>
-  </body>
+    <div id="myAwesomeElement"></div> <!--this is where the graph will display. -->
+    <div id="cymine"></div>           <!--this is where the graph would display if we didn't specify that myAwesomeElement is the parentElem -->
 
   <script>
   cymine({
     //optional. Will default to '#cymine' if not specified:
-    parentElem : document.getElementById('cyminetwo'),
-    //required. can't query without this! :)
+    parentElem : document.getElementById('myAwesomeElement'),
+    //required. can't query without this! :) must be a valid
+    //intermine API URL
     serviceUrl : 'http://beta.flymine.org/beta/service/',
-    //required
+    //required. needs value : "whatever", optionally extraValue : "whatever".
     queryOn : {
-      "value": "zen",
-      "extraValue": "D. melanogaster"
+      "value" : "FBgn0034249"
     }
   });
   </script>
 
-
+</body>
 </html>
