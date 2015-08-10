@@ -28,18 +28,21 @@
     "line-color": "red"
   }
 }, {
-  "selector": "node[interactionType@=\"genetic\"]",
+  "selector": ".genetic",
   "style": {
-    "background-color": "#225f95"
+    "background-color": "#225f95",
+    "shape":"rectangle"
   }
 }, {
-  "selector": "node[interactionType@=\"genetic physical\"]",
+  "selector": ".physical",
   "style": {
-    "background-color": "#77304B"
+    "background-color": "#c00",
+    "shape":"ellipse"
   }
 }, {
-  "selector": "node[interactionType@=\"physical\"]",
+  "selector": ".both",
   "style": {
-    "background-color": "#c00"
+    "background-color": "#77304B",
+    "shape":"roundrectangle"
   }
 }]

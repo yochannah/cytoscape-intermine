@@ -18,7 +18,7 @@ Cymine = function(records) {
       } else {
         //if it doesn't have an interaction list, it probably *is* an interaction
         //and thus needs to be an edge
-        d.edges.push(interactionToEdge(parentNode, thisNode));
+        d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
       }
       d.nodes.push(thisNode);
     }
@@ -30,18 +30,25 @@ Cymine = function(records) {
     ret = obj.gene2 ? obj.gene2 : obj;
     interactions = getInteractions(obj);
     return {
-      classes : interactions,
+      classes : getClasses(interactions),
       data : {
         details : getDetails(obj),
         label   : nameNode(obj),
         class   : ret.class,
-        interactionType : interactions,
+        interactionTypes : interactions,
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
     }
-  };
-  var getDetails = function(obj) {
+  },
+  getClasses = function(arrOfClasses){
+    var ret = _.uniq(arrOfClasses); //clones the node
+    if(ret.length > 1) {
+      ret.push("both");
+    }
+    return ret.join(" ");
+  }
+  getDetails = function(obj) {
     var details = obj.details ? obj.details[0] : {};
     details = collapseArrays(details);
     return details;
@@ -68,17 +75,13 @@ Cymine = function(records) {
   getInteractions = function(obj){
     var ret = [];
     if (obj.details) {
-      console.log(obj.details);
       for (var i = 0; i < obj.details.length; i++) {
-        if(ret.indexOf(obj.details[i].type) < 0){
-          ret.push(obj.details[i].type);
-        }
+        ret.push(obj.details[i].type);
       }
     } else {
       ret.push("master");
     }
-    console.log(ret);
-    return ret.join(" ");
+    return ret;
   },
   nameNode = function(obj) {
     if (obj.gene2 && obj.gene2.symbol) {
@@ -91,15 +94,22 @@ Cymine = function(records) {
       return "NAME MISSING";
     }
   },
-  interactionToEdge = function(node, node2) {
-    return {
-      classes : node2.data.details.type,
-      data : {
-        source : node.data.id,
-        target : node2.data.id,
-        interactionType : node2.data.details.type
-      }
-    };
+  interactionToEdges = function(node, node2) {
+    var interactions = node2.data.interactionTypes,
+    ret = [];
+    for(var i = 0; i < interactions.length; i++) {
+      ret.push({
+        id : node2.data.details.objectId,
+        classes : interactions[i],
+        data : {
+          description: "From " + node.data.label + " to " + node2.data.label,
+          source : node.data.id,
+          target : node2.data.id,
+          interactionType : interactions[i]
+        }
+      });
+    }
+    return ret;
   }
   return toNodesAndEdges(records);
 };

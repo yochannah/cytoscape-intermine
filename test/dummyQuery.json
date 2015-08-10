@@ -1235,6 +1235,109 @@
     }],
     "objectId": 159209592,
     "class": "Interaction"
+  },{
+    "gene2": {
+      "primaryIdentifier": "FBgn0011648",
+      "symbol": "Mad",
+      "objectId": 343019286,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 443000014,
+        "name": null,
+        "class": "InteractionTerm"
+      },
+      "objectId": 443069010,
+      "name": "Mad-zen",
+      "experiment": {
+        "objectId": 443054427,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 379000973,
+          "name": "genetic interference",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 343008022,
+          "class": "Publication",
+          "pubMedId": "9502722"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 443000001,
+        "name": "BioGRID interaction data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "genetic"
+    }, {
+      "relationshipType": {
+        "objectId": 379000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 432116066,
+      "name": "mad-zen-1",
+      "experiment": {
+        "objectId": 432066524,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 379000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 343000688,
+          "class": "Publication",
+          "pubMedId": "14605208"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 432000001,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 379000657,
+        "name": "direct interaction",
+        "class": "InteractionTerm"
+      },
+      "objectId": 443008691,
+      "name": "zen-Mad",
+      "experiment": {
+        "objectId": 443008105,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 379000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 343000688,
+          "class": "Publication",
+          "pubMedId": "14605208"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 443000001,
+        "name": "BioGRID interaction data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 347755354,
+    "class": "Interaction"
   }, {
     "gene2": {
       "primaryIdentifier": "ENSG00000155097",

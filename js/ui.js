@@ -8,9 +8,9 @@ ui = function (graph) {
     setTitle(node);
     listProperties(node);
   },
-  setTitle = function (node) {
+  setTitle = function (elem) {
     var title = graph.parentElem.querySelector('.nodeTitle');
-    title.innerHTML = node.label;
+    title.innerHTML = elem.label || elem.description;
   },
   listProperties = function(node) {
     var display = expandPropertyVals(node),
@@ -122,7 +122,6 @@ ui = function (graph) {
     //event listener for node taps
     cy.on('tap', 'node', function(){
       display(this.data());
-      console.log(this);
     });
 
     cy.on('tap', 'edge', function(){
