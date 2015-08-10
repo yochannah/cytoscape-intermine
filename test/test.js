@@ -32,7 +32,7 @@ describe('Node & Edge processing', function(){
     });
   });
 
-  describe('#recordsToEdges()', function() {
+  describe('Edges', function() {
     it('should give every edge an interaction property',function() {
       var hasTypes = true;
       for(var i in graph.edges){
@@ -41,6 +41,11 @@ describe('Node & Edge processing', function(){
       }
       assert(hasTypes);
     });
+
+    it('should make multiple edges between the same nodes if there are multiple interactions',function() {
+      graph.edges
+    });
+
 
     console.log("===");
   });

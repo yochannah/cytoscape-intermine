@@ -26,16 +26,16 @@ Cymine = function(records) {
     return d;
   };
   var recordToNode = function (obj) {
-    var ret, data = {}, interaction;
+    var ret, data = {}, interactions;
     ret = obj.gene2 ? obj.gene2 : obj;
-    interaction = getInteraction(obj);
+    interactions = getInteractions(obj);
     return {
-      classes : interaction,
+      classes : interactions,
       data : {
         details : getDetails(obj),
         label   : nameNode(obj),
         class   : ret.class,
-        interactionType : interaction,
+        interactionType : interactions,
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
@@ -65,12 +65,20 @@ Cymine = function(records) {
     }
     return ret;
   },
-  getInteraction = function(obj){
-    var ret = "master";
+  getInteractions = function(obj){
+    var ret = [];
     if (obj.details) {
-      ret = obj.details[0].type;
+      console.log(obj.details);
+      for (var i = 0; i < obj.details.length; i++) {
+        if(ret.indexOf(obj.details[i].type) < 0){
+          ret.push(obj.details[i].type);
+        }
+      }
+    } else {
+      ret.push("master");
     }
-    return ret;
+    console.log(ret);
+    return ret.join(" ");
   },
   nameNode = function(obj) {
     if (obj.gene2 && obj.gene2.symbol) {
@@ -94,7 +102,6 @@ Cymine = function(records) {
     };
   }
   return toNodesAndEdges(records);
-
 };
 
 module.exports = Cymine;

@@ -1,1 +1,1362 @@
-[{"primaryIdentifier":"ENSG00000132170","symbol":"PPARG","objectId":127344656,"class":"Gene","interactions":[{"gene2":{"primaryIdentifier":"ENSG00000159840","symbol":"ZYX","objectId":126310743,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159016160,"name":"zyx-pparg","experiment":{"objectId":159016130,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131005098,"class":"Publication","pubMedId":"11423549"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"}],"objectId":159016159,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000107223","symbol":"EDF1","objectId":125573806,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159025322,"name":"edf1-pparg-1","experiment":{"objectId":159025323,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000511,"name":"pull down","class":"InteractionTerm"}],"publication":{"objectId":131132982,"class":"Publication","pubMedId":"12040021"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159025318,"name":"edf1-pparg-2","experiment":{"objectId":159025298,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000039,"name":"anti tag coimmunoprecipitation","class":"InteractionTerm"}],"publication":{"objectId":131132982,"class":"Publication","pubMedId":"12040021"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159025338,"name":"edf1-pparg-3","experiment":{"objectId":159025339,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131132982,"class":"Publication","pubMedId":"12040021"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159025346,"name":"edf1-pparg-4","experiment":{"objectId":159025345,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131132982,"class":"Publication","pubMedId":"12040021"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"}],"objectId":159025317,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000100393","symbol":"EP300","objectId":124300851,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159025329,"name":"pparg-ep300","experiment":{"objectId":159025323,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000511,"name":"pull down","class":"InteractionTerm"}],"publication":{"objectId":131132982,"class":"Publication","pubMedId":"12040021"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159025327,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000127616","symbol":"SMARCA4","objectId":124650187,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159043086,"name":"pparg-brg1","experiment":{"objectId":159043084,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000029,"name":"anti bait coimmunoprecipitation","class":"InteractionTerm"}],"publication":{"objectId":131133035,"class":"Publication","pubMedId":"14701856"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159043085,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000125686","symbol":"MED1","objectId":125896065,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159105913,"name":"pparg-pparbp-1","experiment":{"objectId":159105911,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000511,"name":"pull down","class":"InteractionTerm"}],"publication":{"objectId":131138561,"class":"Publication","pubMedId":"16554032"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159105912,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000197386","symbol":"HTT","objectId":125289667,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159140218,"name":"htt-pparg","experiment":{"objectId":159140202,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131003105,"class":"Publication","pubMedId":"17500595"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159140240,"name":"htt-pparg-1","experiment":{"objectId":159140239,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131003105,"class":"Publication","pubMedId":"17500595"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159140235,"name":"htt-pparg-2","experiment":{"objectId":159140226,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131003105,"class":"Publication","pubMedId":"17500595"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159139612,"name":"htt-pparg-3","experiment":{"objectId":159139545,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000104,"name":"two hybrid","class":"InteractionTerm"}],"publication":{"objectId":131003105,"class":"Publication","pubMedId":"17500595"}},"class":"InteractionDetail","role2":"bait","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"prey","type":"physical"}],"objectId":159139611,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000109819","symbol":"PPARGC1A","objectId":125305408,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000657,"name":"direct interaction","class":"InteractionTerm"},"objectId":159195031,"name":"pparg-ppargc1a-2","experiment":{"objectId":159195027,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000511,"name":"pull down","class":"InteractionTerm"}],"publication":{"objectId":131190400,"class":"Publication","pubMedId":"19846556"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159195030,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000115355","symbol":"CCDC88A","objectId":125076553,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208293,"name":"pparg-ccdc88a","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208292,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000105323","symbol":"HNRNPUL1","objectId":124742021,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208297,"name":"pparg-hnrnpul1","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208296,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000102226","symbol":"USP11","objectId":124102437,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208301,"name":"pparg-usp11","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208300,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000224156","symbol":null,"objectId":159004436,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208323,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208322,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000196230","symbol":"TUBB","objectId":124470881,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208325,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208324,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000232575","symbol":null,"objectId":159004439,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208327,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208326,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000227739","symbol":null,"objectId":159004437,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208329,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208328,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000232421","symbol":null,"objectId":159004438,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208331,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208330,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000235067","symbol":null,"objectId":159004442,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208333,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208332,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000183311","symbol":null,"objectId":159004441,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208335,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208334,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000229684","symbol":null,"objectId":159004440,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208337,"name":"pparg-tubb","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208336,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000171867","symbol":"PRNP","objectId":124008408,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159208341,"name":"pparg-prnp","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159208340,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000120885","symbol":"CLU","objectId":126052484,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209575,"name":"pparg-clu","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209582,"name":"pparg-clu","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"},{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159220058,"name":"pparg-clus","experiment":{"objectId":159220000,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150002606,"name":"tandem affinity purification","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209574,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000100888","symbol":"CHD8","objectId":124836433,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209579,"name":"pparg-chd8","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209578,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000173692","symbol":"PSMD1","objectId":125256045,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209587,"name":"pparg-psmd1","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209586,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000117632","symbol":"STMN1","objectId":126726417,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209591,"name":"pparg-stmn1","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209590,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000145495","symbol":"MARCH6","objectId":127177151,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209593,"name":"pparg-march6","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209592,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000155097","symbol":"ATP6V1C1","objectId":126117597,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209607,"name":"pparg-atp6v1c1","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209606,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000123240","symbol":"OPTN","objectId":124330943,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209611,"name":"pparg-optn","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209610,"class":"Interaction"},{"gene2":{"primaryIdentifier":"ENSG00000096384","symbol":"HSP90AB1","objectId":124512276,"class":"Gene"},"details":[{"relationshipType":{"objectId":150000655,"name":"physical association","class":"InteractionTerm"},"objectId":159209613,"name":"pparg-hsp90ab1","experiment":{"objectId":159207803,"class":"InteractionExperiment","interactionDetectionMethods":[{"objectId":150000055,"name":"display technology","class":"InteractionTerm"}],"publication":{"objectId":131020511,"class":"Publication","pubMedId":"20195357"}},"class":"InteractionDetail","role2":"prey","dataSets":[{"objectId":159000000,"name":"IntAct interactions data set","class":"DataSet"}],"role1":"bait","type":"physical"}],"objectId":159209612,"class":"Interaction"}]}]
+[{
+  "primaryIdentifier": "ENSG00000132170",
+  "symbol": "PPARG",
+  "objectId": 127344656,
+  "class": "Gene",
+  "interactions": [{
+    "gene2": {
+      "primaryIdentifier": "ENSG00000159840",
+      "symbol": "ZYX",
+      "objectId": 126310743,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159016160,
+      "name": "zyx-pparg",
+      "experiment": {
+        "objectId": 159016130,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131005098,
+          "class": "Publication",
+          "pubMedId": "11423549"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }],
+    "objectId": 159016159,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000107223",
+      "symbol": "EDF1",
+      "objectId": 125573806,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159025322,
+      "name": "edf1-pparg-1",
+      "experiment": {
+        "objectId": 159025323,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000511,
+          "name": "pull down",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131132982,
+          "class": "Publication",
+          "pubMedId": "12040021"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159025318,
+      "name": "edf1-pparg-2",
+      "experiment": {
+        "objectId": 159025298,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000039,
+          "name": "anti tag coimmunoprecipitation",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131132982,
+          "class": "Publication",
+          "pubMedId": "12040021"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159025338,
+      "name": "edf1-pparg-3",
+      "experiment": {
+        "objectId": 159025339,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131132982,
+          "class": "Publication",
+          "pubMedId": "12040021"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159025346,
+      "name": "edf1-pparg-4",
+      "experiment": {
+        "objectId": 159025345,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131132982,
+          "class": "Publication",
+          "pubMedId": "12040021"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }],
+    "objectId": 159025317,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000100393",
+      "symbol": "EP300",
+      "objectId": 124300851,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159025329,
+      "name": "pparg-ep300",
+      "experiment": {
+        "objectId": 159025323,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000511,
+          "name": "pull down",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131132982,
+          "class": "Publication",
+          "pubMedId": "12040021"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159025327,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000127616",
+      "symbol": "SMARCA4",
+      "objectId": 124650187,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159043086,
+      "name": "pparg-brg1",
+      "experiment": {
+        "objectId": 159043084,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000029,
+          "name": "anti bait coimmunoprecipitation",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131133035,
+          "class": "Publication",
+          "pubMedId": "14701856"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159043085,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000125686",
+      "symbol": "MED1",
+      "objectId": 125896065,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159105913,
+      "name": "pparg-pparbp-1",
+      "experiment": {
+        "objectId": 159105911,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000511,
+          "name": "pull down",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131138561,
+          "class": "Publication",
+          "pubMedId": "16554032"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159105912,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000197386",
+      "symbol": "HTT",
+      "objectId": 125289667,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159140218,
+      "name": "htt-pparg",
+      "experiment": {
+        "objectId": 159140202,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131003105,
+          "class": "Publication",
+          "pubMedId": "17500595"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159140240,
+      "name": "htt-pparg-1",
+      "experiment": {
+        "objectId": 159140239,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131003105,
+          "class": "Publication",
+          "pubMedId": "17500595"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159140235,
+      "name": "htt-pparg-2",
+      "experiment": {
+        "objectId": 159140226,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131003105,
+          "class": "Publication",
+          "pubMedId": "17500595"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159139612,
+      "name": "htt-pparg-3",
+      "experiment": {
+        "objectId": 159139545,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000104,
+          "name": "two hybrid",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131003105,
+          "class": "Publication",
+          "pubMedId": "17500595"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "bait",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "prey",
+      "type": "physical"
+    }],
+    "objectId": 159139611,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000109819",
+      "symbol": "PPARGC1A",
+      "objectId": 125305408,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000657,
+        "name": "direct interaction",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159195031,
+      "name": "pparg-ppargc1a-2",
+      "experiment": {
+        "objectId": 159195027,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000511,
+          "name": "pull down",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131190400,
+          "class": "Publication",
+          "pubMedId": "19846556"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159195030,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000115355",
+      "symbol": "CCDC88A",
+      "objectId": 125076553,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208293,
+      "name": "pparg-ccdc88a",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208292,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000105323",
+      "symbol": "HNRNPUL1",
+      "objectId": 124742021,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208297,
+      "name": "pparg-hnrnpul1",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208296,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000102226",
+      "symbol": "USP11",
+      "objectId": 124102437,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208301,
+      "name": "pparg-usp11",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208300,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000224156",
+      "symbol": null,
+      "objectId": 159004436,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208323,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208322,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000196230",
+      "symbol": "TUBB",
+      "objectId": 124470881,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208325,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208324,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000232575",
+      "symbol": null,
+      "objectId": 159004439,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208327,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208326,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000227739",
+      "symbol": null,
+      "objectId": 159004437,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208329,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208328,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000232421",
+      "symbol": null,
+      "objectId": 159004438,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208331,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208330,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000235067",
+      "symbol": null,
+      "objectId": 159004442,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208333,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208332,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000183311",
+      "symbol": null,
+      "objectId": 159004441,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208335,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208334,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000229684",
+      "symbol": null,
+      "objectId": 159004440,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208337,
+      "name": "pparg-tubb",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208336,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000171867",
+      "symbol": "PRNP",
+      "objectId": 124008408,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159208341,
+      "name": "pparg-prnp",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159208340,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000120885",
+      "symbol": "CLU",
+      "objectId": 126052484,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209575,
+      "name": "pparg-clu",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209582,
+      "name": "pparg-clu",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }, {
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159220058,
+      "name": "pparg-clus",
+      "experiment": {
+        "objectId": 159220000,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150002606,
+          "name": "tandem affinity purification",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209574,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000100888",
+      "symbol": "CHD8",
+      "objectId": 124836433,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209579,
+      "name": "pparg-chd8",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209578,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000173692",
+      "symbol": "PSMD1",
+      "objectId": 125256045,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209587,
+      "name": "pparg-psmd1",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209586,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000117632",
+      "symbol": "STMN1",
+      "objectId": 126726417,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209591,
+      "name": "pparg-stmn1",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209590,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000145495",
+      "symbol": "MARCH6",
+      "objectId": 127177151,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209593,
+      "name": "pparg-march6",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209592,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000155097",
+      "symbol": "ATP6V1C1",
+      "objectId": 126117597,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209607,
+      "name": "pparg-atp6v1c1",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209606,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000123240",
+      "symbol": "OPTN",
+      "objectId": 124330943,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209611,
+      "name": "pparg-optn",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209610,
+    "class": "Interaction"
+  }, {
+    "gene2": {
+      "primaryIdentifier": "ENSG00000096384",
+      "symbol": "HSP90AB1",
+      "objectId": 124512276,
+      "class": "Gene"
+    },
+    "details": [{
+      "relationshipType": {
+        "objectId": 150000655,
+        "name": "physical association",
+        "class": "InteractionTerm"
+      },
+      "objectId": 159209613,
+      "name": "pparg-hsp90ab1",
+      "experiment": {
+        "objectId": 159207803,
+        "class": "InteractionExperiment",
+        "interactionDetectionMethods": [{
+          "objectId": 150000055,
+          "name": "display technology",
+          "class": "InteractionTerm"
+        }],
+        "publication": {
+          "objectId": 131020511,
+          "class": "Publication",
+          "pubMedId": "20195357"
+        }
+      },
+      "class": "InteractionDetail",
+      "role2": "prey",
+      "dataSets": [{
+        "objectId": 159000000,
+        "name": "IntAct interactions data set",
+        "class": "DataSet"
+      }],
+      "role1": "bait",
+      "type": "physical"
+    }],
+    "objectId": 159209612,
+    "class": "Interaction"
+  }]
+}]

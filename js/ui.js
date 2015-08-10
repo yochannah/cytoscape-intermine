@@ -122,6 +122,7 @@ ui = function (graph) {
     //event listener for node taps
     cy.on('tap', 'node', function(){
       display(this.data());
+      console.log(this);
     });
 
     cy.on('tap', 'edge', function(){

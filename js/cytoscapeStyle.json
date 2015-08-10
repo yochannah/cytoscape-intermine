@@ -33,6 +33,11 @@
     "background-color": "#225f95"
   }
 }, {
+  "selector": "node[interactionType@=\"genetic physical\"]",
+  "style": {
+    "background-color": "#77304B"
+  }
+}, {
   "selector": "node[interactionType@=\"physical\"]",
   "style": {
     "background-color": "#c00"
