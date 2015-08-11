@@ -2,15 +2,17 @@ var assert = require("assert");
 var cymine = require("./../js/dataFormatter");
 var dummyData = require("./dummyQuery.json");
 
+console.log("===");
+console.log("Running tests at " + new Date().toString() + ":");
+
+
 describe('Node & Edge processing', function(){
   var graph = new cymine(dummyData);
   describe('#recordsToNodes()', function() {
-//    console.log(graph);
-//
     //I suspect this will need to be revised when I expand it to more advanced use cases
     it('should return expected number of nodes and edges',function() {
-      assert.equal(graph.nodes.length, 28);
-      assert.equal(graph.edges.length, 27);
+      assert.equal(graph.nodes.length, 29);
+      assert.equal(graph.edges.length, 38);
     });
 
     var hasNames = true,
@@ -18,8 +20,8 @@ describe('Node & Edge processing', function(){
     for(var i in graph.nodes){
       //becomes falsey if there is a null value
       hasNames = graph.nodes[i].data.label && hasNames;
-      if(graph.nodes[i].data.interactionType !== "master") {
-        hasInteraction = graph.nodes[i].data.interactionType && hasInteraction;
+      if(graph.nodes[i].data.interactionType !== ["master"]) {
+        hasInteraction = graph.nodes[i].data.interactionTypes && hasInteraction;
       }
     }
 
@@ -32,7 +34,7 @@ describe('Node & Edge processing', function(){
     });
   });
 
-  describe('#recordsToEdges()', function() {
+  describe('Edges', function() {
     it('should give every edge an interaction property',function() {
       var hasTypes = true;
       for(var i in graph.edges){
@@ -42,6 +44,24 @@ describe('Node & Edge processing', function(){
       assert(hasTypes);
     });
 
+    //mad in the (totally faked) sample data should have three interactions,
+    //two physical and one genetic
+    var madEdges = [], edge, madPhysicalEdgesCount = 0;
+    for(var i=0;i<graph.edges.length;i++) {
+      edge = graph.edges[i];
+      if(edge.data.description === 'From PPARG to Mad') {
+        madEdges.push(edge);
+        if(edge.data.interactionType === "physical") {madPhysicalEdgesCount++;}
+      }
+    }
+
+    it('should make multiple edges between the same nodes if there are multiple interactions',function() {
+      assert(madEdges.length === 3);
+    });
+
+    it('should allow multiple edges between the same nodes of the same type',function() {
+      assert(madPhysicalEdgesCount === 2);
+    });
     console.log("===");
   });
 });

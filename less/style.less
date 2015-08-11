@@ -5,6 +5,11 @@
 @primaryColor : #eee;
 @secondaryColor : #2c79be;
 @highlightColor : #ec971f;
+
+@geneticColor : #225f95;
+@physicalColor : #c00;//
+@bothPhysicalAndGeneticColor : #77304B;//
+
 body {
   font-family : arial, sans-serif;
 }
@@ -112,6 +117,29 @@ body {
       margin:0;
       transition: border 1s ease;
       position: relative;
+
+      &:before {
+        content:"";
+        width:15px;
+        height:15px;
+        margin-right:0.5em;
+        display:block;
+        float:left;
+      }
+
+      &.genetic:before {
+        background-color:@geneticColor;
+      }
+
+      &.default:before {
+        background-color:@bothPhysicalAndGeneticColor;
+        border-radius:5px;
+      }
+
+      &.physical:before {
+      background-color:@physicalColor;
+      border-radius:30px;
+      }
 
       &:after{
         display: block;

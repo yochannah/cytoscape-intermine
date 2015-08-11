@@ -8,9 +8,9 @@ ui = function (graph) {
     setTitle(node);
     listProperties(node);
   },
-  setTitle = function (node) {
+  setTitle = function (elem) {
     var title = graph.parentElem.querySelector('.nodeTitle');
-    title.innerHTML = node.label;
+    title.innerHTML = elem.label || elem.description;
   },
   listProperties = function(node) {
     var display = expandPropertyVals(node),
@@ -25,17 +25,19 @@ ui = function (graph) {
     var display = document.createElement('dl'),
     dtTemp, ddTemp;
     for (var prop in obj) {
-      dtTemp = document.createElement("dt");
-      dtTemp.appendChild(document.createTextNode(prop));
-      ddTemp = document.createElement("dd");
-      if(typeof obj[prop] === "object") {
-        ddTemp.setAttribute("class","child");
-        ddTemp.appendChild(expandPropertyVals(obj[prop]));
-      } else {
-        ddTemp.appendChild(document.createTextNode(obj[prop]));
+      if(prop !== "objectId") { //users never want to see objectId.
+        dtTemp = document.createElement("dt");
+        dtTemp.appendChild(document.createTextNode(prop));
+        ddTemp = document.createElement("dd");
+        if(typeof obj[prop] === "object") {
+          ddTemp.setAttribute("class","child");
+          ddTemp.appendChild(expandPropertyVals(obj[prop]));
+        } else {
+          ddTemp.appendChild(document.createTextNode(obj[prop]));
+        }
+        display.appendChild(dtTemp);
+        display.appendChild(ddTemp);
       }
-      display.appendChild(dtTemp);
-      display.appendChild(ddTemp);
     }
     return display;
   },
@@ -59,14 +61,15 @@ ui = function (graph) {
         removeAllButtonSelections();
         var elemClass = elem.className;//at this point we've stripped selected off. Should only be the type.
         addClass(elem, 'selected');
-
         //affect the graph:
         //old ones back:
         if(hiddenElems) {
           hiddenElems.restore();
         }
         //new ones gone:
-        hiddenElems = cy.elements('[interactionType="' + elemClass + '"]').remove();
+        hiddenElems = cy.elements('.' + elemClass + '').filterFn(function(ele){
+          return !ele.hasClass("both");
+        }).remove();
       }
     },
     listen = function() {
