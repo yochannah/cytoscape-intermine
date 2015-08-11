@@ -61,14 +61,16 @@ ui = function (graph) {
         removeAllButtonSelections();
         var elemClass = elem.className;//at this point we've stripped selected off. Should only be the type.
         addClass(elem, 'selected');
-
+        console.log(elemClass);
         //affect the graph:
         //old ones back:
         if(hiddenElems) {
           hiddenElems.restore();
         }
         //new ones gone:
-        hiddenElems = cy.elements('[interactionType="' + elemClass + '"]').remove();
+        hiddenElems = cy.elements('.' + elemClass + '').filterFn(function(ele){
+          return !ele.hasClass("both");
+        }).remove();
       }
     },
     listen = function() {
