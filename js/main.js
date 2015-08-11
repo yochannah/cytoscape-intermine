@@ -54,7 +54,6 @@ function Cymine(args) {
     }
   }
   function init(){
-    debugger;
     if(validateParent()) {
       ui = new cymineDisplay(graph);
       var mine = validateServiceRoot();
