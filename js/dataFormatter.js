@@ -56,41 +56,25 @@ Cymine = function(records) {
    */
   collapseArrays = function(obj){
     var ret = {};
-    for (var i in obj){
-      var theProp = obj[i];
+    _.each(obj, function(theProp, i){
       if(Array.isArray(obj)) {
-        ret[theProp.name] = theProp;
-      }
-      console.log('deets',i);
-      if(typeof theProp === "object") {
-        console.log('test');
-        theProp = collapseArrays(theProp);
-      } // no need for a final else. Just leave string/int values as is.
-    }
-    return ret;
-  },
-  arrayToObjects = function(obj) {
-    var ret = {};
-    for (var detail in obj){
-      var theProp = obj[detail];
-      if(Array.isArray(obj)) {
-        ret[theProp.name] = theProp;
-      }
-      if(Array.isArray(theProp)) {
-        if(theProp.length > 1) {
-          ret[detail] = {};
-          ret[detail][(theProp.Name || "Interaction")] = theProp;
-        } else {
-          console.log('else');
-          ret[detail] = theProp;
+        if((typeof theProp === "object")) {
+          theProp = collapseArrays(theProp);
         }
-      } else if(typeof obj === "object") {
-        theProp = arrayToObjects(theProp);
+        ret[theProp.name] = (theProp.length === 1) ? theProp[0] : theProp;
       } else {
-        ret[detail] = theProp;
+        if(Array.isArray(theProp)) {
+          ret[i] = (theProp.length === 1) ? theProp[0] : theProp;
+        } else if((typeof theProp === "object")) {
+          theProp = collapseArrays(theProp);
+          ret[theProp.name || theProp.class] = (theProp.length === 1) ? theProp[0] : theProp;
+        } else {
+          ret[i] = theProp;
+        }
       }
-      // no need for a final else. Just leave string/int values as is.
-    }
+
+
+    });
     return ret;
   },
   getInteractions = function(obj){
