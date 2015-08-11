@@ -31,9 +31,10 @@ function Cymine(args) {
     return true;
   }
   function validateServiceRoot(){
-    if(graph.serviceUrl){
+    if(graph.service){
       return new imjs.Service({
-        root: graph.serviceUrl,
+        token: graph.service.token,
+        root: graph.service.root,
         errorHandler : badServiceError
       });
     } else {
@@ -44,6 +45,7 @@ function Cymine(args) {
   }
   function prepQuery() {
     if(graph.queryOn) {
+      debugger;
       _.extend(query.where[0],graph.queryOn);
       return true;
     } else {
