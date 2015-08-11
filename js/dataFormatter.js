@@ -10,7 +10,6 @@ Cymine = function(records) {
     for (var i in records) {
       var thisNode, row = records[i];
       thisNode = recordToNode(row);
-
       if(row.interactions) {
         //recursively make the interactions into nodes,
         //because node entities are nested at two levels.
@@ -32,7 +31,7 @@ Cymine = function(records) {
     return {
       classes : getClasses(interactions),
       data : {
-        details : getDetails(obj),
+        details : collapseArrays(obj.details) || {},
         label   : nameNode(obj),
         class   : ret.class,
         interactionTypes : interactions,
@@ -47,28 +46,50 @@ Cymine = function(records) {
       ret.push("both");
     }
     return ret.join(" ");
-  }
-  getDetails = function(obj) {
-    var details = obj.details ? obj.details[0] : {};
-    details = collapseArrays(details);
-    return details;
   },
   /**
-   * While it's usefuly to see array indices if there are multiple elements,
+   * While it's useful to see array indices if there are multiple elements,
    * There's not much point showing an index for just one array element.
    * This function collapses arrays with only one member and returns the member instead.
    * @param  {object} obj an object with arrays in its properties. Can be nested.
    * @return {object} the same object, just with 1-length arrays collapsed.
    */
   collapseArrays = function(obj){
-    var ret = obj;
-    for (var detail in ret){
-      var theProp = ret[detail];
-      if(Array.isArray(theProp)) {
-        ret[detail] = (theProp.length === 1) ? theProp[0] : theProp;
-      } else if(typeof theProp === "object") {
+    var ret = {};
+    for (var i in obj){
+      var theProp = obj[i];
+      if(Array.isArray(obj)) {
+        ret[theProp.name] = theProp;
+      }
+      console.log('deets',i);
+      if(typeof theProp === "object") {
+        console.log('test');
         theProp = collapseArrays(theProp);
       } // no need for a final else. Just leave string/int values as is.
+    }
+    return ret;
+  },
+  arrayToObjects = function(obj) {
+    var ret = {};
+    for (var detail in obj){
+      var theProp = obj[detail];
+      if(Array.isArray(obj)) {
+        ret[theProp.name] = theProp;
+      }
+      if(Array.isArray(theProp)) {
+        if(theProp.length > 1) {
+          ret[detail] = {};
+          ret[detail][(theProp.Name || "Interaction")] = theProp;
+        } else {
+          console.log('else');
+          ret[detail] = theProp;
+        }
+      } else if(typeof obj === "object") {
+        theProp = arrayToObjects(theProp);
+      } else {
+        ret[detail] = theProp;
+      }
+      // no need for a final else. Just leave string/int values as is.
     }
     return ret;
   },
