@@ -25,17 +25,19 @@ ui = function (graph) {
     var display = document.createElement('dl'),
     dtTemp, ddTemp;
     for (var prop in obj) {
-      dtTemp = document.createElement("dt");
-      dtTemp.appendChild(document.createTextNode(prop));
-      ddTemp = document.createElement("dd");
-      if(typeof obj[prop] === "object") {
-        ddTemp.setAttribute("class","child");
-        ddTemp.appendChild(expandPropertyVals(obj[prop]));
-      } else {
-        ddTemp.appendChild(document.createTextNode(obj[prop]));
+      if(prop !== "objectId") { //users never want to see objectId.
+        dtTemp = document.createElement("dt");
+        dtTemp.appendChild(document.createTextNode(prop));
+        ddTemp = document.createElement("dd");
+        if(typeof obj[prop] === "object") {
+          ddTemp.setAttribute("class","child");
+          ddTemp.appendChild(expandPropertyVals(obj[prop]));
+        } else {
+          ddTemp.appendChild(document.createTextNode(obj[prop]));
+        }
+        display.appendChild(dtTemp);
+        display.appendChild(ddTemp);
       }
-      display.appendChild(dtTemp);
-      display.appendChild(ddTemp);
     }
     return display;
   },
