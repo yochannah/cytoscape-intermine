@@ -1,4 +1,5 @@
 var cymineHtml = require('./../template/cytomine.html'),
+metaFields =require('./metaFields'),
 cyStyle = require('./cytoscapeStyle');
 ui = function (graph) {
   this.graph = graph;
@@ -25,11 +26,10 @@ ui = function (graph) {
     var display = document.createElement('dl'),
     dtTemp, ddTemp;
     for (var prop in obj) {
-      if(prop !== "objectId") { //users never want to see objectId.
+      if(metaFields.indexOf(prop) < 0) { //users never want to see objectId.
         dtTemp = document.createElement("dt");
         dtTemp.appendChild(document.createTextNode(prop));
         ddTemp = document.createElement("dd");
-        util.addClass(dtTemp, prop + "-parent");        
         util.addClass(ddTemp, prop);
         if(typeof obj[prop] === "object") {
           util.addClass(ddTemp, "child");
@@ -37,11 +37,18 @@ ui = function (graph) {
         } else {
           ddTemp.appendChild(document.createTextNode(obj[prop]));
         }
-        display.appendChild(dtTemp);
-        display.appendChild(ddTemp);
+        insertAtStart([dtTemp, ddTemp], display);
+//        display.appendChild(dtTemp);
+//        display.appendChild(ddTemp);
       }
     }
     return display;
+  },
+  insertAtStart = function(elems, parentContainer) {
+    var firstOriginalElem = parentContainer.firstChild;
+    for (var i = 0; i < elems.length; i++) {
+      parentContainer.insertBefore(elems[i],firstOriginalElem);
+    }
   },
   init = function(errorMessage) {
     initHtml();
