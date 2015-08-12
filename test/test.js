@@ -12,7 +12,7 @@ describe('Node & Edge processing', function(){
     //I suspect this will need to be revised when I expand it to more advanced use cases
     it('should return expected number of nodes and edges',function() {
       assert.equal(graph.nodes.length, 29);
-      assert.equal(graph.edges.length, 38);
+      assert.equal(graph.edges.length, 29);
     });
 
     var hasNames = true,
@@ -56,11 +56,11 @@ describe('Node & Edge processing', function(){
     }
 
     it('should make multiple edges between the same nodes if there are multiple interactions',function() {
-      assert(madEdges.length === 3);
+      assert(madEdges.length === 2);
     });
 
-    it('should allow multiple edges between the same nodes of the same type',function() {
-      assert(madPhysicalEdgesCount === 2);
+    it('should NOT allow multiple edges between the same nodes of the same type',function() {
+      assert(madPhysicalEdgesCount === 1);
     });
     console.log("===");
   });

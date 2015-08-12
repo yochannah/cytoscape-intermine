@@ -83,7 +83,10 @@ Cymine = function(records) {
     var ret = [];
     if (obj.details) {
       for (var i = 0; i < obj.details.length; i++) {
-        ret.push(obj.details[i].type);
+        //only add the interaction type if we don't have one like this already.
+        if(ret.indexOf(obj.details[i].type) < 0) {
+          ret.push(obj.details[i].type);
+        }
       }
     } else {
       ret.push("master");
