@@ -38,8 +38,6 @@ ui = function (graph) {
           ddTemp.appendChild(document.createTextNode(obj[prop]));
         }
         insertAtStart([dtTemp, ddTemp], display);
-//        display.appendChild(dtTemp);
-//        display.appendChild(ddTemp);
       }
     }
     return display;
@@ -75,9 +73,13 @@ ui = function (graph) {
         if(hiddenElems) {
           hiddenElems.restore();
         }
+        //we have elemClass, and want to keep them, but hide the others.
         //new ones gone:
-        hiddenElems = cy.elements('.' + elemClass + '').filterFn(function(ele){
-          return !ele.hasClass("both");
+        hiddenElems = cy.elements().filterFn(function(ele){
+          if(elemClass === "default") {
+            return !ele;
+          }
+          return (!ele.hasClass(elemClass) && !ele.hasClass("both") && !ele.hasClass("master"));
         }).remove();
       }
     },
