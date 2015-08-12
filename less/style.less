@@ -2,13 +2,16 @@
 @import '_clearfix';
 
 @cySize : 350px;
-@primaryColor : #eee;
-@secondaryColor : #2c79be;
-@highlightColor : #ec971f;
+@borderRadius : 4px;
 
-@geneticColor : #225f95;
-@physicalColor : #c00;//
-@bothPhysicalAndGeneticColor : #77304B;//
+@primaryColor : #eee;                   //grey
+@primaryColorDark : darken(@primaryColor,15%); //Darker grey
+@secondaryColor : #2c79be;              //blue
+@highlightColor : #ec971f;              //yellow
+
+@geneticColor : #225f95;                //blue
+@physicalColor : #c00;                  //red
+@bothPhysicalAndGeneticColor : #77304B; //purple
 
 body {
   font-family : arial, sans-serif;
@@ -62,8 +65,6 @@ body {
     &.intro {border:0;}
     .cf;
     border-left:solid 3px #ddd;
-    border-bottom: solid 1px #ccc;
-    border-bottom-left-radius: 4px;
     margin:0;
     clear:left;
     width:100%;
@@ -88,6 +89,32 @@ body {
     font-weight:bold;
     float:left;
     clear:left
+    }
+
+  .details > dl > dt {
+    @borderStyle: solid 1px @primaryColorDark;
+    background-color:@primaryColor;
+    width:100%;
+    padding: 0.3em;
+    box-sizing:border-box;
+    border-top:@borderStyle;
+    border-left:@borderStyle;
+    border-right:@borderStyle;
+    margin-bottom:0;
+    border-top-left-radius: @borderRadius;
+    border-top-right-radius: @borderRadius;
+    &+dd {
+      &.child > dl {border:0;}
+      box-sizing:border-box;
+      margin-top:0;
+      width:100%;
+      border-bottom:@borderStyle;
+      border-left:@borderStyle;
+      border-right:@borderStyle;
+      border-bottom-left-radius: @borderRadius;
+      border-bottom-right-radius: @borderRadius;
+      padding-bottom:0.2em;
+    }
   }
 
   dd.child {

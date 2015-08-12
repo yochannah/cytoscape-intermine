@@ -29,8 +29,10 @@ ui = function (graph) {
         dtTemp = document.createElement("dt");
         dtTemp.appendChild(document.createTextNode(prop));
         ddTemp = document.createElement("dd");
+        util.addClass(dtTemp, prop + "-parent");        
+        util.addClass(ddTemp, prop);
         if(typeof obj[prop] === "object") {
-          ddTemp.setAttribute("class","child");
+          util.addClass(ddTemp, "child");
           ddTemp.appendChild(expandPropertyVals(obj[prop]));
         } else {
           ddTemp.appendChild(document.createTextNode(obj[prop]));
@@ -60,7 +62,7 @@ ui = function (graph) {
         //visual button response
         removeAllButtonSelections();
         var elemClass = elem.className;//at this point we've stripped selected off. Should only be the type.
-        addClass(elem, 'selected');
+        util.addClass(elem, 'selected');
         //affect the graph:
         //old ones back:
         if(hiddenElems) {
@@ -75,26 +77,28 @@ ui = function (graph) {
     listen = function() {
       getControls().addEventListener('click', selectInteractionType, false);
     },
-    addClass = function(elem, classToAdd) {
-      if (!hasClass(elem, classToAdd)) {
-        elem.className += " " + classToAdd;
-      }
-    },
-    removeClass = function(elem, classToRemove) {
-      elem.className = elem.className.replace(classToRemove, "");
-    },
     removeAllButtonSelections = function() {
       var theButtons = getControls().querySelectorAll('button');
       for (var i = 0; i < theButtons.length; i++) {
-        removeClass(theButtons[i], ' selected');
-        removeClass(theButtons[i], 'selected');
+        util.removeClass(theButtons[i], ' selected');
+        util.removeClass(theButtons[i], 'selected');
       }
     }
-    hasClass = function(elem, classToCheckFor) {
+    return {listen : listen};
+  },
+  util = {
+    addClass : function(elem, classToAdd) {
+      if (!util.hasClass(elem, classToAdd)) {
+        elem.className += " " + classToAdd;
+      }
+    },
+    removeClass : function(elem, classToRemove) {
+      elem.className = elem.className.replace(classToRemove, "");
+    },
+    hasClass : function(elem, classToCheckFor) {
       var classes = elem.className.split(" ");
       return (classes.indexOf(classToCheckFor) >= 0);
     }
-    return {listen : listen};
   },
   initHtml = function () {
     graph.parentElem.innerHTML = getTemplate();
