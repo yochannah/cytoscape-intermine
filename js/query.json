@@ -13,9 +13,7 @@
     "interactions.details.role1",
     "interactions.details.role2",
     "interactions.details.type",
-    "interactions.details.experiment.interactionDetectionMethods.name",
     "interactions.details.experiment.publication.pubMedId",
-    "interactions.details.relationshipType.name",
     "interactions.details.dataSets.name"
   ],
   "orderBy": [
