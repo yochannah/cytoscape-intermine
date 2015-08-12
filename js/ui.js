@@ -11,7 +11,7 @@ ui = function (graph) {
   },
   setTitle = function (elem) {
     var title = graph.parentElem.querySelector('.nodeTitle');
-    title.innerHTML = elem.label || elem.description;
+    title.innerHTML = elem.title;
   },
   listProperties = function(node) {
     var display = expandPropertyVals(node),

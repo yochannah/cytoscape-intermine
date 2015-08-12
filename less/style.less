@@ -64,7 +64,6 @@ body {
   dl {
     &.intro {border:0;}
     .cf;
-    border-left:solid 3px #ddd;
     margin:0;
     clear:left;
     width:100%;
@@ -105,7 +104,11 @@ body {
     border-top-left-radius: @borderRadius;
     border-top-right-radius: @borderRadius;
     &+dd {
-      &.child > dl {border:0;}
+      &.child > dl {
+        .child {
+          border-left:solid 3px #ddd;
+        }
+      }
       box-sizing:border-box;
       margin-top:0;
       width:100%;

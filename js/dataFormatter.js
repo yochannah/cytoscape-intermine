@@ -27,12 +27,14 @@ Cymine = function(records) {
   var recordToNode = function (obj) {
     var ret, data = {}, interactions;
     ret = obj.gene2 ? obj.gene2 : obj;
-    interactions = getInteractions(obj);
+    interactions = getInteractions(obj),
+    label = nameNode(obj);
     return {
       classes : getClasses(interactions),
       data : {
-        details : collapseArrays(obj.details) || {},
-        label   : nameNode(obj),
+        title : ret.class + " " + label,
+        "interaction details" : collapseArrays(obj.details) || {},
+        label   : label,
         class   : ret.class,
         interactionTypes : interactions,
         symbol  : ret.symbol,
@@ -104,10 +106,10 @@ Cymine = function(records) {
     ret = [];
     for(var i = 0; i < interactions.length; i++) {
       ret.push({
-        id : node2.data.details.objectId,
+        id : node2.data["interaction details"].objectId,
         classes : interactions[i],
         data : {
-          description: "From " + node.data.label + " to " + node2.data.label,
+          title : "Interaction between " + node.data.label + " and " + node2.data.label,
           source : node.data.id,
           target : node2.data.id,
           interactionType : interactions[i]

@@ -49,7 +49,7 @@ describe('Node & Edge processing', function(){
     var madEdges = [], edge, madPhysicalEdgesCount = 0;
     for(var i=0;i<graph.edges.length;i++) {
       edge = graph.edges[i];
-      if(edge.data.description === 'From PPARG to Mad') {
+      if(edge.data.title === 'Interaction between PPARG and Mad') {
         madEdges.push(edge);
         if(edge.data.interactionType === "physical") {madPhysicalEdgesCount++;}
       }
