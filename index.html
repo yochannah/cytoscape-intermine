@@ -5,13 +5,15 @@
     <script src="dist/bundle.js"></script>
   </head>
   <body>
+    <!-- This form is for demo purposes only, and not required to run the script -->
+    <form id="searchForm" name="searchForm">
+        <input type="text" id="searchOn" name="searchOn" placeholder="Search for another gene"></input>
+        <button>Search!</button>
+    </form>
+
     <div id="myAwesomeElement"></div> <!--this is where the graph will display. -->
     <div id="cymine"></div>           <!--this is where the graph would display if we didn't specify that myAwesomeElement is the parentElem -->
 
-<form id="searchForm" name="searchForm">
-    <input type="text" id="searchOn" name="searchOn" placeholder="Search for another gene"></input>
-    <button>Search!</button>
-</form>
   <script>
   cymine({
     //optional. Will default to '#cymine' if not specified:
