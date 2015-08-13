@@ -1,6 +1,8 @@
-var cymineHtml = require('./../template/cytomine.html'),
-metaFields =require('./metaFields'),
-cyStyle = require('./cytoscapeStyle');
+var cymineHtml  = require('./../template/cytomine.html'),
+metaFields      =require('./metaFields'),
+util            = require('./util'),
+cyStyle         = require('./cytoscapeStyle');
+
 ui = function (graph) {
   this.graph = graph;
   var cy,
@@ -59,7 +61,7 @@ ui = function (graph) {
   controls = function() {
     var hiddenElems,
     getControls = function() {
-      return graph.parentElem.querySelector('.controls');
+      return graph.parentElem.querySelector('.interactionFilter');
     },
     selectInteractionType = function(e){
       var elem = e.target;
@@ -95,23 +97,9 @@ ui = function (graph) {
     }
     return {listen : listen};
   },
-  util = {
-    addClass : function(elem, classToAdd) {
-      if (!util.hasClass(elem, classToAdd)) {
-        elem.className += " " + classToAdd;
-      }
-    },
-    removeClass : function(elem, classToRemove) {
-      elem.className = elem.className.replace(classToRemove, "");
-    },
-    hasClass : function(elem, classToCheckFor) {
-      var classes = elem.className.split(" ");
-      return (classes.indexOf(classToCheckFor) >= 0);
-    }
-  },
   initHtml = function () {
     graph.parentElem.innerHTML = getTemplate();
-    graph.parentElem.className += " cymine";
+    util.addClass(graph.parentElem, "cymine");
     graph.statusBar = graph.parentElem.querySelector('.status');
   },
   initGraph = function() {

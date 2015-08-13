@@ -4,12 +4,14 @@ cytoscape     = require('cytoscape'),
 _             = require('underscore'),
 strings       = require('./strings'),
 query         = require('./query'),
+exportFile   = require('./exporter'),
 cymineDisplay = require('./ui');
 
 function Cymine(args) {
 
   var ui,
-  graph = _.extend({},args);
+  graph = _.extend({},args),
+  exporter = exportFile();
   init();
 
 /**
@@ -62,6 +64,10 @@ function Cymine(args) {
           if (response.length > 0) {
             graph.data = new cymineDataFormatter(response);
             ui.init();
+              console.log(graph.parentElem);
+              try {
+            exporter.init(graph.parentElem);
+          } catch(e) {console.error(e)};
             console.debug('response:', response, 'graphdata:', graph);
           } else {
             ui.init(strings.user.noResults);
