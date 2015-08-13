@@ -1,26 +1,40 @@
 var util = require('./util'),
 exporter = function() {
-  var parentElem,
+  var elems = {},
   exportFile = function(format) {
     console.log(format);
-    util.removeClass("active");
+    //TODO
   },
   /**
    * Listen for clicks on the export element
    * @return {[type]} [description]
    */
   listen = function(){
-    var exportElement = parentElem.querySelector(".export"),
-    format;
-    exportElement.addEventListener("click", function(e) {
-      util.addClass(exportElement, "active");
-      format = e.target.select.value;
-      exportFile(format);
+    var e = elems;
+    e.exportElem = e.parentElem.querySelector(".export");
+    e.formatChooser = e.exportElem.querySelector('select');
+    e.exportButton = e.exportElem.querySelector('button');
+
+    //expand the export thingy
+    e.exportElem.addEventListener("click", function() {
+      util.addClass(e.exportElem, "active");
     });
+
+    //listen for clicks on the export dropdown 'go' button and initiate export
+    e.exportButton.addEventListener("click", function() {
+      var format = getFormat();
+      exportFile(format);
+
+      util.removeClass(e.exportElem,"active");
+    });
+
   },
-  init = function(parentElement){
-    parentElem = parentElement;
+  init = function(parentElement) {
+    elems.parentElem = parentElement;
     listen();
+  },
+  getFormat = function() {
+    return elems.formatChooser.value;
   };
   return {init:init};
 };

@@ -236,7 +236,7 @@ body {
   }
 
   .export {
-    height:1em;
+    min-height:1em;
     color:@deemphasisedTextColor;
     float:right;
     padding: 0.5em;
@@ -246,6 +246,7 @@ body {
     text-align:center;
     border:solid 1px #fff;
     transition: width 1s;
+    box-sizing:border-box;
     &:hover {
       color:darken(@deemphasisedTextColor,20%);
       background-color:@primaryColor;

@@ -1,5 +1,5 @@
 var cymineHtml  = require('./../template/cytomine.html'),
-metaFields      =require('./metaFields'),
+metaFields      = require('./metaFields'),
 util            = require('./util'),
 cyStyle         = require('./cytoscapeStyle');
 
@@ -11,9 +11,9 @@ ui = function (graph) {
     setTitle(node);
     listProperties(node);
   },
-  setTitle = function (elem) {
+  setTitle = function (node) {
     var title = graph.parentElem.querySelector('.nodeTitle');
-    title.innerHTML = elem.title;
+    title.innerHTML = node.label;
   },
   listProperties = function(node) {
     var display = expandPropertyVals(node),
@@ -28,27 +28,19 @@ ui = function (graph) {
     var display = document.createElement('dl'),
     dtTemp, ddTemp;
     for (var prop in obj) {
-      if(metaFields.indexOf(prop) < 0) { //users never want to see objectId.
-        dtTemp = document.createElement("dt");
-        dtTemp.appendChild(document.createTextNode(prop));
-        ddTemp = document.createElement("dd");
-        util.addClass(ddTemp, prop);
-        if(typeof obj[prop] === "object") {
-          util.addClass(ddTemp, "child");
-          ddTemp.appendChild(expandPropertyVals(obj[prop]));
-        } else {
-          ddTemp.appendChild(document.createTextNode(obj[prop]));
-        }
-        insertAtStart([dtTemp, ddTemp], display);
+      dtTemp = document.createElement("dt");
+      dtTemp.appendChild(document.createTextNode(prop));
+      ddTemp = document.createElement("dd");
+      if(typeof obj[prop] === "object") {
+        ddTemp.setAttribute("class","child");
+        ddTemp.appendChild(expandPropertyVals(obj[prop]));
+      } else {
+        ddTemp.appendChild(document.createTextNode(obj[prop]));
       }
+      display.appendChild(dtTemp);
+      display.appendChild(ddTemp);
     }
     return display;
-  },
-  insertAtStart = function(elems, parentContainer) {
-    var firstOriginalElem = parentContainer.firstChild;
-    for (var i = 0; i < elems.length; i++) {
-      parentContainer.insertBefore(elems[i],firstOriginalElem);
-    }
   },
   init = function(errorMessage) {
     initHtml();
@@ -70,6 +62,7 @@ ui = function (graph) {
         removeAllButtonSelections();
         var elemClass = elem.className;//at this point we've stripped selected off. Should only be the type.
         util.addClass(elem, 'selected');
+
         //affect the graph:
         //old ones back:
         if(hiddenElems) {
@@ -94,7 +87,7 @@ ui = function (graph) {
         util.removeClass(theButtons[i], ' selected');
         util.removeClass(theButtons[i], 'selected');
       }
-    }
+    };
     return {listen : listen};
   },
   initHtml = function () {
@@ -131,7 +124,6 @@ ui = function (graph) {
     cy.on('tap', 'edge', function(){
       display(this.data());
     });
-
 
   },
   noResults = function (message) {
