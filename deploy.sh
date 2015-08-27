@@ -4,8 +4,6 @@ set -o errexit -o nounset
 
 rev=$(git rev-parse --short HEAD)
 
-cd build
-
 git init
 git config user.name "Travis CI"
 git config user.email "travis@fakemail.com"
