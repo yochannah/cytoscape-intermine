@@ -5,6 +5,12 @@
     <script src="dist/bundle.js"></script>
   </head>
   <body>
+    <!-- This form is for demo purposes only, and not required to run the script -->
+    <form id="searchForm" name="searchForm">
+        <input type="text" id="searchOn" name="searchOn" placeholder="Search for another gene"></input>
+        <button>Search!</button>
+    </form>
+
     <div id="myAwesomeElement"></div> <!--this is where the graph will display. -->
     <div id="cymine"></div>           <!--this is where the graph would display if we didn't specify that myAwesomeElement is the parentElem -->
 
@@ -14,14 +20,50 @@
     parentElem : document.getElementById('myAwesomeElement'),
     //required. can't query without this! :) must be a valid
     //intermine API URL
-    service : {root : 'http://beta.flymine.org/beta/service/'},
+    service : {root : 'http://www.flymine.org/query/service/'},
     //required. needs value : "whatever", optionally extraValue : "whatever".
     queryOn : {
       "value": "lolal",
       "extraValue": "D. melanogaster"
     }
   });
+
+  //THIS IS COMPLETELY OPTIONAL AND JUST FOR DEMO PURPOSES:
+  var search = document.getElementById('searchForm');
+  search.addEventListener('submit', function(e) {
+    e.preventDefault(); //don't be silly, we don't need to reload the page
+    var searchOn = e.target.searchOn.value;
+    //remove any crazy stuff from the input before we send it
+    searchOn = searchOn.replace(/[^\w_]/g,"");
+
+    cymine({
+      parentElem : document.getElementById('myAwesomeElement'),
+      service : {root : 'http://www.flymine.org/query/service/'},
+      queryOn : {
+        "value": searchOn,
+        "extraValue": "D. melanogaster"
+      }
+    });
+  });
   </script>
+
+  <style>
+    #searchForm {
+      text-align:center;
+      padding:1em;
+    }
+    #searchOn, #searchForm button {
+      border-radius:4px;
+      padding:0.5em;
+      border:solid 1px #ccc;
+    }
+
+    #myAwesomeElement {
+      min-height:470px;
+      box-sizing:border-box;
+    }
+
+  </style>
 
 </body>
 </html>
