@@ -4,7 +4,7 @@ set -o errexit -o nounset
 
 rev=$(git rev-parse --short HEAD)
 
-cd stage
+cd build
 
 git init
 git config user.name "Travis CI"
