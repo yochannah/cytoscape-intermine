@@ -21,17 +21,18 @@ var gulp        = require('gulp'),
         standalone : 'cymine'
     };
     var opts = assign({}, watchify.args, customOpts);
-    var b = watchify(browserify(opts));
+    var b;
 
     // add transformations here
     // todo: stripify the prod build to remove console.log
     //  i.e. b.transform(coffeeify);
 
-    gulp.task('js', bundle); // so you can run `gulp js` to build the file
-    b.on('update', bundle); // on any dep update, runs the bundler
-    b.on('log', gutil.log); // output build logs to terminal
+    gulp.task('js', bundleOnce); // so you can run `gulp js` to build the file
+    gulp.task('jsdev', bundleDev); // so you can run `gulp js` to build the file
 
     function bundle() {
+      b.on('update', bundle); // on any dep update, runs the bundler
+      b.on('log', gutil.log); // output build logs to terminal
       return b
         .transform(stringify(['.html']))
         .bundle()
@@ -39,13 +40,25 @@ var gulp        = require('gulp'),
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
         // optional, remove if you don't need to buffer file contents
-//        .pipe(buffer())
+      //        .pipe(buffer())
         // optional, remove if you dont want sourcemaps
         // .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
            // Add transformation tasks to the pipeline here.
         .pipe(streamify(uglify()))
         // .pipe(sourcemaps.write('./')) // writes .map file
         .pipe(gulp.dest('./dist'));
+    }
+
+
+    function bundleOnce() {
+      b = browserify(opts);
+      return bundle();
+    }
+
+    function bundleDev(){
+      b = watchify(browserify(opts));
+      //b = browserify(opts);
+      return bundle();
     }
 
 /*
@@ -80,7 +93,7 @@ starts server for dev use
  */
 gulp.task('dev', [
   'serve', //includes css
-  'js'
+  'jsdev'
 ], function() {
   gutil.log(gutil.colors.yellow('| =================================================='));
   gutil.log(gutil.colors.yellow('| Congrats, it looks like everything is working!'));
