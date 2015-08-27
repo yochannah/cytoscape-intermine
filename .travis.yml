@@ -5,4 +5,5 @@ install:
   - bower install
 
 script:
-  gulp mocha
+  - gulp
+  - mocha
