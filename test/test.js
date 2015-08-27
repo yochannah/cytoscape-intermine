@@ -11,7 +11,7 @@ describe('Node & Edge processing', function(){
   describe('#recordsToNodes()', function() {
     //I suspect this will need to be revised when I expand it to more advanced use cases
     it('should return expected number of nodes and edges',function() {
-      assert.equal(graph.nodes.length, 30);
+      assert.equal(graph.nodes.length, 29);
       assert.equal(graph.edges.length, 29);
     });
 
