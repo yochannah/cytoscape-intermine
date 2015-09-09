@@ -62,7 +62,7 @@ var gulp        = require('gulp'),
 This is the one that makes a live server with autorefresh for all your debuggy needs.
 Helper function. You probably don't want to call it directly.
  */
-gulp.task('serve', ['less', 'js'], function() {
+gulp.task('serve', ['less', 'jsdev'], function() {
 
     browserSync.init({
         server: "./"
