@@ -10,11 +10,66 @@ exporter = function() {
     },
     csv = function(){
       console.log('csv here');
-    }
+      helpers.sv('csv');
+    },
+    tsv = function(){
+      console.log('tsv here');
+    },
+    helpers = {
+      sv : function(separator) {
+        var separators = {
+          csv : ",",
+          tsv : "&#9"
+        },
+        mimeType = "text/" + separator,
+        data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]],
+        svContent = "";
+        data.forEach(function(infoArray, index){
+          dataString = infoArray.join(separators[separator]);
+          svContent += index < data.length ? dataString+ "\n" : dataString;
+        });
+        console.log(svContent);
+        helpers.download(svContent, 'bob.' + separator, mimeType);
+      },
+      /**
+       * Download browser-generated file, e.g. csv, tsv.
+       * @param  {[string]} content  The content of the file, e.g. a comma separated string
+       * @param  {[string]} fileName Name you'd like to give to the file including extension, e.g. 'myawesomefile.csv'
+       * @param  {[string]} mimeType Mimetype, e.g. 'text/csv'
+       * @return {[boolean or IE download type]}
+       */
+      download : function(content, fileName, mimeType) {
+        var a = document.createElement('a');
+        mimeType = mimeType || 'application/octet-stream';
+
+        if (navigator.msSaveBlob) { // IE10
+          return navigator.msSaveBlob(new Blob([content], { type: mimeType }),     fileName);
+        } else if ('download' in a) { //html5 A[download]
+          a.href = 'data:' + mimeType + ',' + encodeURIComponent(content);
+          a.setAttribute('download', fileName);
+          document.body.appendChild(a);
+          setTimeout(function() {
+            a.click();
+            document.body.removeChild(a);
+          }, 66);
+          return true;
+        } else { //do iframe dataURL download (old ch+FF):
+          var f = document.createElement('iframe');
+          document.body.appendChild(f);
+          f.src = 'data:' + mimeType + ',' + encodeURIComponent(content);
+
+          setTimeout(function() {
+            document.body.removeChild(f);
+          }, 333);
+          return true;
+        }
+      }
+    };
     return {
-      JPG : jpg,
-      SVG : svg,
-      CSV : csv
+      jpg : jpg,
+      svg : svg,
+      csv : csv,
+      tsv : tsv
     };
   },
   /**
@@ -36,12 +91,13 @@ exporter = function() {
     //listen for clicks on the export dropdown 'go' button and initiate export
     e.exportButton.addEventListener("click", function() {
       var format = getFormat();
+      console.log
       try {
         exportFile[format]();
       } catch(error) {
         //this shouldn't really happen if users are selecting from
         //the dropdown list
-        console.error("Invalid file format.", error);
+        console.error("Invalid file format: '" + format + "'. ", error);
       }
 
       util.removeClass(e.exportElem,"active");
