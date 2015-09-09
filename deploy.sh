@@ -1,5 +1,9 @@
 #!/bin/bash
 
+### This script is used by travis to automatically deploy new
+### master branch pushes to gh-pages
+
+
 set -o errexit -o nounset
 
 rev=$(git rev-parse --short HEAD)
