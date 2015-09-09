@@ -63,10 +63,11 @@ function Cymine(args) {
         mine.records(query).then(function(response) {
           if (response.length > 0) {
             graph.data = new cymineDataFormatter(response);
+            graph.rawData = response;
             ui.init();
-              console.log(graph.parentElem);
+            console.log(graph.parentElem);
               try {
-            exporter.init(graph.parentElem);
+            exporter.init(graph);
           } catch(e) {console.error(e)};
             console.debug('response:', response, 'graphdata:', graph);
           } else {

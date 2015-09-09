@@ -1,6 +1,8 @@
 var util = require('./util'),
+svDataFormatter = require('./svDataFormatter')(),
 exporter = function() {
   var elems = {},
+  rawData,
   exportFunction = function() {
     var jpg = function(){
       console.log('yup, jpg');
@@ -18,17 +20,8 @@ exporter = function() {
     },
     helpers = {
       sv : function(separator) {
-        var separators = {
-          csv : ",",
-          tsv : "\t"
-        },
-        mimeType = "text/" + separator,
-        data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]],
-        svContent = "";
-        data.forEach(function(infoArray, index){
-          dataString = infoArray.join(separators[separator]);
-          svContent += index < data.length ? dataString+ "\n" : dataString;
-        });
+        var svContent = svDataFormatter.format(separator, rawData),
+        mimeType = "text/" + separator;
         console.log(svContent);
         helpers.download(svContent, 'bob.' + separator, mimeType);
       },
@@ -106,8 +99,9 @@ exporter = function() {
     });
 
   },
-  init = function(parentElement) {
-    elems.parentElem = parentElement;
+  init = function(graph) {
+    elems.parentElem = graph.parentElem;
+    rawData = graph.rawData
     listen();
   },
   getFormat = function() {
