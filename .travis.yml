@@ -1,0 +1,17 @@
+#Buildfile to instruct Travis how to build this project.
+language:
+  javascript
+install:
+  - npm install
+  - bower install
+
+script:
+  - gulp    #build the app
+  - mocha   #test the app
+
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh #Deploy to github gh-pages using the deploy.sh file
+
+env:
+  global:
+    - secure: "nHk3ySptNmmLaEAwRVaDAO0H3WG/Q2JLcFvNGhEt71F3+tXvPjpTZwyb6Et5katnNNWptskgqEcOAc6posUpOgafKctbkUUJF3pz7cTtq7XKkFw0KH1Q/u4Z8n8FoJngDzOlE4ZQr4JS9XsSsUW9GybicusAlUyyatJkFSjfTsCcCG44nytGbOIliI5Sw0qIujaLmiAwTfezd7HFYTj7EmNdlYf78PPL1uPBH1ke3K+2W+2g5AorETxDMp9YmVj5XP6/G+XaLQYMDUVRKIg4Y2rQFDdNAVw42XzknklsxsXGTd/ygAgBBle2zKzS9s1JgLmgRpaUR0vnqsyBGSVPWvQFc1KVmpHHlFFkRLyNXIBs/GfwkU3uSJDWhtBw5sxdw01LEtrk+dml6J4grXkxSvJhYNF2ouTvWXDkD6huZGyLtnTxp31OIhdUUd3lu8clAsK9xOYOGIB8Tys2AbipgniH3ZFF7LQi/8XeqnueFJiWk7re3DcIASqEA86leputTh1xkfAVFBMUyExYV/aeF9O4sdSinkIY2zTDc9OGqzEOkw2gF8FDH4oNGxMAQe5/GsnPG5RiHGOyLRTbbPQ7lAIeVJy7BFXJ/gzdc+aCiHJl53IYn8n/FQDjtDK12BTO4YzYlgbUgfKAbxyoEbL+EG2Dg5u3mrNCeodcPwraDnU=" #this token is needed to deploy to gh pages. will need to be changed for other forks.

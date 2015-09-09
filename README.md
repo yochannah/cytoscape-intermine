@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yochannah/cytoscape-intermine.svg?branch=master)](https://travis-ci.org/yochannah/cytoscape-intermine)
+
 ## About
 This project takes gene interaction data from [Intermine](https://github.com/intermine/intermine) and visualises it using [cytoscape.js](http://js.cytoscape.org/), a fabulous network visualisation tool.
 

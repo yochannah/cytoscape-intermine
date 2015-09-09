@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * This is the file that configures the project build!
+ */
+
 var gulp        = require('gulp'),
     less        = require('gulp-less'),
     sourcemaps  = require('gulp-sourcemaps'),
@@ -15,41 +19,48 @@ var gulp        = require('gulp'),
     buffer      = require('vinyl-buffer'),
     assign      = require('lodash.assign');
 
+    //browserify options
     var customOpts = {
       entries: ['./js/main.js'],
         debug: true,
-        standalone : 'cymine'
+        standalone : 'cymine' //exposes the variable cymine outside the
+                              //browserify scope
     };
     var opts = assign({}, watchify.args, customOpts);
-    var b = watchify(browserify(opts));
+    var b;
 
-    // add transformations here
-    // todo: stripify the prod build to remove console.log
-    //  i.e. b.transform(coffeeify);
+    gulp.task('js', bundleOnce); // so you can run `gulp js` to build the file just once
+    gulp.task('jsdev', bundleDev); // so you can run `gulp jsdev` to build the file and reload in browser automatically
 
-    gulp.task('js', bundle); // so you can run `gulp js` to build the file
-    b.on('update', bundle); // on any dep update, runs the bundler
-    b.on('log', gutil.log); // output build logs to terminal
-
+    //master bundle file
     function bundle() {
+      b.on('update', bundle); // on any dep update, runs the bundler
+      b.on('log', gutil.log); // output build logs to terminal
       return b
         .transform(stringify(['.html']))
         .bundle()
-        // log errors if they happen
+          //log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
-        // optional, remove if you don't need to buffer file contents
-//        .pipe(buffer())
-        // optional, remove if you dont want sourcemaps
-        // .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-           // Add transformation tasks to the pipeline here.
         .pipe(streamify(uglify()))
-        // .pipe(sourcemaps.write('./')) // writes .map file
         .pipe(gulp.dest('./dist'));
+    }
+
+    //build once. for use mostly when 'gulp' is run (default task)
+    function bundleOnce() {
+      b = browserify(opts);
+      return bundle();
+    }
+
+    //build and reload, and keep watching for more changes
+    function bundleDev(){
+      b = watchify(browserify(opts));
+      return bundle();
     }
 
 /*
 This is the one that makes a live server with autorefresh for all your debuggy needs.
+Helper function. You probably don't want to call it directly.
  */
 gulp.task('serve', ['less', 'js'], function() {
 
@@ -64,6 +75,7 @@ gulp.task('serve', ['less', 'js'], function() {
 
 /*
 Compiles less but excludes partials starting with underscore, e.g. _loader.less
+Helper function. You probably don't ever need to call it directly.
  */
 gulp.task('less', function() {
   return gulp.src(['./less/**/*.less', '!./less/**/_*'])
@@ -76,11 +88,11 @@ gulp.task('less', function() {
 //These are the tasks most likely to be run by a user
 
 /*
-starts server for dev use
+Starts server for dev use. To use in the command line run `gulp dev`
  */
 gulp.task('dev', [
   'serve', //includes css
-  'js'
+  'jsdev'
 ], function() {
   gutil.log(gutil.colors.yellow('| =================================================='));
   gutil.log(gutil.colors.yellow('| Congrats, it looks like everything is working!'));
@@ -95,7 +107,7 @@ gulp.task('dev', [
 
 
 /*
-Build for prod use
+Build for prod use. Just run `gulp`, and the results will appear in the dist folder :)
  */
 gulp.task('default', [
   'less',
