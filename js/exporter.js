@@ -13,13 +13,14 @@ exporter = function() {
       helpers.sv('csv');
     },
     tsv = function(){
+      helpers.sv('tsv');
       console.log('tsv here');
     },
     helpers = {
       sv : function(separator) {
         var separators = {
           csv : ",",
-          tsv : "&#9"
+          tsv : "\t"
         },
         mimeType = "text/" + separator,
         data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]],
@@ -33,6 +34,7 @@ exporter = function() {
       },
       /**
        * Download browser-generated file, e.g. csv, tsv.
+       * Credit: http://stackoverflow.com/a/29304414/1542891
        * @param  {[string]} content  The content of the file, e.g. a comma separated string
        * @param  {[string]} fileName Name you'd like to give to the file including extension, e.g. 'myawesomefile.csv'
        * @param  {[string]} mimeType Mimetype, e.g. 'text/csv'
