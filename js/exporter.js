@@ -22,14 +22,14 @@ exporter = function() {
       sv : function(separator) {
         var svContent = svDataFormatter.format(separator, rawData),
         mimeType = "text/" + separator;
-        console.log(svContent);
-        helpers.download(svContent, 'bob.' + separator, mimeType);
+        helpers.download(svContent, 'results-table.' + separator, mimeType);
       },
       /**
        * Download browser-generated file, e.g. csv, tsv.
        * Credit: http://stackoverflow.com/a/29304414/1542891
        * @param  {[string]} content  The content of the file, e.g. a comma separated string
-       * @param  {[string]} fileName Name you'd like to give to the file including extension, e.g. 'myawesomefile.csv'
+       * @param  {[string]} fileName Name you'd like to give to the file
+       *                    including extension, e.g. 'myawesomefile.csv'
        * @param  {[string]} mimeType Mimetype, e.g. 'text/csv'
        * @return {[boolean or IE download type]}
        */
@@ -86,7 +86,6 @@ exporter = function() {
     //listen for clicks on the export dropdown 'go' button and initiate export
     e.exportButton.addEventListener("click", function() {
       var format = getFormat();
-      console.log
       try {
         exportFile[format]();
       } catch(error) {
