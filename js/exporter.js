@@ -1,9 +1,21 @@
 var util = require('./util'),
 exporter = function() {
   var elems = {},
-  exportFile = function(format) {
-    console.log(format);
-    //TODO
+  exportFunction = function() {
+    var jpg = function(){
+      console.log('yup, jpg');
+    },
+    svg = function(){
+      console.log('svg called');
+    },
+    csv = function(){
+      console.log('csv here');
+    }
+    return {
+      JPG : jpg,
+      SVG : svg,
+      CSV : csv
+    };
   },
   /**
    * Listen for clicks on the export element
@@ -14,6 +26,7 @@ exporter = function() {
     e.exportElem = e.parentElem.querySelector(".export");
     e.formatChooser = e.exportElem.querySelector('select');
     e.exportButton = e.exportElem.querySelector('button');
+    var exportFile = exportFunction();
 
     //expand the export thingy
     e.exportElem.addEventListener("click", function() {
@@ -23,7 +36,13 @@ exporter = function() {
     //listen for clicks on the export dropdown 'go' button and initiate export
     e.exportButton.addEventListener("click", function() {
       var format = getFormat();
-      exportFile(format);
+      try {
+        exportFile[format]();
+      } catch(error) {
+        //this shouldn't really happen if users are selecting from
+        //the dropdown list
+        console.error("Invalid file format.", error);
+      }
 
       util.removeClass(e.exportElem,"active");
     });
