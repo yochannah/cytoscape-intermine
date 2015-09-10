@@ -1,6 +1,9 @@
 var assert = require("assert");
 var cymine = require("./../js/dataFormatter");
+var svDataFormatter = require('./../js/exporter/svDataFormatter')();
+var exporter = require('./../js/exporter/exportHelpers')();
 var dummyData = require("./dummyQuery.json");
+var strings = require('./testStrings');
 
 console.log("===");
 console.log("Running tests at " + new Date().toString() + ":");
@@ -65,3 +68,55 @@ describe('Node & Edge processing', function(){
     console.log("===");
   });
 });
+
+describe('Exporter', function(){
+  describe('Creates CSV/TSV correctly', function(){
+    var csvString, tsvString, csvData, tsvData;
+    before(function(){
+      //snip the dummy data into a manageable state
+      var exportData = JSON.parse(JSON.stringify(dummyData));
+      exportData[0].interactions = exportData[0].interactions.slice(0,2); //2 rows only
+
+      //make csv test data
+      csvData = svDataFormatter.format('csv', exportData);
+      csvString = exporter.prepDownloadString('csv', 'text/csv', csvData);
+
+      //make tsv test data
+      tsvData = svDataFormatter.format('tsv', exportData);
+      tsvString = exporter.prepDownloadString('tsv', 'text/tsv', tsvData);
+    });
+
+    it('should have the correct number of commas in the CSV file', function() {
+      //this is counted as five commas per row returned.
+      assert(csvData.split(",").length === 31);
+      assert(csvData.split(",").length !== 30);
+    });
+    it('should have the correct number of tabs in the TSV file', function() {
+      assert(tsvData.split(/\t/).length === 31);
+      assert(tsvData.split(/\t/).length !== 30);
+    });
+    it('should contain the correct column names', function() {
+      assert(tsvData.split('\n')[0] === makeHeaders('\t'));
+      assert(csvData.split('\n')[0] === makeHeaders(','));
+    });
+    it('should have the correct number of rows', function() {
+      //this takes into account an empty newline at the end of the doc
+      assert(tsvData.split('\n').length === 7);
+      assert(csvData.split('\n').length === 7);
+    });
+    it('should convert to encoded string for download correctly', function(){
+      assert(tsvString == strings.tsvExportedString);
+      assert(csvString == strings.csvExportedString);
+    })
+  });
+});
+
+
+function makeHeaders(separator){
+  //this is a direct copy from the java csv export
+  //todo in future: make this extensible?
+  var headers = [
+    "Gene > Symbol","Gene > DB identifier","Gene > Interactions > Details > Type","Gene > Interactions > Gene 2 . Symbol","Gene > Interactions > Gene 2 > DB identifier","Gene > Interactions > Details > Data Sets > Data Source > Name"
+  ]
+  return headers.join(separator);
+}
