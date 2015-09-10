@@ -56,6 +56,9 @@ ui = function (graph) {
     getControls = function() {
       return graph.parentElem.querySelector('.interactionFilter');
     },
+    getReset = function(){
+      return graph.parentElem.querySelector('.reset');
+    },
     selectInteractionType = function(e){
       var elem = e.target;
       if((elem !== e.currentTarget) && (elem.nodeName.toLowerCase() === "button")) {
@@ -79,8 +82,13 @@ ui = function (graph) {
         }).remove();
       }
     },
+    resetGraph = function(){
+      cy.makeLayout({name: 'cose'}).run();
+      getControls().querySelector('.default').click();
+    },
     listen = function() {
       getControls().addEventListener('click', selectInteractionType, false);
+      getReset().addEventListener('click',resetGraph, false);
     },
     removeAllButtonSelections = function() {
       var theButtons = getControls().querySelectorAll('button');
