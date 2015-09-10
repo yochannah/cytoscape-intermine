@@ -12,9 +12,9 @@ ui = function (graph) {
     setTitle(node);
     listProperties(node);
   },
-  setTitle = function (node) {
+  setTitle = function (elem) {
     var title = graph.parentElem.querySelector('.nodeTitle');
-    title.innerHTML = node.label;
+    title.innerHTML = elem.title;
   },
   listProperties = function(node) {
     var display = expandPropertyVals(node),
@@ -29,19 +29,27 @@ ui = function (graph) {
     var display = document.createElement('dl'),
     dtTemp, ddTemp;
     for (var prop in obj) {
-      dtTemp = document.createElement("dt");
-      dtTemp.appendChild(document.createTextNode(prop));
-      ddTemp = document.createElement("dd");
-      if(typeof obj[prop] === "object") {
-        ddTemp.setAttribute("class","child");
-        ddTemp.appendChild(expandPropertyVals(obj[prop]));
-      } else {
-        ddTemp.appendChild(document.createTextNode(obj[prop]));
+      if(metaFields.indexOf(prop) < 0) { //users never want to see objectId.
+        dtTemp = document.createElement("dt");
+        dtTemp.appendChild(document.createTextNode(prop));
+        ddTemp = document.createElement("dd");
+        util.addClass(ddTemp, prop);
+        if(typeof obj[prop] === "object") {
+          util.addClass(ddTemp, "child");
+          ddTemp.appendChild(expandPropertyVals(obj[prop]));
+        } else {
+          ddTemp.appendChild(document.createTextNode(obj[prop]));
+        }
+        insertAtStart([dtTemp, ddTemp], display);
       }
-      display.appendChild(dtTemp);
-      display.appendChild(ddTemp);
     }
     return display;
+  },
+  insertAtStart = function(elems, parentContainer) {
+    var firstOriginalElem = parentContainer.firstChild;
+    for (var i = 0; i < elems.length; i++) {
+      parentContainer.insertBefore(elems[i],firstOriginalElem);
+    }
   },
   init = function(errorMessage) {
     initHtml();
@@ -87,6 +95,7 @@ ui = function (graph) {
       cy.makeLayout(cyLayout).run();
       getControls().querySelector('.default').click();
     },
+
     listen = function() {
       getControls().addEventListener('click', selectInteractionType, false);
       getReset().addEventListener('click',resetGraph, false);
