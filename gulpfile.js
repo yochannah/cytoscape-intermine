@@ -27,15 +27,13 @@ var gulp        = require('gulp'),
                               //browserify scope
     };
     var opts = assign({}, watchify.args, customOpts);
-    var b;
+    var b, i=0;
 
     gulp.task('js', bundleOnce); // so you can run `gulp js` to build the file just once
     gulp.task('jsdev', bundleDev); // so you can run `gulp jsdev` to build the file and reload in browser automatically
 
     //master bundle file
     function bundle() {
-      b.on('update', bundle); // on any dep update, runs the bundler
-      b.on('log', gutil.log); // output build logs to terminal
       return b
         .transform(stringify(['.html']))
         .bundle()
@@ -55,6 +53,8 @@ var gulp        = require('gulp'),
     //build and reload, and keep watching for more changes
     function bundleDev(){
       b = watchify(browserify(opts));
+      b.on('update', bundle); // on any dep update, runs the bundler
+      b.on('log', gutil.log); // output build logs to terminal
       return bundle();
     }
 

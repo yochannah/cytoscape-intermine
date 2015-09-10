@@ -1,5 +1,6 @@
 @import '_loader';
 @import '_clearfix';
+@import '_secondaryControl';
 
 @cySize : 350px;
 @borderRadius : 4px;
@@ -7,7 +8,10 @@
 @primaryColor : #eee;                   //grey
 @primaryColorDark : darken(@primaryColor,15%); //Darker grey
 @secondaryColor : #2c79be;              //blue
+@secondaryColorDark : darken(@secondaryColor, 15%);              //blue
 @highlightColor : #ec971f;              //yellow
+
+@deemphasisedTextColor: #666;
 
 @geneticColor : #225f95;                //blue
 @physicalColor : #c00;                  //red
@@ -33,6 +37,7 @@ body {
     flex-direction:column;
     justify-content : center;
     align-items: center;
+    box-sizing:border-box;
   }
 
   .graph, .nodeDetails {
@@ -80,7 +85,7 @@ body {
       &:after {content: ""}
       box-sizing:border-box;
       font-weight:normal;
-      color:#666;
+      color:@deemphasisedTextColor;
       line-height:@cySize;
       text-align:center;
       width:100%;
@@ -137,7 +142,7 @@ body {
   .controls {
     padding : 1em;
     margin:auto;
-    div {text-align:center;}
+    .interactionFilter {text-align:center;}
 
     button {
       background-color:@primaryColor;
@@ -173,8 +178,8 @@ body {
       }
 
       &.physical:before {
-      background-color:@physicalColor;
-      border-radius:30px;
+        background-color:@physicalColor;
+        border-radius:30px;
       }
 
       &:after{
@@ -219,6 +224,67 @@ body {
         -moz-border-radius-bottomright: 4px;
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
+  //this is a sneaky workaround that allows us to change the display: property of an item
+  //whilst also animating, which isn't possible with transitions.
+  //Thanks, http://stackoverflow.com/a/9334132/1542891
+  @keyframes fadeIn {
+      from {
+        opacity: 0;
+        width: 0
+       }
+      to {
+        opacity: 1;
+        width:90%;
+      }
+  }
+
+  .secondaryControls {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+  }
+
+  .reset {
+    .secondaryControl;
+  }
+
+  .export {
+    .secondaryControl;
+    text-align:right;
+    transition: all 2s hover 0.5s;
+    align-self:flex-end;
+    .exportValues {
+      display:none;
+      background-color:#fff;
+      border-radius:2px;
+      button{
+        background-color:@secondaryColor;
+        color:@primaryColor;
+        border:0;
+        &:before {display:none;}
+        &:after {display:none;}
+        border-radius:@borderRadius;
+        &:hover {
+          border:0;
+          &:after {display:none;}
+          background-color:@secondaryColorDark;
+        }
+      }
+    }
+    &.active {
+      &:hover {
+        color:@deemphasisedTextColor;
+        background-color:transparent;
+      }
+      flex-grow:2;
+      transition: 1s;
+      .exportValues {
+        display:inline;
+        animation: fadeIn 2s;
       }
     }
   }
