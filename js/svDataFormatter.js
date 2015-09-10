@@ -33,7 +33,6 @@ var sv = function() {
       data = data.concat(makeRowsWithDetails(temp,row.details));
       //there are multiple 'details' rows, so we need to do a further iteration
     }
-    console.log(data.length, 'data: ',data);
     return data;
   },
   makeRowsWithDetails = function(rowArray, details){

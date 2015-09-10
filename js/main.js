@@ -64,12 +64,11 @@ function Cymine(args) {
           if (response.length > 0) {
             graph.data = new cymineDataFormatter(response);
             graph.rawData = response;
-            ui.init();
-            console.log(graph.parentElem);
-              try {
-            exporter.init(graph);
-          } catch(e) {console.error(e)};
-            console.debug('response:', response, 'graphdata:', graph);
+            graph.cy = ui.init();
+            try {
+              exporter.init(graph);
+            } catch(e) {console.error(e)};
+          console.debug('response:', response, 'graphdata:', graph);
           } else {
             ui.init(strings.user.noResults);
           }

@@ -49,6 +49,7 @@ ui = function (graph) {
     } else {
       noResults(errorMessage);
     }
+    return cy;
   },
   controls = function() {
     var hiddenElems,
