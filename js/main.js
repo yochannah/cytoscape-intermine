@@ -4,7 +4,7 @@ cytoscape     = require('cytoscape'),
 _             = require('underscore'),
 strings       = require('./strings'),
 query         = require('./query'),
-exportFile   = require('./exporter'),
+exportFile   = require('./exporter/exporter'),
 cymineDisplay = require('./ui');
 
 function Cymine(args) {
