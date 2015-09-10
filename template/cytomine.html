@@ -4,9 +4,25 @@
       <div class="status loader"></div>
     </div>
     <div class="controls">
-      <div>Show the following interaction types:</div>
-      <div>
-        <button class="genetic">Genetic</button><button class="default selected">All</button><button class="physical">Physical</button>
+      <div class="interactionFilter">
+        <div>Show the following interaction types:</div>
+        <div>
+          <button class="genetic">Genetic</button><button class="default selected">All</button><button class="physical">Physical</button>
+        </div>
+      </div>
+      <div class="secondaryControls">
+        <div class="reset">Reset&nbsp;view</div>
+        <div class="export">Export&nbsp;graph...
+          <div class="exportValues">
+            <select>
+              <option value="png">PNG</option>
+              <option value="jpg">JPG</option>
+              <option value="tsv">TSV</option>
+              <option value="csv" selected>CSV</option>
+            </select>
+            <button>Go!</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
