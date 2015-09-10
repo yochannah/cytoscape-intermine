@@ -10,7 +10,7 @@ var sv = function() {
     //this is a direct copy from the java csv export
     //todo in future: make this extensible?
     var headers = [
-      "Gene > Symbol","Gene > DB identifier","Gene > Interactions > Details > Type","Gene > Interactions > Gene 2 . Symbol","Gene > Interactions > Gene 2 > DB identifier","Gene > Interactions > Details > Data Sets > Data Source > Name","Gene > Interactions > Details > Experiment > Publication > Title","Gene > Interactions > Details > Experiment > Publication > PubMed ID"
+      "Gene > Symbol","Gene > DB identifier","Gene > Interactions > Details > Type","Gene > Interactions > Gene 2 . Symbol","Gene > Interactions > Gene 2 > DB identifier","Gene > Interactions > Details > Data Sets > Data Source > Name"
     ]
     return headers.join(separator);
   },
@@ -27,8 +27,6 @@ var sv = function() {
         row.gene2.symbol,                                                   //3
         row.gene2.primaryIdentifier,                                        //4
         //index 5: add details.datasets.datasource.name                     //5
-        //index 6: add details.experiment.publication.title                 //6
-        //index 7: add details.experiment.publication.pubmedid              //7
       ];
       data = data.concat(makeRowsWithDetails(temp,row.details));
       //there are multiple 'details' rows, so we need to do a further iteration
@@ -43,7 +41,7 @@ var sv = function() {
       temp = rowArray.slice(0);
       //insert detail.type at index 2
       temp.splice(2, 0, detail.type);
-      //add indexes 5,6,7:
+      //add index 5
       rows = rows.concat(makeRowsWithDataSets(temp, detail.dataSets));
     }
     return rows;
@@ -55,8 +53,6 @@ var sv = function() {
       //clone temp, as we need to use it several times.
       temp = rowArray.slice(0);
       temp.push(ds.name);
-      //TODO: fix this so it works with details publications!
-      //currently no publications in the query.
       rows.push(temp);
     }
     return rows;

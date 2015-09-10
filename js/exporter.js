@@ -71,7 +71,6 @@ exporter = function() {
     return {
       jpg : jpg,
       png : png,
-      svg : svg,
       csv : csv,
       tsv : tsv
     };
