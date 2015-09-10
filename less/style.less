@@ -1,5 +1,6 @@
 @import '_loader';
 @import '_clearfix';
+@import '_secondaryControl';
 
 @cySize : 350px;
 @borderRadius : 4px;
@@ -231,31 +232,35 @@ body {
   //whilst also animating, which isn't possible with transitions.
   //Thanks, http://stackoverflow.com/a/9334132/1542891
   @keyframes fadeIn {
-      from { opacity: 0; }
-        to { opacity: 1; }
+      from {
+        opacity: 0;
+        width: 0
+       }
+      to {
+        opacity: 1;
+        width:90%;
+      }
+  }
+
+  .secondaryControls {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+  }
+
+  .reset {
+    .secondaryControl;
   }
 
   .export {
-    min-height:1.2em;
-    color:@deemphasisedTextColor;
-    float:right;
-    padding: 0.5em;
-    border-radius : 4px;
-    margin:0.5em;
-    width:120px;
+    .secondaryControl;
     text-align:right;
-    border:solid 1px #fff;
-    transition: width 1s;
-    box-sizing:border-box;
-    &:hover {
-      color:darken(@deemphasisedTextColor,20%);
-      background-color:@primaryColor;
-    }
+    transition: all 2s hover 0.5s;
+    align-self:flex-end;
     .exportValues {
       display:none;
       background-color:#fff;
       border-radius:2px;
-
       button{
         background-color:@secondaryColor;
         color:@primaryColor;
@@ -275,9 +280,12 @@ body {
         color:@deemphasisedTextColor;
         background-color:transparent;
       }
-      width:100%;
-      transition: width 1s, text-align 1s;
-      .exportValues {display:inline; animation: fadeIn 2s}
+      flex-grow:2;
+      transition: 1s;
+      .exportValues {
+        display:inline;
+        animation: fadeIn 2s;
+      }
     }
   }
 }
