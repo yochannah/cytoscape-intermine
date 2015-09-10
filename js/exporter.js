@@ -11,9 +11,6 @@ exporter = function() {
     png = function(){
       helpers.download(cy.png(), 'network.png');
     },
-    svg = function(){
-      console.log('svg called');
-    },
     csv = function(){
       helpers.sv('csv');
     },
@@ -52,7 +49,6 @@ exporter = function() {
           return navigator.msSaveBlob(new Blob([content], { type: mimeType }),     fileName);
         } else if ('download' in a) { //html5 A[download]
             a.href += imgSrc;
-          console.log('a.href:', a.href)
           a.setAttribute('download', fileName);
           document.body.appendChild(a);
           setTimeout(function() {
@@ -114,7 +110,6 @@ exporter = function() {
   init = function(graph) {
     elems.parentElem = graph.parentElem;
     rawData = graph.rawData;
-    console.log(graph);
     cy = graph.cy;
     listen();
   },

@@ -6,6 +6,7 @@ cyStyle         = require('./cytoscapeStyle');
 ui = function (graph) {
   this.graph = graph;
   var cy,
+  cyLayout = {name: 'cose'},
   display = function(node) {
     targetElem = graph.parentElem.querySelector('nodeDetails'),
     setTitle(node);
@@ -83,7 +84,7 @@ ui = function (graph) {
       }
     },
     resetGraph = function(){
-      cy.makeLayout({name: 'cose'}).run();
+      cy.makeLayout(cyLayout).run();
       getControls().querySelector('.default').click();
     },
     listen = function() {
@@ -106,6 +107,7 @@ ui = function (graph) {
   },
   initGraph = function() {
     graph.targetElem = graph.parentElem.querySelector('.cy');
+    graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
     try{
       var interactionControls = controls();
       interactionControls.listen();
@@ -115,7 +117,7 @@ ui = function (graph) {
     //make the graph
     cy = cytoscape({
       container: graph.targetElem,
-      layout: { name: 'cose'},
+      layout: cyLayout,
       elements: graph.data,
       style: cyStyle,
 
