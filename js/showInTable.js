@@ -70,7 +70,8 @@ var table = function() {
   },
   listen = function(){
     elems.showTable.addEventListener('click', function(){
-      console.log('elems', elems);
+      //elems.theTable is null before the first run
+      //which would throw an error if we only used the disabled test.
       if(!elems.theTable || util.hasClass(elems.theTable, 'disabled')) {
         showTable();
       } else {
