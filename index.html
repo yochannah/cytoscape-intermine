@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Cytoscape Intermine</title>
+    <!------------------------------------------------------------------
+    |    To show the export table button, ensure that imtables is available in
+    |    the DOM before this script is loaded. The 'show in table' button
+    |    will automatically appear.
+    -------------------------------------------------------------------->
+    <script src="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/imtables.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/main.sandboxed.css">
     <link href="dist/style.css" rel="stylesheet" type="text/css">
     <script src="dist/bundle.js"></script>
   </head>
@@ -29,7 +36,7 @@
     }
   });
 
-  //THIS IS COMPLETELY OPTIONAL AND JUST FOR DEMO PURPOSES:
+  //EVERYTHING BELOW THIS LINE IS COMPLETELY OPTIONAL AND JUST FOR DEMO PURPOSES:
   var search = document.getElementById('searchForm');
   search.addEventListener('submit', function(e) {
     e.preventDefault(); //don't be silly, we don't need to reload the page

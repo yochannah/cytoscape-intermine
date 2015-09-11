@@ -2,14 +2,18 @@
   min-height:2.2em;
   line-height:2.2em;
   flex-grow:1;
-  padding: 0.5em 1em;
-  border:solid 1px #fff;
+  padding: 0em 1em 0 1em;
   box-sizing:border-box;
-  border-radius : 4px;
   color:@deemphasisedTextColor;
-  margin:0.5em;
+  margin:0em 0.5em 0em 0.5em;
   &:hover {
     color:darken(@deemphasisedTextColor,20%);
     background-color:@primaryColor;
+  }
+  &:last-of-type{
+    margin-right:0;
+  }
+  &:first-of-type{
+    margin-left:0;
   }
 }

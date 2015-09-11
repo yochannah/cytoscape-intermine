@@ -4,7 +4,8 @@ cytoscape     = require('cytoscape'),
 _             = require('underscore'),
 strings       = require('./strings'),
 query         = require('./query'),
-exportFile   = require('./exporter/exporter'),
+exportFile    = require('./exporter/exporter'),
+tableDisplayer= require('./showInTable')(),
 cymineDisplay = require('./ui');
 
 function Cymine(args) {
@@ -16,8 +17,9 @@ function Cymine(args) {
 
 /**
  * Checks if there is indeed an element to attach to, and failing that tries a default.
- * @return {boolean} whether or not we've found an element to attach to. Allows you to cancel the xhr
- *                          since there's nowhere to render it to.
+ * @return {boolean} whether or not we've found an element to attach to.
+ *                   Allows you to cancel the xhr
+ *                   since there's nowhere to render it to.
  */
   function validateParent() {
     if(!graph.parentElem){
@@ -49,6 +51,7 @@ function Cymine(args) {
     if(graph.queryOn) {
       debugger;
       _.extend(query.where[0],graph.queryOn);
+      graph.query = query;
       return true;
     } else {
       throw new initError('noQueryData');
@@ -57,19 +60,35 @@ function Cymine(args) {
   }
   function init(){
     if(validateParent()) {
+      //add the elements to the page
       ui = new cymineDisplay(graph);
-      var mine = validateServiceRoot();
+
+      //check that the service and query looks ok, or error if not.
+      mine = validateServiceRoot();
+
       if(prepQuery() && mine) {
+        //get the data from the mine
         mine.records(query).then(function(response) {
           if (response.length > 0) {
-            graph.data = new cymineDataFormatter(response);
+            //store the raw response. Other files use it, e.g. the exporter.
             graph.rawData = response;
+
+            //transform the data into a shape cytoscape can use.
+            graph.data = new cymineDataFormatter(response);
+
+            //init the UI, including cytoscape
             graph.cy = ui.init();
-            try {
-              exporter.init(graph);
-            } catch(e) {console.error(e)};
-          console.debug('response:', response, 'graphdata:', graph);
+
+            //init the export functions and their UI listeners
+            try { exporter.init(graph); } catch(e) {console.error(e)};
+
+            //init the table display
+            try { tableDisplayer.init(graph); } catch (e) {console.error(e);}
+
+            console.debug('response:', response, 'graphdata:', graph);
           } else {
+            //this tells the user the response was empty for this gene.
+            //No interactions data available.
             ui.init(strings.user.noResults);
           }
         });
@@ -79,7 +98,9 @@ function Cymine(args) {
   /**
    * throw this error to console.error and display a user-facing error too
    * @param  {string} devMessage  this should be the key to a string in the strings.dev object.
-   * @param  {[type]} userMessage optional - this should be the key to a string in the strings.user object. If not set, it will use the generic strings.user.noQuery message.
+   * @param  {string} userMessage optional - this should be the key to a string
+   *                  in the strings.user object. If not set, it will use the
+   *                  generic strings.user.noQuery message.
    */
   function initError(devMessage, userMessage){
     var um = userMessage ? userMessage : "noQueryData";
@@ -89,7 +110,6 @@ function Cymine(args) {
 }
 /**
  * helper method for calling services from imjs. Useful because we can only pass a reference to a functtion (without args) to imjs, so passing initError wouldn't allow us to set the dev error message.
- * @return {[type]} [description]
  */
 function badServiceError(){
     throw new initError('badServiceUrl');
