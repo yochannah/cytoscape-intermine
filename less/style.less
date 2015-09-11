@@ -25,8 +25,10 @@ body {
   display:flex;
   background-color:#f0f0f0;
   flex-wrap : wrap;
+  border:solid 1px @primaryColor;
 
   .module {
+    border:solid 1px @primaryColor;
     background-color:white;
     min-width:@cySize;
     min-height:@cySize;
@@ -147,7 +149,7 @@ body {
   }
 
   .controls {
-    padding : 1em;
+    padding : 0;
     margin:auto;
     .interactionFilter {text-align:center;}
 
@@ -250,7 +252,10 @@ body {
   }
 
   .secondaryControls {
+    border:solid 1px @primaryColor;
+    margin:0.5em 0 0 0;
     display:flex;
+    padding:0;
     flex-direction:row;
     align-items:flex-start;
   }
@@ -263,7 +268,7 @@ body {
     text-align:center;
     display:none;
     &.enabled {
-      transition: flex ease-in-out 1s;
+      transition: flex ease-in-out 2s;
       display:block;
     }
   }
