@@ -46,6 +46,13 @@ body {
 
   }
 
+  .tableView{
+    width:100%;
+    &.disabled {
+      display:none;
+    }
+  }
+
   .nodeTitle {
     margin:0.2em;
   }
@@ -248,8 +255,17 @@ body {
     align-items:flex-start;
   }
 
-  .reset {
+  .reset, .showTable {
     .secondaryControl;
+  }
+
+  .showTable {
+    text-align:center;
+    display:none;
+    &.enabled {
+      transition: flex ease-in-out 1s;
+      display:block;
+    }
   }
 
   .export {

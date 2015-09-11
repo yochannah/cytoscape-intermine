@@ -5,6 +5,7 @@ var metaFields = [
   'label',
   'objectId',
   'title',
-  'interactionTypes'
+  'interactionTypes',
+  'class'
 ];
 module.exports = metaFields;
