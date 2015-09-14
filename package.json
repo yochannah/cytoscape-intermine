@@ -41,5 +41,10 @@
   "bugs": {
     "url": "https://github.com/yochannah/cytoscape-intermine/issues"
   },
-  "homepage": "https://github.com/yochannah/cytoscape-intermine#readme"
+  "homepage": "https://github.com/yochannah/cytoscape-intermine#readme",
+  "dependencies": {
+    "imjs": "^3.14.0",
+    "jschannel": "git://github.com/CourseTalk/jschannel.git",
+    "requirejs": "^2.1.20"
+  }
 }
