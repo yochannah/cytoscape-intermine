@@ -51,8 +51,7 @@ ui = function (graph) {
       parentContainer.insertBefore(elems[i],firstOriginalElem);
     }
   },
-  init = function(errorMessage) {
-    initHtml();
+  attachResults = function(errorMessage) {
     if(!errorMessage) {
       initGraph();
     } else {
@@ -109,7 +108,7 @@ ui = function (graph) {
     };
     return {listen : listen};
   },
-  initHtml = function () {
+  init = function () {
     graph.parentElem.innerHTML = getTemplate();
     util.addClass(graph.parentElem, "cymine");
     graph.statusBar = graph.parentElem.querySelector('.status');
@@ -153,6 +152,7 @@ ui = function (graph) {
 
   return {
     init:init,
+    attachResults : attachResults,
     noResults:noResults
   }
 

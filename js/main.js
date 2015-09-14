@@ -62,6 +62,7 @@ function Cymine(args) {
     if(validateParent()) {
       //add the elements to the page
       ui = new cymineDisplay(graph);
+      ui.init();
 
       //check that the service and query looks ok, or error if not.
       mine = validateServiceRoot();
@@ -76,8 +77,8 @@ function Cymine(args) {
             //transform the data into a shape cytoscape can use.
             graph.data = new cymineDataFormatter(response);
 
-            //init the UI, including cytoscape
-            graph.cy = ui.init();
+            //Add cytoscape graph
+            graph.cy = ui.attachResults();
 
             //init the export functions and their UI listeners
             try { exporter.init(graph); } catch(e) {console.error(e)};
@@ -89,7 +90,7 @@ function Cymine(args) {
           } else {
             //this tells the user the response was empty for this gene.
             //No interactions data available.
-            ui.init(strings.user.noResults);
+            ui.attachResults(strings.user.noResults);
           }
         });
       }
