@@ -8,7 +8,6 @@ var table = function() {
   var settings, elems = {}, imtablesSettings;
   var init = function(graph){
       timeoutID = window.setTimeout(function(){
-        console.log('s', imtables);
         if(imtables) {
           settings = graph;
           showTableButton();
