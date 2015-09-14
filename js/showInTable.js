@@ -8,7 +8,6 @@ var table = function() {
   var settings, elems = {}, imtablesSettings;
   var init = function(graph){
       timeoutID = window.setTimeout(function(){
-        console.log('s', imtables);
         if(imtables) {
           settings = graph;
           showTableButton();
@@ -19,7 +18,8 @@ var table = function() {
               root: settings.service.root
             }
         };
-      }, 2000);
+      }, 500); //provides a bit of extra time to make sure the script is downloaded. 
+               //may not be necessary or may need to be longer.
   },
   //technically this method should probably be called showShowTableButton,
   //but there's no need to be ridiculous.

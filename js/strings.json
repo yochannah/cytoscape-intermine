@@ -1,6 +1,7 @@
 {
   "user" : {
     "noResults" : "No interaction results for this query",
+    "pleaseClearCache" : "Error loading results. Please clear your cache and try again.",
     "noQueryData" : "Problem loading query results"
   },
   "dev" : {
