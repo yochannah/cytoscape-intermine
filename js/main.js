@@ -92,6 +92,9 @@ function Cymine(args) {
             //No interactions data available.
             ui.attachResults(strings.user.noResults);
           }
+        }).catch(function(error){
+          console.error("Possible CORS error?", error);
+          ui.attachResults(strings.user.pleaseClearCache);
         });
       }
     }

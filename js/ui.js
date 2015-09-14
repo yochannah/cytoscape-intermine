@@ -111,11 +111,14 @@ ui = function (graph) {
   init = function () {
     graph.parentElem.innerHTML = getTemplate();
     util.addClass(graph.parentElem, "cymine");
+    //init useful elements and store in master settings object
     graph.statusBar = graph.parentElem.querySelector('.status');
+    graph.targetElem = graph.parentElem.querySelector('.cy');
+    //make the graph as wide as can be. can't be auto as cytoscape needs a width
+    graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
   },
   initGraph = function() {
-    graph.targetElem = graph.parentElem.querySelector('.cy');
-    graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
+
     try{
       var interactionControls = controls();
       interactionControls.listen();
