@@ -171,6 +171,8 @@ body {
         display:block;
         float:left;
         opacity:0.4;
+        border-radius:30px;
+        border:solid 2px @primaryColor;
       }
 
       &.selected:before {
@@ -178,17 +180,15 @@ body {
       }
 
       &.genetic:before {
-        background-color:@geneticColor;
+        border-color: @geneticColor;
       }
 
       &.default:before {
-        background-color:@bothPhysicalAndGeneticColor;
-        border-radius:5px;
+        border-color:@bothPhysicalAndGeneticColor;
       }
 
       &.physical:before {
-        background-color:@physicalColor;
-        border-radius:30px;
+        border-color:@physicalColor;
       }
 
       &:after{
