@@ -73,6 +73,10 @@ body {
     margin-left:0.5em;
     margin-top:0.1em;
     text-transform:capitalize;
+    &.details {
+      width:97%;
+      margin-left:0;
+    }
   }
 
   dl {
@@ -114,6 +118,7 @@ body {
     border-top:@borderStyle;
     border-left:@borderStyle;
     border-right:@borderStyle;
+    float:left;
     margin-bottom:0;
     border-top-left-radius: @borderRadius;
     border-top-right-radius: @borderRadius;
@@ -123,9 +128,10 @@ body {
           border-left:solid 3px #ddd;
         }
       }
+      width:100%;
       box-sizing:border-box;
       margin-top:0;
-      width:100%;
+      clear:both;
       border-bottom:@borderStyle;
       border-left:@borderStyle;
       border-right:@borderStyle;
@@ -135,7 +141,7 @@ body {
     }
   }
 
-  dd.child {
+  .roles, dd.child {
     clear:left;
   }
 
