@@ -1,7 +1,11 @@
 [{
   "selector": "node",
   "style": {
-    "content": "data(label)"
+    "content": "data(label)",
+    "border-width": "2px",
+    "background-color": "#dedede",
+    "border-style": "solid",
+    "border-color": "#999"
   }
 }, {
   "selector": ":selected",
@@ -25,24 +29,21 @@
 }, {
   "selector": "edge[interactionType@=\"physical\"]",
   "style": {
-    "line-color": "red"
+    "line-color": "#c00"
   }
 }, {
   "selector": ".genetic",
   "style": {
-    "background-color": "#225f95",
-    "shape":"rectangle"
+    "border-color": "#225f95",
   }
 }, {
   "selector": ".physical",
   "style": {
-    "background-color": "#c00",
-    "shape":"ellipse"
+    "border-color": "#c00",
   }
 }, {
   "selector": ".both",
   "style": {
-    "background-color": "#77304B",
-    "shape":"roundrectangle"
+    "border-color" : "#77304B",
   }
 }]

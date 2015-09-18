@@ -1,12 +1,29 @@
-var cymineHtml  = require('./../template/cytomine.html'),
-metaFields      = require('./metaFields'),
+var metaFields  = require('./metaFields'),
 util            = require('./util'),
+_               = require('underscore'),
 cyStyle         = require('./cytoscapeStyle');
 
 ui = function (graph) {
+  _.templateSettings = {
+      evaluate: /\{\{(.+?)\}\}/g,
+      interpolate: /\{\{=(.+?)\}\}/g,
+      escape: /\{\{-(.+?)\}\}/g
+  };
+
   this.graph = graph;
   var cy,
   cyLayout = {name: 'cose'},
+  templates = {
+    cymineHtml : {
+      html : require('./../template/cytomine.html'),
+      type : "html"
+    },
+    "InteractionDetail" : {
+      html : require('./../template/interaction.html'),
+      type : "_",
+      additionalFunction : function(args) {return splitRoleTypes(args);}
+    }
+  },
   display = function(node) {
     targetElem = graph.parentElem.querySelector('nodeDetails'),
     setTitle(node);
@@ -17,13 +34,23 @@ ui = function (graph) {
     title.innerHTML = elem.title;
   },
   listProperties = function(node) {
-    var display = expandPropertyVals(node),
-    oldNodeInfo = graph.parentElem.querySelector('.nodeInfo');
-    display.setAttribute('class', 'nodeInfo');
-    oldNodeInfo.parentElement.replaceChild(display, oldNodeInfo);
+    try {
+      var display = expandPropertyVals(node),
+      oldNodeInfo = graph.parentElem.querySelector('.nodeInfo');
+      display.setAttribute('class', 'nodeInfo');
+      oldNodeInfo.parentElement.replaceChild(display, oldNodeInfo);
+    } catch(e) {console.error('whoopsie', e);}
   },
-  getTemplate = function(){
-    return cymineHtml;
+  getTemplate = function(chosenTemplate){
+    var template = templates[chosenTemplate];
+    if(template.type === "html") {
+      return template.html;
+    } else if (template.type === "_") {
+      return _.template(template.html);
+    }
+  },
+  hasTemplate = function(chosenTemplate){
+    return (templates[chosenTemplate] && true); //&& true makes it return a boolean
   },
   expandPropertyVals = function(obj) {
     var display = document.createElement('dl'),
@@ -35,8 +62,13 @@ ui = function (graph) {
         ddTemp = document.createElement("dd");
         util.addClass(ddTemp, prop);
         if(typeof obj[prop] === "object") {
-          util.addClass(ddTemp, "child");
-          ddTemp.appendChild(expandPropertyVals(obj[prop]));
+          console.log(prop, obj[prop], hasTemplate(prop));
+          if(hasTemplate(obj[prop].class)) {
+            ddTemp.appendChild(expandToTemplate(obj[prop], obj));
+          } else {
+            util.addClass(ddTemp, "child");
+            ddTemp.appendChild(expandPropertyVals(obj[prop]));
+          }
         } else {
           ddTemp.appendChild(document.createTextNode(obj[prop]));
         }
@@ -44,6 +76,31 @@ ui = function (graph) {
       }
     }
     return display;
+  },
+  expandToTemplate = function(obj){
+    var myObj = _.clone(obj),
+    template = getTemplate(obj.class);
+
+    if(templates[obj.class].additionalFunction) {
+      myObj = templates[obj.class].additionalFunction(myObj);
+    }
+    temp = document.createElement('div');
+    temp.innerHTML = template(myObj);
+    return temp;
+  },
+
+  splitRoleTypes = function(obj){
+    var interactionName = obj.name,
+    roleArray;
+    console.log("%cIt's here","color:seagreen;font-weight:bold;", obj);
+    if (interactionName.indexOf("FlyBase:") > -1) {
+      roleArray = interactionName.split(":")[1].split('_');
+    } else {
+      roleArray = interactionName.split('-');
+    }
+    obj.roles = roleArray;
+    console.log(obj.roles, obj);
+    return obj;
   },
   insertAtStart = function(elems, parentContainer) {
     var firstOriginalElem = parentContainer.firstChild;
@@ -109,7 +166,7 @@ ui = function (graph) {
     return {listen : listen};
   },
   init = function () {
-    graph.parentElem.innerHTML = getTemplate();
+    graph.parentElem.innerHTML = getTemplate('cymineHtml');
     util.addClass(graph.parentElem, "cymine");
     //init useful elements and store in master settings object
     graph.statusBar = graph.parentElem.querySelector('.status');
@@ -152,6 +209,7 @@ ui = function (graph) {
     graph.statusBar.className = "status no-results";
     graph.statusBar.innerHTML = message;
   }
+
 
   return {
     init:init,
