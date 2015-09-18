@@ -65,7 +65,9 @@ Helper function. You probably don't want to call it directly.
 gulp.task('serve', ['less', 'jsdev'], function() {
 
     browserSync.init({
-        server: "./"
+        server: "./",
+        online:true,
+        open:false
     });
 
     gulp.watch("./less/**/*.less", ['less']);
