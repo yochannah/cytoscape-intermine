@@ -62,7 +62,6 @@ ui = function (graph) {
         ddTemp = document.createElement("dd");
         util.addClass(ddTemp, prop);
         if(typeof obj[prop] === "object") {
-          console.log(prop, obj[prop], hasTemplate(prop));
           if(hasTemplate(obj[prop].class)) {
             ddTemp.appendChild(expandToTemplate(obj[prop], obj));
           } else {
@@ -92,14 +91,12 @@ ui = function (graph) {
   splitRoleTypes = function(obj){
     var interactionName = obj.name,
     roleArray;
-    console.log("%cIt's here","color:seagreen;font-weight:bold;", obj);
     if (interactionName.indexOf("FlyBase:") > -1) {
       roleArray = interactionName.split(":")[1].split('_');
     } else {
       roleArray = interactionName.split('-');
     }
     obj.roles = roleArray;
-    console.log(obj.roles, obj);
     return obj;
   },
   insertAtStart = function(elems, parentContainer) {
