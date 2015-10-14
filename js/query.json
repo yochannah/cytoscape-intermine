@@ -7,8 +7,8 @@
   "select": [
     "primaryIdentifier",
     "symbol",
-    "interactions.gene2.symbol",
-    "interactions.gene2.primaryIdentifier",
+    "interactions.participant2.symbol",
+    "interactions.participant2.primaryIdentifier",
     "interactions.details.name",
     "interactions.details.role1",
     "interactions.details.role2",

@@ -24,8 +24,8 @@ var sv = function() {
         rawData.symbol,                                                     //0
         rawData.primaryIdentifier,                                          //1
         //details.type are inserted at index 2 (here) in the next step      //2
-        row.gene2.symbol,                                                   //3
-        row.gene2.primaryIdentifier,                                        //4
+        row.participant2.symbol,                                                   //3
+        row.participant2.primaryIdentifier,                                        //4
         //index 5: add details.datasets.datasource.name                     //5
       ];
       data = data.concat(makeRowsWithDetails(temp,row.details));

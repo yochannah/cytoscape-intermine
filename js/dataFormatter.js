@@ -26,7 +26,7 @@ Cymine = function(records) {
   };
   var recordToNode = function (obj) {
     var ret, data = {}, interactions;
-    ret = obj.gene2 ? obj.gene2 : obj;
+    ret = obj.participant2 ? obj.participant2 : obj;
     interactions = getInteractions(obj),
     label = nameNode(obj);
     return {
@@ -94,8 +94,8 @@ Cymine = function(records) {
     return ret;
   },
   nameNode = function(obj) {
-    if (obj.gene2 && obj.gene2.symbol) {
-      return obj.gene2.symbol;
+    if (obj.participant2 && obj.participant2.symbol) {
+      return obj.participant2.symbol;
     } else if (obj.symbol) {
       return obj.symbol;
     } else if (obj.details) {
