@@ -4,7 +4,7 @@
   "objectId": 127344656,
   "class": "Gene",
   "interactions": [{
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000159840",
       "symbol": "ZYX",
       "objectId": 126310743,
@@ -45,7 +45,7 @@
     "objectId": 159016159,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000107223",
       "symbol": "EDF1",
       "objectId": 125573806,
@@ -179,7 +179,7 @@
     "objectId": 159025317,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000100393",
       "symbol": "EP300",
       "objectId": 124300851,
@@ -220,7 +220,7 @@
     "objectId": 159025327,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000127616",
       "symbol": "SMARCA4",
       "objectId": 124650187,
@@ -261,7 +261,7 @@
     "objectId": 159043085,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000125686",
       "symbol": "MED1",
       "objectId": 125896065,
@@ -302,7 +302,7 @@
     "objectId": 159105912,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000197386",
       "symbol": "HTT",
       "objectId": 125289667,
@@ -436,7 +436,7 @@
     "objectId": 159139611,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000109819",
       "symbol": "PPARGC1A",
       "objectId": 125305408,
@@ -477,7 +477,7 @@
     "objectId": 159195030,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000115355",
       "symbol": "CCDC88A",
       "objectId": 125076553,
@@ -518,7 +518,7 @@
     "objectId": 159208292,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000105323",
       "symbol": "HNRNPUL1",
       "objectId": 124742021,
@@ -559,7 +559,7 @@
     "objectId": 159208296,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000102226",
       "symbol": "USP11",
       "objectId": 124102437,
@@ -600,7 +600,7 @@
     "objectId": 159208300,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000224156",
       "symbol": null,
       "objectId": 159004436,
@@ -641,7 +641,7 @@
     "objectId": 159208322,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000196230",
       "symbol": "TUBB",
       "objectId": 124470881,
@@ -682,7 +682,7 @@
     "objectId": 159208324,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000232575",
       "symbol": null,
       "objectId": 159004439,
@@ -723,7 +723,7 @@
     "objectId": 159208326,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000227739",
       "symbol": null,
       "objectId": 159004437,
@@ -764,7 +764,7 @@
     "objectId": 159208328,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000232421",
       "symbol": null,
       "objectId": 159004438,
@@ -805,7 +805,7 @@
     "objectId": 159208330,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000235067",
       "symbol": null,
       "objectId": 159004442,
@@ -846,7 +846,7 @@
     "objectId": 159208332,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000183311",
       "symbol": null,
       "objectId": 159004441,
@@ -887,7 +887,7 @@
     "objectId": 159208334,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000229684",
       "symbol": null,
       "objectId": 159004440,
@@ -928,7 +928,7 @@
     "objectId": 159208336,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000171867",
       "symbol": "PRNP",
       "objectId": 124008408,
@@ -969,7 +969,7 @@
     "objectId": 159208340,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000120885",
       "symbol": "CLU",
       "objectId": 126052484,
@@ -1072,7 +1072,7 @@
     "objectId": 159209574,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000100888",
       "symbol": "CHD8",
       "objectId": 124836433,
@@ -1113,7 +1113,7 @@
     "objectId": 159209578,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000173692",
       "symbol": "PSMD1",
       "objectId": 125256045,
@@ -1154,7 +1154,7 @@
     "objectId": 159209586,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000117632",
       "symbol": "STMN1",
       "objectId": 126726417,
@@ -1195,7 +1195,7 @@
     "objectId": 159209590,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000145495",
       "symbol": "MARCH6",
       "objectId": 127177151,
@@ -1236,7 +1236,7 @@
     "objectId": 159209592,
     "class": "Interaction"
   },{
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "FBgn0011648",
       "symbol": "Mad",
       "objectId": 343019286,
@@ -1339,7 +1339,7 @@
     "objectId": 347755354,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000155097",
       "symbol": "ATP6V1C1",
       "objectId": 126117597,
@@ -1380,7 +1380,7 @@
     "objectId": 159209606,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000123240",
       "symbol": "OPTN",
       "objectId": 124330943,
@@ -1421,7 +1421,7 @@
     "objectId": 159209610,
     "class": "Interaction"
   }, {
-    "gene2": {
+    "participant2": {
       "primaryIdentifier": "ENSG00000096384",
       "symbol": "HSP90AB1",
       "objectId": 124512276,
