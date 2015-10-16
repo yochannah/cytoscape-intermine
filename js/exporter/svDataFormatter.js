@@ -11,7 +11,7 @@ var sv = function() {
     //todo in future: make this extensible?
     var headers = [
       "Gene > Symbol","Gene > DB identifier","Gene > Interactions > Details > Type","Gene > Interactions > Gene 2 . Symbol","Gene > Interactions > Gene 2 > DB identifier","Gene > Interactions > Details > Data Sets > Data Source > Name"
-    ]
+    ];
     return headers.join(separator);
   },
   makeData = function(rawData){
@@ -69,7 +69,7 @@ var sv = function() {
       svContent += dataString + "\n";
     });
     return svContent;
-  }
+  };
   return {format:format};
-}
+};
 module.exports = sv;

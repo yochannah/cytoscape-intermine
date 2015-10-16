@@ -1,5 +1,5 @@
 var cymineDataFormatter = require('./dataFormatter'),
-imjs          = require('./../bower_components/imjs/js/im.js'),
+//imjs          = require('./../bower_components/imjs/js/im.js'),
 cytoscape     = require('cytoscape'),
 _             = require('underscore'),
 strings       = require('./strings'),
@@ -13,7 +13,7 @@ function Cymine(args) {
   var ui,
   graph = _.extend({},args),
   exporter = exportFile();
-  init();
+  cym = init();
 
 /**
  * Checks if there is indeed an element to attach to, and failing that tries a default.
@@ -43,19 +43,16 @@ function Cymine(args) {
       });
     } else {
       throw new initError('noServiceUrl');
-      return false;
     }
 
   }
   function prepQuery() {
     if(graph.queryOn) {
-      debugger;
       _.extend(query.where[0],graph.queryOn);
       graph.query = query;
       return true;
     } else {
       throw new initError('noQueryData');
-      return false;
     }
   }
   function init(){
@@ -69,7 +66,7 @@ function Cymine(args) {
 
       if(prepQuery() && mine) {
         //get the data from the mine
-        mine.records(query).then(function(response) {
+        var q = mine.records(query).then(function(response) {
           if (response.length > 0) {
             //store the raw response. Other files use it, e.g. the exporter.
             graph.rawData = response;
@@ -81,23 +78,27 @@ function Cymine(args) {
             graph.cy = ui.attachResults();
 
             //init the export functions and their UI listeners
-            try { exporter.init(graph); } catch(e) {console.error(e)};
+            try { exporter.init(graph); } catch(e) {console.error(e);}
 
             //init the table display
             try { tableDisplayer.init(graph); } catch (e) {console.error(e);}
 
             console.debug('response:', response, 'graphdata:', graph);
+            return Promise.resolve(true);
           } else {
             //this tells the user the response was empty for this gene.
             //No interactions data available.
             ui.attachResults(strings.user.noResults);
+            return Promise.reject();
           }
         }).catch(function(error){
           console.error("Possible CORS error?", error);
           ui.attachResults(strings.user.pleaseClearCache);
+          return Promise.reject();
         });
       }
     }
+    return Promise.reject();
   }
   /**
    * throw this error to console.error and display a user-facing error too
@@ -111,6 +112,7 @@ function Cymine(args) {
     ui.init(strings.user[um]);
     console.error(strings.dev[devMessage]);
   }
+  return cym;
 }
 /**
  * helper method for calling services from imjs. Useful because we can only pass a reference to a functtion (without args) to imjs, so passing initError wouldn't allow us to set the dev error message.

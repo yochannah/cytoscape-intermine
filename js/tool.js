@@ -44,7 +44,7 @@ require([
         trans.error('not ok');
       });
       trans.delayReturn(true);
-      return loadView
+      return loadView;
     });
 
     chan.bind('style', function (trans, params) {
@@ -63,7 +63,7 @@ require([
       var serviceArgs = params.service;
       serviceArgs.errorHandler = function(error){
         console.error('Communication error!\n', error);
-      }
+      };
       console.log(params);
       cymine({
         parentElem : document.getElementById('staircaseCymine'),

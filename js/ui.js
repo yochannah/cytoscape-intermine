@@ -25,7 +25,7 @@ ui = function (graph) {
     }
   },
   display = function(node) {
-    targetElem = graph.parentElem.querySelector('nodeDetails'),
+    targetElem = graph.parentElem.querySelector('nodeDetails');
     setTitle(node);
     listProperties(node);
   },
@@ -205,14 +205,14 @@ ui = function (graph) {
   noResults = function (message) {
     graph.statusBar.className = "status no-results";
     graph.statusBar.innerHTML = message;
-  }
+  };
 
 
   return {
     init:init,
     attachResults : attachResults,
     noResults:noResults
-  }
+  };
 
 };
 

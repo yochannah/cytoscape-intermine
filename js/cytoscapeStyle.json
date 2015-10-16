@@ -34,16 +34,16 @@
 }, {
   "selector": ".genetic",
   "style": {
-    "border-color": "#225f95",
+    "border-color": "#225f95"
   }
 }, {
   "selector": ".physical",
   "style": {
-    "border-color": "#c00",
+    "border-color": "#c00"
   }
 }, {
   "selector": ".both",
   "style": {
-    "border-color" : "#77304B",
+    "border-color" : "#77304B"
   }
 }]
