@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "cytoscape": "~2.4.4",
-    "imjs": "~3.14.0"
+    "cytoscape": "~2.4.4"
   }
 }

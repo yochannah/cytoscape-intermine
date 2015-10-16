@@ -7,7 +7,7 @@ var table = function() {
   //sense not to bundle it when it's probably already present.
   var settings, elems = {}, imtablesSettings;
   var init = function(graph){
-      timeoutID = window.setTimeout(function(){
+      timeoutID = setTimeout(function(){
         if(imtables) {
           settings = graph;
           showTableButton();
@@ -18,7 +18,7 @@ var table = function() {
               root: settings.service.root
             }
         };
-      }, 500); //provides a bit of extra time to make sure the script is downloaded. 
+      }, 500); //provides a bit of extra time to make sure the script is downloaded.
                //may not be necessary or may need to be longer.
   },
   //technically this method should probably be called showShowTableButton,
