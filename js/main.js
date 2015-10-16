@@ -1,5 +1,5 @@
 var cymineDataFormatter = require('./dataFormatter'),
-//imjs          = require('./../bower_components/imjs/js/im.js'),
+imjs          = require('imjs'),
 cytoscape     = require('cytoscape'),
 _             = require('underscore'),
 strings       = require('./strings'),
@@ -84,7 +84,7 @@ function Cymine(args) {
             try { tableDisplayer.init(graph); } catch (e) {console.error(e);}
 
             console.debug('response:', response, 'graphdata:', graph);
-            return Promise.resolve(true);
+            return q;
           } else {
             //this tells the user the response was empty for this gene.
             //No interactions data available.

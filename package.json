@@ -1,6 +1,6 @@
 {
   "name": "cytoscape-network",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "view intermine gene network interaction using cytoscape.js ",
   "main": "gulpfile.js",
   "directories": {

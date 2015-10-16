@@ -60,7 +60,7 @@ ui = function (graph) {
         dtTemp = document.createElement("dt");
         dtTemp.appendChild(document.createTextNode(prop));
         ddTemp = document.createElement("dd");
-        util.addClass(ddTemp, prop);
+        util.addClass(ddTemp, "cym-" + prop);
         if(typeof obj[prop] === "object") {
           if(hasTemplate(obj[prop].class)) {
             ddTemp.appendChild(expandToTemplate(obj[prop], obj));
@@ -187,7 +187,6 @@ ui = function (graph) {
       style: cyStyle,
 
       ready: function(){
-        window.cy = this;
         graph.statusBar.remove();
       }
     });
