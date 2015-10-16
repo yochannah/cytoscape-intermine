@@ -10,9 +10,9 @@ var gulp        = require('gulp'),
     gutil       = require('gulp-util'),
     minifyCSS   = require('gulp-minify-css'),
     uglify      = require('gulp-uglify'),
+    streamify   = require('gulp-streamify'),
     watchify    = require('watchify'),
     stringify   = require('stringify'),
-    streamify   = require('gulp-streamify'),
     browserify  = require('browserify'),
     browserSync = require('browser-sync').create(),
     source      = require('vinyl-source-stream'),
@@ -40,6 +40,7 @@ var gulp        = require('gulp'),
           //log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
+//        .pipe(streamify(uglify({mangle:false})))
         .pipe(streamify(uglify()))
         .pipe(gulp.dest('./dist'));
     }

@@ -23,11 +23,11 @@ Cymine = function(records) {
     }
 
     return d;
-  };
+  }
   var recordToNode = function (obj) {
     var ret, data = {}, interactions;
     ret = obj.participant2 ? obj.participant2 : obj;
-    interactions = getInteractions(obj),
+    interactions = getInteractions(obj);
     label = nameNode(obj);
     return {
       classes : getClasses(interactions),
@@ -40,7 +40,7 @@ Cymine = function(records) {
         symbol  : ret.symbol,
         id : ret.primaryIdentifier //cytoscape needs strings, not ints
       }
-    }
+    };
   },
   getClasses = function(arrOfClasses){
     var ret = _.uniq(arrOfClasses); //clones the node
@@ -120,7 +120,7 @@ Cymine = function(records) {
       });
     }
     return ret;
-  }
+  };
   return toNodesAndEdges(records);
 };
 

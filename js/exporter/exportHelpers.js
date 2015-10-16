@@ -34,8 +34,8 @@ var exporter = function() {
      */
     download = function(content, fileName, mimeType, encode) {
       var a = document.createElement('a'),
-        mimeType = mimeType || 'application/octet-stream',
         imgSrc = prepDownloadString(encode, mimeType, content);
+        mimeType = mimeType || 'application/octet-stream';
       if (navigator.msSaveBlob) { // IE10
         return navigator.msSaveBlob(new Blob([content], {
           type: mimeType
@@ -59,12 +59,12 @@ var exporter = function() {
         }, 333);
         return true;
       }
-    }
+    };
     return {
       sv : sv,
       download : download,
       prepDownloadString : prepDownloadString
-    }
+    };
 };
 
 module.exports = exporter;

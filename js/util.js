@@ -11,5 +11,5 @@ var util = {
     var classes = elem.className.split(" ");
     return (classes.indexOf(classToCheckFor) >= 0);
   }
-}
+};
 module.exports = util;
