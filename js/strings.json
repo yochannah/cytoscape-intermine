@@ -16,5 +16,9 @@
   "showTable" : {
     "showInTableFormat" : "Show in table format",
     "hideTableFormat" : "Hide table"
+  },
+  "CONST" : {
+    "PROTEIN" : "Protein",
+    "LOOKUP_PROTEIN" : "proteins"
   }
 }

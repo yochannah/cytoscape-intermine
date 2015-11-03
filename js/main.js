@@ -1,12 +1,13 @@
 var cymineDataFormatter = require('./dataFormatter'),
-imjs          = require('imjs'),
-cytoscape     = require('cytoscape'),
-_             = require('underscore'),
-strings       = require('./strings'),
-query         = require('./query'),
-exportFile    = require('./exporter/exporter'),
-tableDisplayer= require('./showInTable')(),
-cymineDisplay = require('./ui');
+imjs                    = require('imjs'),
+cytoscape               = require('cytoscape'),
+_                       = require('underscore'),
+strings                 = require('./strings'),
+query                   = require('./query/query'),
+proteinConstraint       = require('./query/proteinPhysicalConstraint'),
+exportFile              = require('./exporter/exporter'),
+tableDisplayer          = require('./showInTable')(),
+cymineDisplay           = require('./ui');
 
 function Cymine(args) {
 
@@ -50,11 +51,34 @@ function Cymine(args) {
     if(graph.queryOn) {
       _.extend(query.where[0],graph.queryOn);
       graph.query = query;
+
+      if(graph.nodeType === strings.CONST.PROTEIN) {
+        prepProteinQuery();
+      }
+
       return true;
     } else {
       throw new initError('noQueryData');
     }
   }
+
+  //protein interactions are just gene interactions for the gene associated
+  //with the given protein, but we only want to see the physical ones. So,
+  //It's the same query with a tiny bit of tweaking.
+  function prepProteinQuery() {
+    graph.query.where[0].path = strings.CONST.LOOKUP_PROTEIN;
+    //objectId searches are structured differently from
+    //lookups.
+    if(graph.query.where[0].op === "=") {
+      graph.query.where[0].path += ".id";
+    }
+    //add a constraint to restrict to physical interactions,
+    //but only if it's not there already.
+    if(graph.query.where.length <= 1) {
+      graph.query.where.push(proteinConstraint);
+    }
+  }
+
   function init(){
     if(validateParent()) {
       //add the elements to the page
