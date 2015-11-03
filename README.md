@@ -73,20 +73,20 @@ Both tasks will compile your less (make sure to prefix partials with `_`, e.g. `
 
 ### Query notes
 
-To get this working with objectId arguments, initialise with `"op" : "="` om the queryOn object, e.g.
+To get this working with objectId arguments, initialise with `"op" : "="` on the queryOn object, e.g.
 
-<div id="myAwesomeElement"></div>
-<script>
-cymine({
-  parentElem : document.getElementById('myAwesomeElement'),
-  service : {
-    root : "http://beta.flymine.org/beta/service/", //mandatory
-    token : "" //optional
-    },
-  queryOn : {
-    "value" : 1449024,
-    "op" : "="
-  },
-  nodeType : "Gene"
-});
-</script>
+    <div id="myAwesomeElement"></div>
+    <script>
+    cymine({
+      parentElem : document.getElementById('myAwesomeElement'),
+      service : {
+        root : "http://beta.flymine.org/beta/service/", //mandatory
+        token : "" //optional
+        },
+      queryOn : {
+        "value" : 1449024,
+        "op" : "="
+      },
+      nodeType : "Gene"
+    });
+    </script>
