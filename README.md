@@ -23,6 +23,7 @@ You'll need to pass an object that contains the following properties:
 * `service`: An object, that at a minimum contains a `root` property pointing to [Intermine Service](http://iodocs.labs.intermine.org/), e.g `service : {root : 'http://www.flymine.org/query/service/'}`. Optionally can take a `token` property as well.
 * `queryOn`: This is a **term to query on** (e.g. a gene name or 'primaryIdentifier'). This is in the format of an object, such as `{"value" : "FBgn0034249"}` or `{"value" : "PPARG", "extraValue" : "H. sapiens"}`.
 * `parentElem`: An **element to insert the graph into**, e.g. `document.getElementById('myAwesomeElement');`. If this isn't specified, the graph will try to find an element with the ID `cymine`.
+* `nodeType`: Optional, will default to gene. Mandatory for Protein queries. Values are `Gene` or `Protein`.
 
 #### Gluing them all together, the body of your HTML page might look something like this:
 
@@ -36,7 +37,8 @@ You'll need to pass an object that contains the following properties:
         },
       queryOn : {
         "value" : "FBgn0034249"
-      }
+      },
+      nodeType : "Gene"
     });
     </script>
 
@@ -68,3 +70,23 @@ Both tasks will compile your less (make sure to prefix partials with `_`, e.g. `
 #### Testing
 
   Run `$ mocha` (to run the suite once) or `$ mocha --watch` (to re-test when you make changes).
+
+### Query notes
+
+To get this working with objectId arguments, initialise with `"op" : "="` om the queryOn object, e.g.
+
+<div id="myAwesomeElement"></div>
+<script>
+cymine({
+  parentElem : document.getElementById('myAwesomeElement'),
+  service : {
+    root : "http://beta.flymine.org/beta/service/", //mandatory
+    token : "" //optional
+    },
+  queryOn : {
+    "value" : 1449024,
+    "op" : "="
+  },
+  nodeType : "Gene"
+});
+</script>
