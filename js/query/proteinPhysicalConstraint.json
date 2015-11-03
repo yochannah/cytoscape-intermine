@@ -1,0 +1,6 @@
+{
+  "path": "interactions.details.type",
+  "op": "=",
+  "value": "physical",
+  "code": "B"
+}
