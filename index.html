@@ -16,6 +16,14 @@
     <!-- This form is for demo purposes only, and not required to run the script -->
     <form id="searchForm" name="searchForm">
         <input type="text" id="searchOn" name="searchOn" placeholder="Search for another gene"></input>
+        <div class="nodeType">
+          <div>
+            <label><input type="radio" name="proteinOrGene" value="Protein"> Protein</label>
+          </div>
+          <div>
+            <label><input type="radio" name="proteinOrGene" value="Gene" checked="checked"> Gene</label>
+          </div>
+        </div>
         <button>Search!</button>
     </form>
     <!-- End demo form -->
@@ -34,7 +42,8 @@
     queryOn : {
       "value": "lolal",
       "extraValue": "D. melanogaster"
-    }
+    },
+    nodeType : "Gene" //valid options are Gene or Protein. Optional, will default to Gene.
   });
 
   //EVERYTHING BELOW THIS LINE IS COMPLETELY OPTIONAL. IT JUST CREATES THE
@@ -45,6 +54,7 @@
     var searchOn = e.target.searchOn.value;
     //remove any crazy stuff from the input before we send it
     searchOn = searchOn.replace(/[^\w_]/g,"");
+    nodeType = search.proteinOrGene.value;
 
     cymine({
       parentElem : document.getElementById('myAwesomeElement'),
@@ -52,15 +62,18 @@
       queryOn : {
         "value": searchOn,
         "extraValue": "D. melanogaster"
-      }
+      },
+      nodeType: nodeType
     });
   });
   </script>
 
   <style>
     #searchForm {
-      text-align:center;
+      text-align:left;
       padding:1em;
+      display:flex;
+      justify-content:center;
     }
     #searchOn, #searchForm button {
       border-radius:4px;
@@ -72,6 +85,11 @@
       min-height:470px;
       box-sizing:border-box;
     }
+
+    .nodeType {
+      padding:0em 1em;
+    }
+
 
   </style>
 
