@@ -63,7 +63,7 @@ Cymine = function(records) {
         if((typeof theProp === "object")) {
           theProp = collapseArrays(theProp);
         }
-        ret[theProp.name] = (theProp.length === 1) ? theProp[0] : theProp;
+        ret[theProp.name || theProp.class] = (theProp.length === 1) ? theProp[0] : theProp;
       } else {
         if(Array.isArray(theProp)) {
           ret[i] = (theProp.length === 1) ? theProp[0] : theProp;

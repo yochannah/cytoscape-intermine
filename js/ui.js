@@ -63,7 +63,6 @@ ui = function(graph) {
         dtTemp, ddTemp;
       for (var prop in obj) {
         if (metaFields.indexOf(prop) < 0) { //users never want to see objectId.
-          if(prop === "undefined") {console.log(obj, prop, obj[prop])}
           dtTemp = document.createElement("dt");
           dtTemp.appendChild(document.createTextNode(prop));
           ddTemp = document.createElement("dd");
