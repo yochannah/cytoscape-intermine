@@ -37,11 +37,11 @@
     parentElem : document.getElementById('myAwesomeElement'),
     //required. can't query without this! :) must be a valid
     //intermine API URL
-    service : {root : 'http://beta.flymine.org/beta/service/'},
+    service : {root : 'http://yeastmine-test.yeastgenome.org/yeastmine-dev/service/'},
     //required. needs value : "whatever", optionally extraValue : "whatever".
     queryOn : {
-      "value": "lolal",
-      "extraValue": "D. melanogaster"
+      "value": "SKO1",
+      "extraValue": "S. cerevisiae"
     },
     nodeType : "Gene" //valid options are Gene or Protein. Optional, will default to Gene.
   });
@@ -58,10 +58,10 @@
 
     cymine({
       parentElem : document.getElementById('myAwesomeElement'),
-      service : {root : 'http://beta.flymine.org/beta/service/'},
+      service : {root : 'http://yeastmine-test.yeastgenome.org/yeastmine-dev/service/'},
       queryOn : {
         "value": searchOn,
-        "extraValue": "D. melanogaster"
+        "extraValue": "S. cerevisiae"
       },
       nodeType: nodeType
     });
