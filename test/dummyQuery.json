@@ -1379,87 +1379,57 @@
     }],
     "objectId": 159209606,
     "class": "Interaction"
-  }, {
-    "participant2": {
-      "primaryIdentifier": "ENSG00000123240",
-      "symbol": "OPTN",
-      "objectId": 124330943,
-      "class": "Gene"
-    },
+  },{
     "details": [{
-      "relationshipType": {
-        "objectId": 150000655,
-        "name": "physical association",
-        "class": "InteractionTerm"
-      },
-      "objectId": 159209611,
-      "name": "pparg-optn",
-      "experiment": {
-        "objectId": 159207803,
-        "class": "InteractionExperiment",
-        "interactionDetectionMethods": [{
-          "objectId": 150000055,
-          "name": "display technology",
-          "class": "InteractionTerm"
-        }],
-        "publication": {
-          "objectId": 131020511,
-          "class": "Publication",
-          "pubMedId": "20195357"
-        }
-      },
+      "objectId": 2821663,
+      "name": null,
       "class": "InteractionDetail",
-      "role2": "prey",
+      "role2": null,
       "dataSets": [{
-        "objectId": 159000000,
-        "name": "IntAct interactions data set",
+        "objectId": 1747584,
+        "name": "BioGRID interaction data set",
+        "class": "DataSet"
+      }, {
+        "objectId": 1000002,
+        "name": "SGD data set",
         "class": "DataSet"
       }],
-      "role1": "bait",
-      "type": "physical"
+      "role1": "Hit",
+      "type": "physical interactions"
     }],
-    "objectId": 159209610,
-    "class": "Interaction"
-  }, {
+    "objectId": 2821664,
+    "class": "Interaction",
     "participant2": {
-      "primaryIdentifier": "ENSG00000096384",
-      "symbol": "HSP90AB1",
-      "objectId": 124512276,
-      "class": "Gene"
-    },
+      "primaryIdentifier": "S000004103",
+      "symbol": "HOG1",
+      "objectId": 1011301,
+      "class": "ORF"
+    }
+  }, {
     "details": [{
-      "relationshipType": {
-        "objectId": 150000655,
-        "name": "physical association",
-        "class": "InteractionTerm"
-      },
-      "objectId": 159209613,
-      "name": "pparg-hsp90ab1",
-      "experiment": {
-        "objectId": 159207803,
-        "class": "InteractionExperiment",
-        "interactionDetectionMethods": [{
-          "objectId": 150000055,
-          "name": "display technology",
-          "class": "InteractionTerm"
-        }],
-        "publication": {
-          "objectId": 131020511,
-          "class": "Publication",
-          "pubMedId": "20195357"
-        }
-      },
+      "objectId": 2821665,
+      "name": null,
       "class": "InteractionDetail",
-      "role2": "prey",
+      "role2": null,
       "dataSets": [{
-        "objectId": 159000000,
-        "name": "IntAct interactions data set",
+        "objectId": 1747584,
+        "name": "BioGRID interaction data set",
+        "class": "DataSet"
+      }, {
+        "objectId": 1000002,
+        "name": "SGD data set",
         "class": "DataSet"
       }],
-      "role1": "bait",
-      "type": "physical"
+      "role1": "Hit",
+      "type": "physical interactions"
     }],
-    "objectId": 159209612,
-    "class": "Interaction"
+    "objectId": 2821666,
+    "class": "Interaction",
+    "participant2": {
+      "primaryIdentifier": "S000004103",
+      "symbol": "HOG1",
+      "objectId": 1011301,
+      "class": "ORF"
+    }
   }]
 }]

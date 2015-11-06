@@ -8,7 +8,10 @@ Cymine = function(records) {
     };
 
     for (var i in records) {
-      var thisNode, row = records[i];
+      var thisNode,
+      row = records[i],
+      newEdges;
+
       thisNode = recordToNode(row);
       if(row.interactions) {
         //recursively make the interactions into nodes,
@@ -17,11 +20,16 @@ Cymine = function(records) {
       } else {
         //if it doesn't have an interaction list, it probably *is* an interaction
         //and thus needs to be an edge
+        newEdges = interactionToEdges(parentNode, thisNode);
+        _.each(newEdges, function(k,v) {
+//          console.log('k', k, 'v', v);
+        });
         d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
+
       }
       d.nodes.push(thisNode);
     }
-
+    console.log(d.edges);
     return d;
   }
   var recordToNode = function (obj) {
@@ -108,10 +116,11 @@ Cymine = function(records) {
     var interactions = node2.data.interactionTypes,
     ret = [];
     for(var i = 0; i < interactions.length; i++) {
+    //  console.log(node2.data);
       ret.push({
-        id : node2.data["interaction details"].objectId,
         classes : interactions[i],
         data : {
+          id : getInteractionId(node2, interactions[i]) + "",
           title : "Interaction between " + node.data.label + " and " + node2.data.label,
           source : node.data.id,
           target : node2.data.id,
@@ -120,8 +129,11 @@ Cymine = function(records) {
       });
     }
     return ret;
-  };
+  }
   return toNodesAndEdges(records);
+},
+getInteractionId = function(node, type){
+  return node.data.label + "_" + type
 };
 
 module.exports = Cymine;
