@@ -15,15 +15,15 @@
   <body>
     <!-- This form is for demo purposes only, and not required to run the script -->
     <form id="searchForm" name="searchForm">
-        <input type="text" id="searchOn" name="searchOn" placeholder="Search for another gene"></input>
-        <div class="nodeType">
+        <input type="text" id="searchOn" name="searchOn" placeholder="Search for a gene / protein"></input>
+        <!--div class="nodeType">
           <div>
             <label><input type="radio" name="proteinOrGene" value="Protein"> Protein</label>
           </div>
           <div>
             <label><input type="radio" name="proteinOrGene" value="Gene" checked="checked"> Gene</label>
           </div>
-        </div>
+        </div-->
         <button>Search!</button>
     </form>
     <!-- End demo form -->
@@ -63,7 +63,7 @@
         "value": searchOn,
         "extraValue": "S. cerevisiae"
       },
-      nodeType: nodeType
+      nodeType: "Gene"
     });
   });
   </script>
