@@ -5,34 +5,38 @@ Cymine = function(records) {
     var d = {
       nodes : [],
       edges : []
-    };
+    }, selfRelationship;
 
     for (var i in records) {
       var thisNode,
       row = records[i],
+      selfRelationship = isSelfRelationship(parentNode, row),
       newEdges;
 
-      thisNode = recordToNode(row);
-      if(row.interactions) {
-        //recursively make the interactions into nodes,
-        //because node entities are nested at two levels.
-        d = _.extend(d, toNodesAndEdges(row.interactions, thisNode));
-      } else {
-        //if it doesn't have an interaction list, it probably *is* an interaction
-        //and thus needs to be an edge
-        newEdges = interactionToEdges(parentNode, thisNode);
-        _.each(newEdges, function(k,v) {
-//          console.log('k', k, 'v', v);
-        });
-        d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
+        thisNode = recordToNode(row);
+        if(row.interactions) {
+          //recursively make the interactions into nodes,
+          //because node entities are nested at two levels.
+          d = _.extend(d, toNodesAndEdges(row.interactions, thisNode));
+        } else {
+          //if it doesn't have an interaction list, it probably *is* an interaction
+          //and thus needs to be an edge
+          d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
 
-      }
-      d.nodes.push(thisNode);
+        }
+        //don't over-write the master node if it relates to itself.
+        //because it makes it really hard to filter genetic/physical
+        if(!selfRelationship) {
+          d.nodes.push(thisNode);
+        }
     }
     console.log(d.edges);
     return d;
   }
-  var recordToNode = function (obj) {
+  var isSelfRelationship = function(node1, node2){
+    return (node1 &&(node2.participant2.symbol === node1.data.symbol));
+  },
+  recordToNode = function (obj) {
     var ret, data = {}, interactions;
     ret = obj.participant2 ? obj.participant2 : obj;
     interactions = getInteractions(obj);
