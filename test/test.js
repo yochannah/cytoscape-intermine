@@ -37,6 +37,23 @@ describe('Node & Edge processing', function(){
     });
   });
 
+  describe('Master Node', function(){ //e.g. the node for Mad on the Mad gene report page.
+    //in some scenarios the master node was overwritten and it lost the 'master' class
+    //which threw everything off when showing/hiding the physical and genetic interactions
+
+    var masterNodes = [];
+    for(var i in graph.nodes){
+      //becomes falsey if there is a null value
+      if(graph.nodes[i].classes == ["master"]) {
+        masterNodes.push(graph.nodes[i]);
+      }
+    }
+    
+    it('should always be present, and only one master ever present', function(){
+      assert.equal(masterNodes.length, 1);
+    });
+  });
+
   describe('Edges', function() {
     it('should give every edge an interaction property',function() {
       var hasTypes = true;
