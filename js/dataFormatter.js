@@ -30,7 +30,6 @@ Cymine = function(records) {
           d.nodes.push(thisNode);
         }
     }
-    console.log(d.edges);
     return d;
   }
   var isSelfRelationship = function(node1, node2){
