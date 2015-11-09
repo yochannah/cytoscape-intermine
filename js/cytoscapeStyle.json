@@ -22,12 +22,12 @@
     "width": "2px"
   }
 }, {
-  "selector": "edge[interactionType@=\"genetic\"]",
+  "selector": "edge[interactionType@^=\"genetic\"]",
   "style": {
     "line-color": "#2c79be"
   }
 }, {
-  "selector": "edge[interactionType@=\"physical\"]",
+  "selector": "edge[interactionType@^=\"physical\"]",
   "style": {
     "line-color": "#c00"
   }

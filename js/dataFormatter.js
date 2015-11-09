@@ -5,26 +5,37 @@ Cymine = function(records) {
     var d = {
       nodes : [],
       edges : []
-    };
+    }, selfRelationship;
 
     for (var i in records) {
-      var thisNode, row = records[i];
-      thisNode = recordToNode(row);
-      if(row.interactions) {
-        //recursively make the interactions into nodes,
-        //because node entities are nested at two levels.
-        d = _.extend(d, toNodesAndEdges(row.interactions, thisNode));
-      } else {
-        //if it doesn't have an interaction list, it probably *is* an interaction
-        //and thus needs to be an edge
-        d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
-      }
-      d.nodes.push(thisNode);
-    }
+      var thisNode,
+      row = records[i],
+      selfRelationship = isSelfRelationship(parentNode, row),
+      newEdges;
 
+        thisNode = recordToNode(row);
+        if(row.interactions) {
+          //recursively make the interactions into nodes,
+          //because node entities are nested at two levels.
+          d = _.extend(d, toNodesAndEdges(row.interactions, thisNode));
+        } else {
+          //if it doesn't have an interaction list, it probably *is* an interaction
+          //and thus needs to be an edge
+          d.edges = d.edges.concat(interactionToEdges(parentNode, thisNode));
+
+        }
+        //don't over-write the master node if it relates to itself.
+        //because it makes it really hard to filter genetic/physical
+        if(!selfRelationship) {
+          d.nodes.push(thisNode);
+        }
+    }
     return d;
   }
-  var recordToNode = function (obj) {
+  var isSelfRelationship = function(node1, node2){
+    return (node1 &&(node2.participant2.symbol === node1.data.symbol));
+  },
+  recordToNode = function (obj) {
     var ret, data = {}, interactions;
     ret = obj.participant2 ? obj.participant2 : obj;
     interactions = getInteractions(obj);
@@ -63,7 +74,7 @@ Cymine = function(records) {
         if((typeof theProp === "object")) {
           theProp = collapseArrays(theProp);
         }
-        ret[theProp.name] = (theProp.length === 1) ? theProp[0] : theProp;
+        ret[theProp.name || theProp.class] = (theProp.length === 1) ? theProp[0] : theProp;
       } else {
         if(Array.isArray(theProp)) {
           ret[i] = (theProp.length === 1) ? theProp[0] : theProp;
@@ -108,10 +119,11 @@ Cymine = function(records) {
     var interactions = node2.data.interactionTypes,
     ret = [];
     for(var i = 0; i < interactions.length; i++) {
+    //  console.log(node2.data);
       ret.push({
-        id : node2.data["interaction details"].objectId,
         classes : interactions[i],
         data : {
+          id : getInteractionId(node2, interactions[i]) + "",
           title : "Interaction between " + node.data.label + " and " + node2.data.label,
           source : node.data.id,
           target : node2.data.id,
@@ -120,8 +132,11 @@ Cymine = function(records) {
       });
     }
     return ret;
-  };
+  }
   return toNodesAndEdges(records);
+},
+getInteractionId = function(node, type){
+  return node.data.label + "_" + type
 };
 
 module.exports = Cymine;
