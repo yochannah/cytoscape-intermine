@@ -40,7 +40,7 @@ var gulp        = require('gulp'),
           //log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('bundle.js'))
-//    .pipe(streamify(uglify({mangle:false})))
+//        .pipe(streamify(uglify({mangle:false})))
         .pipe(streamify(uglify()))
         .pipe(gulp.dest('./dist'));
     }
