@@ -1,6 +1,6 @@
 var cymineDataFormatter = require('./dataFormatter'),
 imjs                    = require('imjs'),
-cytoscape               = require('cytoscape'),
+cytoscape               = require('../bower_components/cytoscape/dist/cytoscape.js'),
 _                       = require('underscore'),
 strings                 = require('./strings'),
 query                   = require('./query/query'),
