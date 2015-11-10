@@ -21,7 +21,7 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",
-    "mocha": "^2.2.5",
+    "mocha": "^2.3.3",
     "streamify": "^0.2.4",
     "stringify": "^3.1.0",
     "uglify": "^0.1.5",
