@@ -69,7 +69,7 @@ ui = function(graph) {
           util.addClass(ddTemp, "cym-" + prop);
 
           if (typeof obj[prop] === "object") {
-            if (hasTemplate(obj[prop].class)) {
+            if (obj[prop] && hasTemplate(obj[prop].class)) {
               ddTemp.appendChild(expandToTemplate(obj[prop], obj));
             } else {
               util.addClass(ddTemp, "child");
