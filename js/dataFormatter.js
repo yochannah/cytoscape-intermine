@@ -113,13 +113,13 @@ Cymine = function(records) {
   nameNode = function(obj) {
     if (obj.participant2 && obj.participant2.symbol) {
       return obj.participant2.symbol;
+    } else if (obj.participant2 && obj.participant2.primaryIdentifier) {
+      return obj.participant2.primaryIdentifier;
     } else if (obj.symbol) {
       return obj.symbol;
     } else if (obj.details) {
       return obj.details[0].name;
     } else if (obj.primaryIdentifier) {
-      return obj.primaryIdentifier;
-    } else if (obj.participant2 && obj.participant2.primaryIdentifier) {
       return obj.primaryIdentifier;
     } else {
       return "NAME MISSING";
