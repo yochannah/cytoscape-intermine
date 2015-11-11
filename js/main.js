@@ -1,6 +1,6 @@
 var cymineDataFormatter = require('./dataFormatter'),
 imjs                    = require('imjs'),
-cytoscape               = require('cytoscape'),
+cytoscape               = require('../bower_components/cytoscape/dist/cytoscape.js'),
 _                       = require('underscore'),
 strings                 = require('./strings'),
 query                   = require('./query/query'),
@@ -113,10 +113,9 @@ function Cymine(args) {
             //this tells the user the response was empty for this gene.
             //No interactions data available.
             ui.attachResults(strings.user.noResults);
-            return Promise.reject();
           }
         }).catch(function(error){
-          console.error("Possible CORS error?", error);
+          console.error("Communication error: ", error);
           ui.attachResults(strings.user.pleaseClearCache);
           return Promise.reject();
         });

@@ -37,11 +37,12 @@
     parentElem : document.getElementById('myAwesomeElement'),
     //required. can't query without this! :) must be a valid
     //intermine API URL
-    service : {root : 'http://www.flymine.org/query/service/'},
+    service : {root : 'http://intermine.modencode.org/thaleminebuild/service/'},
     //required. needs value : "whatever", optionally extraValue : "whatever".
     queryOn : {
-      "value": "lolal",
-      "extraValue": "D. melanogaster"
+      "value" : 1008915,
+      "path": "id",
+      "op": "="
     },
     nodeType : "Gene" //valid options are Gene or Protein. Optional, will default to Gene.
   });
@@ -58,10 +59,10 @@
 
     cymine({
       parentElem : document.getElementById('myAwesomeElement'),
-      service : {root : 'http://www.flymine.org/query/service/'},
+      service : {root : 'http://intermine.modencode.org/thaleminebuild/service/'},
       queryOn : {
         "value": searchOn,
-        "extraValue": "D. melanogaster"
+        "extraValue": "A. thaliana"
       },
       nodeType: nodeType
     });
