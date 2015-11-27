@@ -59,6 +59,10 @@ require([
 
     });
 
+    function chooseInteractor(params){
+      return params.id || params.ids[0];
+    };
+
     function initGraph (params) {
       var serviceArgs = params.service;
       serviceArgs.errorHandler = function(error){
@@ -69,13 +73,13 @@ require([
         parentElem : document.getElementById('staircaseCymine'),
         service : params.service,
         queryOn : {
-          value: params.id,
+          value: chooseInteractor(params),
           op : "=",
           path : "id"
         }
       });
     }
-
+ 
     function wants (message) {
       chan.notify({
         method: 'wants',
