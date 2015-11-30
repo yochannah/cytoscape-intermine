@@ -7,7 +7,7 @@ require.config({
         jschannel: {
           exports: 'Channel'
         }
-    }
+    } 
 });
 
 require([
@@ -56,7 +56,7 @@ require([
       link.href = params.stylesheet;
 
       head.appendChild(link);
-
+      trans.complete('ok');
     });
 
     function chooseInteractor(params){
@@ -77,13 +77,6 @@ require([
           op : "=",
           path : "id"
         }
-      });
-    }
- 
-    function wants (message) {
-      chan.notify({
-        method: 'wants',
-        params: message
       });
     }
 
