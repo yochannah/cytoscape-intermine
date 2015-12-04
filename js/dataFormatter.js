@@ -14,7 +14,6 @@ Cymine = function(records) {
       newEdges;
 
         thisNode = recordToNode(row);
-        console.log(thisNode);
         if(row.interactions) {
           //recursively make the interactions into nodes,
           //because node entities are nested at two levels.
@@ -129,7 +128,6 @@ Cymine = function(records) {
     var interactions = node2.data.interactionTypes,
     ret = [];
     for(var i = 0; i < interactions.length; i++) {
-    //  console.log(node2.data);
       ret.push({
         classes : interactions[i],
         data : {

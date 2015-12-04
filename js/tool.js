@@ -7,7 +7,7 @@ require.config({
         jschannel: {
           exports: 'Channel'
         }
-    } 
+    }
 });
 
 require([
@@ -69,7 +69,7 @@ require([
         console.error('Communication error!\n', error);
       };
       console.log(params);
-      cymine({
+      var c = cymine({
         parentElem : document.getElementById('staircaseCymine'),
         service : params.service,
         queryOn : {
@@ -77,13 +77,51 @@ require([
           op : "=",
           path : "id"
         }
+      }).then(function(response){
+        //emit data for tools later on.
+        var dataOut = prepareDataOut(response.rawData),
+        path = params.type || params.item.type;
+        reportItems(params.service, path, path, dataOut)
       });
     }
 
-    function nextStep (data) {
-      chan.notify({
-        method: 'next-step',
-        params: data
-      });
+    function prepareDataOut(data){
+      var out = [], participant2;
+      data = data[0];
+
+      //add master node
+      out.push(data.objectId);
+
+      //add child interactor nodes
+      for (var i = 0; i < data.interactions.length; i++) {
+        participant2 = data.interactions[i].participant2;
+        out.push(participant2.objectId);
+      }
+      return out;
     }
+
+function reportItems(service, path, type, ids, categories, what) {
+  if (!categories) {
+    categories = ['selected'];
+  }
+  if (!what) {
+    what = 'ids';
+  }
+  chan.notify({
+    method: 'has',
+    params: {
+      what: what,
+      data: {
+        key: (categories.join(',') + '-' + path), // String - any identifier.
+        type: type, // String - eg: "Protein"
+        categories: categories, // Array[string] - eg: ['selected']
+        ids: ids, // Array[Int] - eg: [123, 456, 789]
+        service: {
+          root: service.root
+        }
+      }
+    }
+  });
+}
+
 });
