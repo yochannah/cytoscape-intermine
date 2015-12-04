@@ -97,7 +97,7 @@ require([
         participant2 = data.interactions[i].participant2;
         out.push(participant2.objectId);
       }
-      return out;
+      return out; 
     }
 
 function reportItems(service, path, type, ids, categories, what) {

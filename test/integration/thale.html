@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cytoscape Intermine</title>
+
+
+    <script src="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/imtables.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/main.sandboxed.css">
+    <link href="../../dist/style.css" rel="stylesheet" type="text/css">
+    <script src="../../dist/bundle.js"></script>
+  </head>
+  <body>
+
+    <div id="myAwesomeElementThale"></div> <!--this is where the graph will display. -->
+
+  <script>
+  cymine({
+    //optional. Will default to '#cymine' if not specified:
+    parentElem : document.getElementById('myAwesomeElementThale'),
+    //required. can't query without this! :) must be a valid
+    //intermine API URL
+    service : {root : 'http://intermine.modencode.org/thaleminebuild/service/'},
+    //required. needs value : "whatever", optionally extraValue : "whatever".
+    queryOn : {
+      "value" : 1008915,
+      "path": "id",
+      "op": "="
+    },
+    nodeType : "Gene" //valid options are Gene or Protein. Optional, will default to Gene.
+  });
+</script>
+  <style>
+
+    #myAwesomeElement {
+      min-height:470px;
+      box-sizing:border-box;
+    }
+
+    .nodeType {
+      padding:0em 1em;
+    }
+
+
+  </style>
+
+</body>
+</html>
