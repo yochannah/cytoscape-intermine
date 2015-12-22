@@ -165,6 +165,7 @@ ui = function(graph) {
       graph.targetElem = graph.parentElem.querySelector('.cy');
       //make the graph as wide as can be. can't be auto as cytoscape needs a width
       graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
+      console.log("%cgraph.compact","color:seagreen;font-weight:bold;",graph.compact);
     },
     initGraph = function() {
 
@@ -197,6 +198,9 @@ ui = function(graph) {
 
     },
     noResults = function(message) {
+      if(graph.compact) {
+        util.addClass(graph.parentElem, 'compact');
+      }
       graph.statusBar.className = "status no-results";
       graph.statusBar.innerHTML = message;
     };

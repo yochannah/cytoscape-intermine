@@ -1,207 +1,191 @@
 @import '_loader';
 @import '_clearfix';
 @import '_secondaryControl';
-
-@cySize : 350px;
-@borderRadius : 4px;
-
-@primaryColor : #eee;                   //grey
-@primaryColorDark : darken(@primaryColor,15%); //Darker grey
-@secondaryColor : #2c79be;              //blue
-@secondaryColorDark : darken(@secondaryColor, 15%);              //blue
-@highlightColor : #ec971f;              //yellow 
-
+@cySize: 350px;
+@borderRadius: 4px;
+@primaryColor: #eee; //grey
+@primaryColorDark: darken(@primaryColor,15%); //Darker grey
+@secondaryColor: #2c79be; //blue
+@secondaryColorDark: darken(@secondaryColor, 15%); //blue
+@highlightColor: #ec971f; //yellow
 @deemphasisedTextColor: #666;
-
-@geneticColor : #225f95;                //blue
-@physicalColor : #c00;                  //red
-@bothPhysicalAndGeneticColor : #77304B; //purple
-
+@geneticColor: #225f95; //blue
+@physicalColor: #c00; //red
+@bothPhysicalAndGeneticColor: #77304B; //purple
 body {
-  font-family : arial, sans-serif;
+  font-family: arial, sans-serif;
 }
-
 .cymine {
-  display:flex;
-  background-color:#f0f0f0;
-  flex-wrap : wrap;
-  border:solid 1px @primaryColor;
-
+  display: flex;
+  background-color: #f0f0f0;
+  flex-wrap: wrap;
+  border: solid 1px @primaryColor;
   .module {
-    border:solid 1px @primaryColor;
-    background-color:white;
-    min-width:@cySize;
-    min-height:@cySize;
-    flex-direction:row;
-    margin:1em;
-    border-radius:4px;
-    flex-grow:1;
-    flex-direction:column;
-    justify-content : center;
+    border: solid 1px @primaryColor;
+    background-color: white;
+    min-width: @cySize;
+    min-height: @cySize;
+    flex-direction: row;
+    margin: 1em;
+    border-radius: 4px;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    box-sizing:border-box;
+    box-sizing: border-box;
   }
-
-  .graph, .nodeDetails {
+  .graph,
+  .nodeDetails {
     .module;
-    font-size:0.9em;
-
+    font-size: 0.9em;
   }
-
-  .tableView{
-    width:100%;
+  .tableView {
+    width: 100%;
     &.disabled {
-      display:none;
+      display: none;
     }
   }
-
   .nodeTitle {
-    margin:0.2em;
+    margin: 0.2em;
   }
 
   //without a height and a width, cytoscape doesn't display properly.
-
   .cy {
-  //  border:solid 1px seagreen; //this line is useful for debugging
-    width:@cySize;
-    height:@cySize;
-    margin:auto;
-  }
 
-  dt, dd {
-    float:left;
-    margin-left:0.5em;
-    margin-top:0.1em;
-    text-transform:capitalize;
+    //  border:solid 1px seagreen; //this line is useful for debugging
+    width: @cySize;
+    height: @cySize;
+    margin: auto;
+  }
+  dt,
+  dd {
+    float: left;
+    margin-left: 0.5em;
+    margin-top: 0.1em;
+    text-transform: capitalize;
     &.details {
-      width:97%;
-      margin-left:0;
+      width: 97%;
+      margin-left: 0;
     }
   }
-
   dl {
-    &.intro {border:0;}
+    &.intro {
+      border: 0;
+    }
     .cf;
-    margin:0;
-    clear:left;
-    width:100%;
-    float:left;
+    margin: 0;
+    clear: left;
+    width: 100%;
+    float: left;
   }
-
   dt {
     &:after {
       content: ": ";
-      text-align:center;
+      text-align: center;
     }
     &.intro {
-      text-transform:none;
-      &:after {content: ""}
-      box-sizing:border-box;
-      font-weight:normal;
-      color:@deemphasisedTextColor;
-      line-height:@cySize;
-      text-align:center;
-      width:100%;
+      text-transform: none;
+      &:after {
+        content: "";
+      }
+      box-sizing: border-box;
+      font-weight: normal;
+      color: @deemphasisedTextColor;
+      line-height: @cySize;
+      text-align: center;
+      width: 100%;
     }
-    font-weight:bold;
-    float:left;
-    clear:left
-    }
+    font-weight: bold;
+    float: left;
+    clear: left;
+  }
+  .dataSets {
+    padding-left: 0.4em;
+  }
 
-    .dataSets {
-      padding-left:0.4em;
-    }
-
-    //styles interaction details each in their own box
+  //styles interaction details each in their own box
   .details > dl > dt {
     @borderStyle: solid 1px @primaryColorDark;
-    background-color:@primaryColor;
-    width:100%;
+    background-color: @primaryColor;
+    width: 100%;
     padding: 0.3em;
-    box-sizing:border-box;
-    border-top:@borderStyle;
-    border-left:@borderStyle;
-    border-right:@borderStyle;
-    float:left;
-    margin-bottom:0;
+    box-sizing: border-box;
+    border-top: @borderStyle;
+    border-left: @borderStyle;
+    border-right: @borderStyle;
+    float: left;
+    margin-bottom: 0;
     border-top-left-radius: @borderRadius;
     border-top-right-radius: @borderRadius;
     &+dd {
       &.child > dl {
         .child {
-          border-left:solid 3px #ddd;
+          border-left: solid 3px #ddd;
         }
       }
-      width:100%;
-      box-sizing:border-box;
-      margin-top:0;
-      clear:both;
-      border-bottom:@borderStyle;
-      border-left:@borderStyle;
-      border-right:@borderStyle;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 0;
+      clear: both;
+      border-bottom: @borderStyle;
+      border-left: @borderStyle;
+      border-right: @borderStyle;
       border-bottom-left-radius: @borderRadius;
       border-bottom-right-radius: @borderRadius;
-      padding-bottom:0.2em;
+      padding-bottom: 0.2em;
     }
   }
-
-  .roles, dd.child {
-    clear:left;
+  .roles,
+  dd.child {
+    clear: left;
   }
-
   .status {
-    text-align:center;
+    text-align: center;
     &.no-results {
       .module;
-      background-color:#fff;
+      background-color: #fff;
       line-height: @cySize;
     }
   }
-
   .controls {
-    padding : 0;
-    margin:auto;
-    .interactionFilter {text-align:center;}
-
+    padding: 0;
+    margin: auto;
+    .interactionFilter {
+      text-align: center;
+    }
     button {
-      background-color:@primaryColor;
-      border:0;
-      border-bottom:solid 3px #fff;
-      padding:0.5em 1.5em;
+      background-color: @primaryColor;
+      border: 0;
+      border-bottom: solid 3px #fff;
+      padding: 0.5em 1.5em;
       color: #000;
-      margin:0;
+      margin: 0;
       transition: border 1s ease;
       position: relative;
-
       &:before {
-        content:"";
-        width:15px;
-        height:15px;
-        margin-right:0.5em;
-        display:block;
-        float:left;
-        opacity:0.4;
-        border-radius:30px;
-        border:solid 2px @primaryColor;
+        content: "";
+        width: 15px;
+        height: 15px;
+        margin-right: 0.5em;
+        display: block;
+        float: left;
+        opacity: 0.4;
+        border-radius: 30px;
+        border: solid 2px @primaryColor;
       }
-
       &.selected:before {
-        opacity:1;
+        opacity: 1;
       }
-
       &.genetic:before {
         border-color: @geneticColor;
       }
-
       &.default:before {
-        border-color:@bothPhysicalAndGeneticColor;
+        border-color: @bothPhysicalAndGeneticColor;
       }
-
       &.physical:before {
-        border-color:@physicalColor;
+        border-color: @physicalColor;
       }
-
-      &:after{
+      &:after {
         display: block;
         position: absolute;
         left: 0;
@@ -212,18 +196,15 @@ body {
         content: "";
         transition: width 0.2s;
       }
-
       &:hover {
         &:after {
           width: 100%;
         }
       }
-
       &.selected {
         transition: border 1s ease;
-        border-bottom:solid 3px @secondaryColor;
+        border-bottom: solid 3px @secondaryColor;
       }
-
       &:first-child {
         -webkit-border-top-left-radius: 4px;
         -webkit-border-bottom-left-radius: 4px;
@@ -232,10 +213,10 @@ body {
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         border-right: solid 1px darken(@primaryColor, 10%);
-        margin:0;
+        margin: 0;
       }
       &:last-child {
-        margin:0;
+        margin: 0;
         border-left: solid 1px darken(@primaryColor, 10%);
         -webkit-border-top-right-radius: 4px;
         -webkit-border-bottom-right-radius: 4px;
@@ -251,71 +232,100 @@ body {
   //whilst also animating, which isn't possible with transitions.
   //Thanks, http://stackoverflow.com/a/9334132/1542891
   @keyframes fadeIn {
-      from {
-        opacity: 0;
-        width: 0
-       }
-      to {
-        opacity: 1;
-        width:90%;
-      }
-  }
-
-  .secondaryControls {
-    border:solid 1px @primaryColor;
-    margin:0.5em 0 0 0;
-    display:flex;
-    padding:0;
-    flex-direction:row;
-    align-items:flex-start;
-  }
-
-  .reset, .showTable {
-    .secondaryControl;
-  }
-
-  .showTable {
-    text-align:center;
-    display:none;
-    &.enabled {
-      transition: flex ease-in-out 2s;
-      display:block;
+    from {
+      opacity: 0;
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      width: 90%;
     }
   }
-
+  .secondaryControls {
+    border: solid 1px @primaryColor;
+    margin: 0.5em 0 0;
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .reset,
+  .showTable {
+    .secondaryControl;
+  }
+  .showTable {
+    text-align: center;
+    display: none;
+    &.enabled {
+      transition: flex ease-in-out 2s;
+      display: block;
+    }
+  }
   .export {
     .secondaryControl;
-    text-align:right;
+    text-align: right;
     transition: all 2s hover 0.5s;
-    align-self:flex-end;
+    align-self: flex-end;
     .exportValues {
-      display:none;
-      background-color:#fff;
-      border-radius:2px;
-      button{
-        background-color:@secondaryColor;
-        color:@primaryColor;
-        border:0;
-        &:before {display:none;}
-        &:after {display:none;}
-        border-radius:@borderRadius;
+      display: none;
+      background-color: #fff;
+      border-radius: 2px;
+      button {
+        background-color: @secondaryColor;
+        color: @primaryColor;
+        border: 0;
+        &:before {
+          display: none;
+        }
+        &:after {
+          display: none;
+        }
+        border-radius: @borderRadius;
         &:hover {
-          border:0;
-          &:after {display:none;}
-          background-color:@secondaryColorDark;
+          border: 0;
+          &:after {
+            display: none;
+          }
+          background-color: @secondaryColorDark;
         }
       }
     }
     &.active {
       &:hover {
-        color:@deemphasisedTextColor;
-        background-color:transparent;
+        color: @deemphasisedTextColor;
+        background-color: transparent;
       }
-      flex-grow:2;
+      flex-grow: 2;
       transition: 1s;
       .exportValues {
-        display:inline;
+        display: inline;
         animation: fadeIn 2s;
+      }
+    }
+  }
+  &.compact {
+
+    &.cymine {
+      @compactHeight: 1.5em;
+      border:0;
+      padding:0;
+      .cy,
+      .status.no-results {
+        line-height: @compactHeight;
+        height: @compactHeight;
+        min-height: @compactHeight;
+      }
+      .graph {
+        margin:0;
+        padding:0;
+        border:0;
+        height: @compactHeight;
+        min-height: @compactHeight;
+      }
+      .controls,
+      .nodeInfo,
+      .nodeDetails {
+        display: none;
       }
     }
   }
