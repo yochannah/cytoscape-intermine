@@ -22,10 +22,7 @@ ui = function(graph) {
       },
       "InteractionDetail": {
         html: require('./../template/interaction.html'),
-        type: "_",
-        additionalFunction: function(args) {
-          return splitRoleTypes(args);
-        }
+        type: "_"
       }
     },
     display = function(node) {
@@ -70,7 +67,7 @@ ui = function(graph) {
 
           if (typeof obj[prop] === "object") {
             if (obj[prop] && hasTemplate(obj[prop].class)) {
-              ddTemp.appendChild(expandToTemplate(obj[prop], obj));
+              ddTemp.appendChild(expandToTemplate(obj[prop]));
             } else {
               util.addClass(ddTemp, "child");
               ddTemp.appendChild(expandPropertyVals(obj[prop]));
@@ -94,21 +91,6 @@ ui = function(graph) {
       temp = document.createElement('div');
       temp.innerHTML = template(myObj);
       return temp;
-    },
-
-    splitRoleTypes = function(obj) {
-      var interactionName = obj.name,
-        roleArray = [];
-      //some models have a 'null' name which throws things if we don't check first
-      if (interactionName) {
-        if (interactionName.indexOf("FlyBase:") > -1) {
-          roleArray = interactionName.split(":")[1].split('_');
-        } else {
-          roleArray = interactionName.split('-');
-        }
-      }
-      obj.roles = roleArray;
-      return obj;
     },
     insertAtStart = function(elems, parentContainer) {
       var firstOriginalElem = parentContainer.firstChild;
@@ -183,6 +165,7 @@ ui = function(graph) {
       graph.targetElem = graph.parentElem.querySelector('.cy');
       //make the graph as wide as can be. can't be auto as cytoscape needs a width
       graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
+      console.log("%cgraph.compact","color:seagreen;font-weight:bold;",graph.compact);
     },
     initGraph = function() {
 
@@ -215,6 +198,9 @@ ui = function(graph) {
 
     },
     noResults = function(message) {
+      if(graph.compact) {
+        util.addClass(graph.parentElem, 'compact');
+      }
       graph.statusBar.className = "status no-results";
       graph.statusBar.innerHTML = message;
     };
