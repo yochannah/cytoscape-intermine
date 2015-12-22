@@ -22,10 +22,7 @@ ui = function(graph) {
       },
       "InteractionDetail": {
         html: require('./../template/interaction.html'),
-        type: "_",
-        additionalFunction: function(args) {
-          return splitRoleTypes(args);
-        }
+        type: "_"
       }
     },
     display = function(node) {
@@ -70,7 +67,7 @@ ui = function(graph) {
 
           if (typeof obj[prop] === "object") {
             if (obj[prop] && hasTemplate(obj[prop].class)) {
-              ddTemp.appendChild(expandToTemplate(obj[prop], obj));
+              ddTemp.appendChild(expandToTemplate(obj[prop]));
             } else {
               util.addClass(ddTemp, "child");
               ddTemp.appendChild(expandPropertyVals(obj[prop]));
@@ -94,21 +91,6 @@ ui = function(graph) {
       temp = document.createElement('div');
       temp.innerHTML = template(myObj);
       return temp;
-    },
-
-    splitRoleTypes = function(obj) {
-      var interactionName = obj.name,
-        roleArray = [];
-      //some models have a 'null' name which throws things if we don't check first
-      if (interactionName) {
-        if (interactionName.indexOf("FlyBase:") > -1) {
-          roleArray = interactionName.split(":")[1].split('_');
-        } else {
-          roleArray = interactionName.split('-');
-        }
-      }
-      obj.roles = roleArray;
-      return obj;
     },
     insertAtStart = function(elems, parentContainer) {
       var firstOriginalElem = parentContainer.firstChild;

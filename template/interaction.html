@@ -1,22 +1,22 @@
 <dl class="child">
   <dt>Type</dt>
   <dd class="cym-type">{{=type}}</dd>
-  {{if (roles.length > 0) { }}
+  {{if (typeof roles !== "string") { }}
     <dt>Roles</dt>
     <dd class="roles">
       <dl>
-        <dt>{{=roles[0]}}</dt>
-        <dd>{{=role1}}</dd>
-        <dt>{{=roles[1]}}</dt>
-        <dd>{{=role2}}</dd>
+        {{for (role in roles) { }}
+        <dt> {{= role}}</dt>
+        <dd> {{= roles[role] }} </dd>
+        {{ } }}
       </dl>
     </dd>
   {{ } else { }}
     <dt>Role</dt> <dd> {{=role1}} </dd>
   {{ } }}
-  {{ if(dataSets.name) { }}
+  {{ if(dataSets.length == 1) { }}
     <dt>Data set</dt>
-    <dd class="dataSets child">{{=dataSets.name}}</dd>
+    <dd class="dataSets child">{{=dataSets[0].name}}</dd>
   {{ } else if (dataSets.length > 1) { }}
     <dt>Data sets</dt>
     <dd>

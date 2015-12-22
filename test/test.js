@@ -48,7 +48,7 @@ describe('Node & Edge processing', function(){
         masterNodes.push(graph.nodes[i]);
       }
     }
-    
+
     it('should always be present, and only one master ever present', function(){
       assert.equal(masterNodes.length, 1);
     });
@@ -82,9 +82,29 @@ describe('Node & Edge processing', function(){
     it('should NOT allow multiple edges between the same nodes of the same type',function() {
       assert(madPhysicalEdgesCount === 1);
     });
-    console.log("===");
   });
 });
+
+describe('Interaction Roles', function() {
+  var graph = new cymine(dummyData);
+  it('should be assigned to the correct interactors',function() {
+    var n = graph.nodes,
+    roles;
+    //find a specific interaction to double check
+    for (var i = 0; i < n.length; i++) {
+      if (n[i].data.symbol === "ATP6V1C1") {
+        //dig down to the 'roles' section
+        roles = n[i].data['interaction details']['pparg-atp6v1c1'].roles;
+      }
+    }
+    //is the correct one bait and prey?
+    assert(roles.prey === 'ATP6V1C1');
+    assert(roles.bait === 'PPARG');
+  });
+  console.log("===");
+});
+
+
 
 describe('Exporter', function(){
   describe('Creates CSV/TSV correctly', function(){
@@ -124,7 +144,7 @@ describe('Exporter', function(){
     it('should convert to encoded string for download correctly', function(){
       assert(tsvString == strings.tsvExportedString);
       assert(csvString == strings.csvExportedString);
-    })
+    });
   });
 });
 
@@ -134,6 +154,6 @@ function makeHeaders(separator){
   //todo in future: make this extensible?
   var headers = [
     "Gene > Symbol","Gene > DB identifier","Gene > Interactions > Details > Type","Gene > Interactions > Gene 2 . Symbol","Gene > Interactions > Gene 2 > DB identifier","Gene > Interactions > Details > Data Sets > Data Source > Name"
-  ]
+  ];
   return headers.join(separator);
 }
