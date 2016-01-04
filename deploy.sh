@@ -12,7 +12,7 @@ git init
 git config user.name "Travis CI"
 git config user.email "travis@fakemail.com"
 
-git remote add upstream "https://$GH_TOKEN@github.com/yochannah/cytoscape-intermine.git"
+git remote add upstream "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git"
 git fetch upstream
 git reset upstream/gh-pages
 
