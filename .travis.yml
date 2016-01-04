@@ -10,7 +10,7 @@ script:
   - mocha   #test the app
 
 after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh #Deploy to github gh-pages using the deploy.sh file
+  - test $TRAVIS_BRANCH == "master" && bash deploy.sh #Deploy to github gh-pages using the deploy.sh file
 
 env:
   global:
