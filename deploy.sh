@@ -19,5 +19,8 @@ git reset upstream/gh-pages
 touch .
 
 git add -A .
+
+git add -f node_modules/requirejs/require.js node_modules/jschannel/src/jschannel.js
+
 git commit -m "rebuild pages at ${rev}"
 git push -q upstream HEAD:gh-pages
