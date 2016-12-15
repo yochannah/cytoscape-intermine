@@ -96,8 +96,9 @@ function Cymine(args) {
         if (prepQuery() && mine) {
           //get the data from the mine
           var q = mine.records(query).then(function(response) {
-            var goodLength = ((response.length > 0) && (response.length <= maxInteractionsToShow)),
-            tooManyResults = ((response.length > maxInteractionsToShow));
+            var interactionCount = response[0].interactions.length,
+            goodLength = ((response.length > 0) && (interactionCount <= maxInteractionsToShow)),
+            tooManyResults = (interactionCount > maxInteractionsToShow);
             if (goodLength) {
               //store the raw response. Other files use it, e.g. the exporter.
               graph.rawData = response;
@@ -128,10 +129,11 @@ function Cymine(args) {
               if (tooManyResults) {
                 //large numbers of results just jam up the browswer, so we limit it arbitrarily.
                 ui.attachResults(strings.user.tooManyResults);
+              } else {
+                //this tells the user the response was empty for this gene.
+                //No interactions data available.
+                ui.attachResults(strings.user.noResults);
               }
-              //this tells the user the response was empty for this gene.
-              //No interactions data available.
-              ui.attachResults(strings.user.noResults);
             }
           }).catch(function(error) {
             console.error("Communication error: ", error);
