@@ -96,7 +96,8 @@ function Cymine(args) {
         if (prepQuery() && mine) {
           //get the data from the mine
           var q = mine.records(query).then(function(response) {
-            var interactionCount = response[0].interactions.length,
+            var hasResults =  response.length,
+            interactionCount = (hasResults ? response[0].interactions.length : 0),
             goodLength = ((response.length > 0) && (interactionCount <= maxInteractionsToShow)),
             tooManyResults = (interactionCount > maxInteractionsToShow);
             if (goodLength) {
