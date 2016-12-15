@@ -1,6 +1,7 @@
 {
   "user" : {
     "noResults" : "No interaction results for this query",
+    "tooManyResults" : "There are more than 500 results for this query. To improve performance we only display graphs when there are 500 or fewer interactions.",
     "pleaseClearCache" : "Error loading results. Please clear your cache and try again.",
     "noQueryData" : "Problem loading query results"
   },
