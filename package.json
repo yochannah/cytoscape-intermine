@@ -1,34 +1,32 @@
 {
   "name": "cytoscape-network",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "view intermine gene network interaction using cytoscape.js ",
   "main": "js/main.js",
   "directories": {
     "test": "test"
   },
   "devDependencies": {
-    "bower": "^1.4.1",
-    "browser-sync": "^2.8.1",
-    "browserify": "^11.0.1",
-    "cytoscape": "^2.7.29",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-less": "^3.0.3",
-    "gulp-minify-css": "^1.2.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-streamify": "^1.0.0",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.6",
+    "browser-sync": "^2.24.6",
+    "browserify": "^11.2.0",
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^1.12.0",
+    "gulp-less": "^3.5.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sourcemaps": "^1.12.1",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.8",
     "lodash.assign": "^3.2.0",
-    "mocha": "^2.3.3",
-    "streamify": "^0.2.4",
-    "stringify": "^3.1.0",
+    "mocha": "^2.5.3",
+    "streamify": "^0.2.9",
+    "stringify": "^3.2.1",
     "uglify": "^0.1.5",
-    "underscore": "^1.8.3",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.3.1"
+    "underscore": "^1.9.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^1.1.2",
+    "watchify": "^3.11.0"
   },
   "scripts": {
     "test": "mocha",
@@ -46,8 +44,9 @@
   },
   "homepage": "https://github.com/yochannah/cytoscape-intermine#readme",
   "dependencies": {
-    "imjs": "^3.14.0",
+    "cytoscape": "^3.2.15",
+    "imjs": "^3.16.0",
     "jschannel": "git://github.com/CourseTalk/jschannel.git",
-    "requirejs": "^2.1.20"
+    "requirejs": "^2.3.5"
   }
 }
