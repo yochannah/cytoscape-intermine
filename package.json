@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.24.6",
-    "browserify": "^11.2.0",
+    "browserify": "^16.2.2",
     "express": "^4.16.3",
     "gulp": "^3.9.1",
     "gulp-jshint": "^1.12.0",
@@ -18,7 +18,7 @@
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.8",
-    "lodash.assign": "^3.2.0",
+    "lodash.assign": "^4.2.0",
     "mocha": "^2.5.3",
     "streamify": "^0.2.9",
     "stringify": "^3.2.1",
@@ -46,7 +46,6 @@
   "dependencies": {
     "cytoscape": "^3.2.15",
     "imjs": "^3.16.0",
-    "jschannel": "git://github.com/CourseTalk/jschannel.git",
     "requirejs": "^2.3.5"
   }
 }
