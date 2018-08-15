@@ -1,8 +1,8 @@
 {
   "name": "cytoscape-network",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "view intermine gene network interaction using cytoscape.js ",
-  "main": "gulpfile.js",
+  "main": "js/main.js",
   "directories": {
     "test": "test"
   },
@@ -10,7 +10,7 @@
     "bower": "^1.4.1",
     "browser-sync": "^2.8.1",
     "browserify": "^11.0.1",
-    "cytoscape": "^2.4.5",
+    "cytoscape": "^2.7.29",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-jshint": "^1.11.2",
@@ -32,7 +32,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "prepare": "true"
   },
   "repository": {
     "type": "git",
