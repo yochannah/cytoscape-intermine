@@ -2,7 +2,7 @@
   "name": "cytoscape-network",
   "version": "1.1.1",
   "description": "view intermine gene network interaction using cytoscape.js ",
-  "main": "js/main.js",
+  "main": "js/slim.js",
   "directories": {
     "test": "test"
   },
@@ -44,6 +44,7 @@
   "homepage": "https://github.com/yochannah/cytoscape-intermine#readme",
   "dependencies": {
     "cytoscape": "^3.2.15",
+    "ejs-loader": "^0.3.1",
     "es6-promise": "^4.2.4",
     "imjs": "^3.16.0",
     "requirejs": "^2.3.5",

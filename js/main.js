@@ -1,3 +1,4 @@
+//if you don't want imjs, use slim.js as your entrypoint instead.
 var cymineDataFormatter = require('./dataFormatter'),
   imjs = require('imjs'),
   cytoscape = require('cytoscape'),
@@ -9,6 +10,7 @@ var cymineDataFormatter = require('./dataFormatter'),
   tableDisplayer = require('./showInTable')(),
   Promise = require('es6-promise').Promise,
   cymineDisplay = require('./ui');
+
 
 function Cymine(args) {
 

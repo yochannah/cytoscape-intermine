@@ -25,11 +25,19 @@ var gulp        = require('gulp'),
         debug: true,
         standalone : 'cymine' //exposes the variable cymine outside the
                               //browserify scope
-    };
+    }, slimOpts = {
+      entries: ['./js/slim.js'],
+        debug: true,
+        standalone : 'cymine' //exposes the variable cymine outside the
+                              //browserify scope
+    }
     var opts = assign({}, watchify.args, customOpts);
+    var slimOpts = assign({}, watchify.args, slimOpts);
     var b, i=0;
 
     gulp.task('js', bundleOnce); // so you can run `gulp js` to build the file just once
+    gulp.task('slim', bundleOnceSlim); // same as `gulp js` but without imjs bundled.
+                                       // this saves 150k!
     gulp.task('jsdev', bundleDev); // so you can run `gulp jsdev` to build the file and reload in browser automatically
 
     //master bundle file
@@ -48,6 +56,12 @@ var gulp        = require('gulp'),
     //build once. for use mostly when 'gulp' is run (default task)
     function bundleOnce() {
       b = browserify(opts);
+      return bundle();
+    }
+
+    //build once. for use mostly when 'gulp' is run (default task)
+    function bundleOnceSlim() {
+      b = browserify(slimOpts);
       return bundle();
     }
 
