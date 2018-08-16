@@ -1,6 +1,6 @@
 {
   "name": "cytoscape-network",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "view intermine gene network interaction using cytoscape.js ",
   "main": "js/slim.js",
   "directories": {
