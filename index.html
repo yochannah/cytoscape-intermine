@@ -10,7 +10,7 @@
     <script src="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/imtables.js" charset="UTF-8"></script>
     <link rel="stylesheet" href="http://cdn.intermine.org/js/intermine/im-tables/2.0.0-beta/main.sandboxed.css">
     <link href="dist/style.css" rel="stylesheet" type="text/css">
-    <script src="dist/bundle.js"></script>
+    <script src="dist/slim.js"></script>
   </head>
   <body>
     <!-- This form is for demo purposes only, and not required to run the script -->
@@ -37,11 +37,11 @@
     parentElem : document.getElementById('myAwesomeElement'),
     //required. can't query without this! :) must be a valid
     //intermine API URL
-    service : {root : 'http://www.humanmine.org/humanmine/service/'},
+    service : {root : 'http://www.flymine.org/flymine/service/'},
     //required. needs value : "whatever", optionally extraValue : "whatever".
     queryOn : {
-      "value": "pparg",
-      "extraValue": "H. sapiens"
+      "value": "zen",
+      "extraValue": "D. melanogaster"
     },
     nodeType : "Gene", //valid options are Gene or Protein. Optional, will default to Gene.
     compact:true //optional. Only relevant for error messages. Displays compact 1.5 em 'no results found' message rather than taking up the normal amount of space.
@@ -59,10 +59,10 @@
 
     cymine({
       parentElem : document.getElementById('myAwesomeElement'),
-      service : {root : 'http://www.humanmine.org/humanmine/service/'},
+      service : {root : 'http://www.flymine.org/flymine/service/'},
       queryOn : {
         "value": searchOn,
-        "extraValue": "H. sapiens"
+        "extraValue": "D. melanogaster"
       },
       nodeType: nodeType
     });
