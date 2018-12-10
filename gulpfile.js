@@ -25,21 +25,29 @@ var gulp        = require('gulp'),
         debug: true,
         standalone : 'cymine' //exposes the variable cymine outside the
                               //browserify scope
-    };
+    }, slimOpts = {
+      entries: ['./js/slim.js'],
+        debug: true,
+        standalone : 'cymine' //exposes the variable cymine outside the
+                              //browserify scope
+    }
     var opts = assign({}, watchify.args, customOpts);
+    var slimOpts = assign({}, watchify.args, slimOpts);
     var b, i=0;
 
     gulp.task('js', bundleOnce); // so you can run `gulp js` to build the file just once
+    gulp.task('slim', bundleOnceSlim); // same as `gulp js` but without imjs bundled.
+                                       // this saves 150k!
     gulp.task('jsdev', bundleDev); // so you can run `gulp jsdev` to build the file and reload in browser automatically
 
     //master bundle file
-    function bundle() {
+    function bundle(fileName) {
       return b
         .transform(stringify(['.html']))
         .bundle()
           //log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-        .pipe(source('bundle.js'))
+        .pipe(source(fileName))
 //        .pipe(streamify(uglify({mangle:false})))
         .pipe(streamify(uglify()))
         .pipe(gulp.dest('./dist'));
@@ -48,7 +56,13 @@ var gulp        = require('gulp'),
     //build once. for use mostly when 'gulp' is run (default task)
     function bundleOnce() {
       b = browserify(opts);
-      return bundle();
+      return bundle("bundle.js");
+    }
+
+    //build once. for use mostly when 'gulp' is run (default task)
+    function bundleOnceSlim() {
+      b = browserify(slimOpts);
+      return bundle("bundle.slim.js");
     }
 
     //build and reload, and keep watching for more changes
@@ -56,7 +70,7 @@ var gulp        = require('gulp'),
       b = watchify(browserify(opts));
       b.on('update', bundle); // on any dep update, runs the bundler
       b.on('log', gutil.log); // output build logs to terminal
-      return bundle();
+      return bundle("bundle.js");
     }
 
 /*
@@ -114,7 +128,8 @@ Build for prod use. Just run `gulp`, and the results will appear in the dist fol
  */
 gulp.task('default', [
   'less',
-  'js'
+  'js',
+  'slim'
 ], function() {
   gutil.log(gutil.colors.green('| =====================|'));
   gutil.log(gutil.colors.green('|   Project built! :)  |'));

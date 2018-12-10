@@ -1,6 +1,7 @@
 var metaFields = require('./metaFields'),
   util = require('./util'),
   _ = require('underscore'),
+  cy = require('cytoscape'),
   cyStyle = require('./cytoscapeStyle');
 
 ui = function(graph) {
@@ -11,7 +12,7 @@ ui = function(graph) {
   };
 
   this.graph = graph;
-  var cy,
+  var cyto,
     cyLayout = {
       name: 'cose'
     },
@@ -104,7 +105,7 @@ ui = function(graph) {
       } else {
         noResults(errorMessage);
       }
-      return cy;
+      return cyto;
     },
     controls = function() {
       var hiddenElems,
@@ -129,7 +130,7 @@ ui = function(graph) {
             }
             //we have elemClass, and want to keep them, but hide the others.
             //new ones gone:
-            hiddenElems = cy.elements().filterFn(function(ele) {
+            hiddenElems = cyto.elements().filterFn(function(ele) {
               if (elemClass === "default") {
                 return !ele;
               }
@@ -138,7 +139,7 @@ ui = function(graph) {
           }
         },
         resetGraph = function() {
-          cy.makeLayout(cyLayout).run();
+          cyto.makeLayout(cyLayout).run();
           getControls().querySelector('.default').click();
         },
 
@@ -176,7 +177,7 @@ ui = function(graph) {
         console.error(e);
       }
       //make the graph
-      cy = cytoscape({
+      cyto = cy({
         container: graph.targetElem,
         layout: cyLayout,
         elements: graph.data,
@@ -188,11 +189,11 @@ ui = function(graph) {
       });
 
       //event listener for node taps
-      cy.on('tap', 'node', function() {
+      cyto.on('tap', 'node', function() {
         display(this.data());
       });
 
-      cy.on('tap', 'edge', function() {
+      cyto.on('tap', 'edge', function() {
         display(this.data());
       });
 

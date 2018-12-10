@@ -1,6 +1,7 @@
+//if you don't want imjs, use slim.js as your entrypoint instead.
 var cymineDataFormatter = require('./dataFormatter'),
   imjs = require('imjs'),
-  cytoscape = require('../bower_components/cytoscape/dist/cytoscape.js'),
+  cytoscape = require('cytoscape'),
   _ = require('underscore'),
   strings = require('./strings'),
   query = require('./query/query'),
@@ -9,6 +10,7 @@ var cymineDataFormatter = require('./dataFormatter'),
   tableDisplayer = require('./showInTable')(),
   Promise = require('es6-promise').Promise,
   cymineDisplay = require('./ui');
+
 
 function Cymine(args) {
 
@@ -81,6 +83,72 @@ function Cymine(args) {
     if (graph.query.where.length <= 1) {
       graph.query.where.push(proteinConstraint);
     }
+  }
+
+  function init() {
+    var promise = new Promise(function(resolve, reject) {
+      if (validateParent()) {
+        //add the elements to the page
+        ui = new cymineDisplay(graph);
+        ui.init();
+
+        //check that the service and query looks ok, or error if not.
+        mine = validateServiceRoot();
+
+        if (prepQuery() && mine) {
+          //get the data from the mine
+          var q = mine.records(query).then(function(response) {
+            var hasResults =  response.length,
+            interactionCount = (hasResults ? response[0].interactions.length : 0),
+            goodLength = ((response.length > 0) && (interactionCount <= maxInteractionsToShow)),
+            tooManyResults = (interactionCount > maxInteractionsToShow);
+            if (goodLength) {
+              //store the raw response. Other files use it, e.g. the exporter.
+              graph.rawData = response;
+
+              //transform the data into a shape cytoscape can use.
+              graph.data = new cymineDataFormatter(response);
+
+              //Add cytoscape graph
+              graph.cy = ui.attachResults();
+
+              //init the export functions and their UI listeners
+              try {
+                exporter.init(graph);
+              } catch (e) {
+                console.error(e);
+              }
+
+              //init the table display
+              try {
+                tableDisplayer.init(graph);
+              } catch (e) {
+                console.error(e);
+              }
+
+              console.debug('response:', response, 'graphdata:', graph);
+              resolve(graph);
+            } else {
+              if (tooManyResults) {
+                //large numbers of results just jam up the browswer, so we limit it arbitrarily.
+                ui.attachResults(strings.user.tooManyResults);
+              } else {
+                //this tells the user the response was empty for this gene.
+                //No interactions data available.
+                ui.attachResults(strings.user.noResults);
+              }
+            }
+          }).catch(function(error) {
+            console.error("Communication error: ", error);
+            ui.attachResults(strings.user.pleaseClearCache);
+            reject();
+          });
+        }
+      } else {
+        reject('bad query');
+      }
+    });
+    return promise;
   }
 
   function init() {
