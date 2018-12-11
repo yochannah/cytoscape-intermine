@@ -6,7 +6,7 @@
  */
 
 var util        = require('./../util'),
-helpers         = require('./exportHelpers')();
+helpers         = require('./exportHelpers')(),
 exporter = function() {
   var elems = {},
   rawData,
