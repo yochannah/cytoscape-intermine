@@ -58,7 +58,6 @@ function Cymine(args) {
   }
 
   function prepQuery() {
-    console.log("Whassup");
     if (graph.queryOn) {
       _.extend(query.where[0], graph.queryOn);
       graph.query = query;
