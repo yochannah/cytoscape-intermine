@@ -27,7 +27,7 @@ var ui = function(graph) {
       }
     },
     display = function(node) {
-      targetElem = graph.parentElem.querySelector('nodeDetails');
+      graph.targetElem = graph.parentElem.querySelector('nodeDetails');
       setTitle(node);
       listProperties(node);
     },
@@ -89,7 +89,7 @@ var ui = function(graph) {
       if (templates[obj.class].additionalFunction) {
         myObj = templates[obj.class].additionalFunction(myObj);
       }
-      temp = document.createElement('div');
+      var temp = document.createElement('div');
       temp.innerHTML = template(myObj);
       return temp;
     },
