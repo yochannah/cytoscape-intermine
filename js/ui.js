@@ -4,7 +4,7 @@ var metaFields = require('./metaFields'),
   cy = require('cytoscape'),
   cyStyle = require('./cytoscapeStyle');
 
-ui = function(graph) {
+var ui = function(graph) {
   _.templateSettings = {
     evaluate: /\{\{(.+?)\}\}/g,
     interpolate: /\{\{=(.+?)\}\}/g,
@@ -27,7 +27,7 @@ ui = function(graph) {
       }
     },
     display = function(node) {
-      targetElem = graph.parentElem.querySelector('nodeDetails');
+      graph.targetElem = graph.parentElem.querySelector('nodeDetails');
       setTitle(node);
       listProperties(node);
     },
@@ -89,7 +89,7 @@ ui = function(graph) {
       if (templates[obj.class].additionalFunction) {
         myObj = templates[obj.class].additionalFunction(myObj);
       }
-      temp = document.createElement('div');
+      var temp = document.createElement('div');
       temp.innerHTML = template(myObj);
       return temp;
     },
@@ -166,16 +166,13 @@ ui = function(graph) {
       graph.targetElem = graph.parentElem.querySelector('.cy');
       //make the graph as wide as can be. can't be auto as cytoscape needs a width
       graph.targetElem.style.width = graph.parentElem.querySelector('.graph').clientWidth + "px";
-      console.log("%cgraph.compact","color:seagreen;font-weight:bold;",graph.compact);
+      console.log("%cgraph.compact","color:seagreen;font-weight:bold;",graph.compact, graph);
     },
     initGraph = function() {
-
       try {
         var interactionControls = controls();
         interactionControls.listen();
-      } catch (e) {
-        console.error(e);
-      }
+
       //make the graph
       cyto = cy({
         container: graph.targetElem,
@@ -187,6 +184,10 @@ ui = function(graph) {
           graph.statusBar.remove();
         }
       });
+
+    } catch (e) {
+      console.error(e);
+    }
 
       //event listener for node taps
       cyto.on('tap', 'node', function() {

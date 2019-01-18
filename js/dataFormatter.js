@@ -14,7 +14,7 @@ Cymine = function(records) {
     * @param  {object} obj an object with arrays in its properties. Can be nested.
     * @return {object} the same object, just with 1-length arrays collapsed.
     */
-    collapseArrays = function(obj){
+    var collapseArrays = function(obj){
       var ret = {};
       _.each(obj, function(theProp, i){
         if(Array.isArray(obj)) {
@@ -73,9 +73,9 @@ Cymine = function(records) {
     return isDefined && isSame;
   },
   recordToNode = function (obj, parentNode) {
-    var ret, data = {}, interactions;
+    var ret, data = {}, interactions, label;
     ret = obj.participant2 ? obj.participant2 : obj;
-    interactions = getInteractions(obj);
+    interactions = getInteractions(obj),
     label = nameNode(obj);
     return {
       classes : getClasses(interactions),

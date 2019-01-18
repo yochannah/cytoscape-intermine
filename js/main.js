@@ -17,8 +17,8 @@ function Cymine(args) {
   var ui,
     graph = _.extend({}, args),
     exporter = exportFile(),
-    maxInteractionsToShow = 500;
-  cym = init();
+    maxInteractionsToShow = 500,
+    cym = init();
 
   /**
    * Checks if there is indeed an element to attach to, and failing that tries a default.
@@ -98,10 +98,10 @@ function Cymine(args) {
         if (prepQuery() && mine) {
           //get the data from the mine
           var q = mine.records(query).then(function(response) {
-            var hasResults =  response.length,
-            interactionCount = (hasResults ? response[0].interactions.length : 0),
-            goodLength = ((response.length > 0) && (interactionCount <= maxInteractionsToShow)),
-            tooManyResults = (interactionCount > maxInteractionsToShow);
+            var hasResults = response.length,
+              interactionCount = (hasResults ? response[0].interactions.length : 0),
+              goodLength = ((response.length > 0) && (interactionCount <= maxInteractionsToShow)),
+              tooManyResults = (interactionCount > maxInteractionsToShow);
             if (goodLength) {
               //store the raw response. Other files use it, e.g. the exporter.
               graph.rawData = response;
