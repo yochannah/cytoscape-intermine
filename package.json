@@ -7,6 +7,8 @@
     "test": "test"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
     "browserify": "^16.2.3",
     "express": "^4.16.4",
@@ -20,6 +22,7 @@
     "gulp-util": "^3.0.8",
     "lodash.assign": "^4.2.0",
     "mocha": "^2.5.3",
+    "natives": "^1.1.6",
     "streamify": "^0.2.9",
     "stringify": "^5.2.0",
     "underscore": "^1.9.1",
@@ -30,7 +33,9 @@
   "scripts": {
     "test": "mocha",
     "start": "node server.js",
-    "prepare": "true"
+    "prepare": "true",
+    "gulp": "gulp",
+    "gulpDev": "gulp dev"
   },
   "repository": {
     "type": "git",
