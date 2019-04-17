@@ -55,17 +55,32 @@ In terminal:
     $ npm install
     $ bower install
 
+If you get error `bower: command not found`, then run:
+    
+    $ npm install -g bower
+    $ bower install
+
 That should be it!
 
 ### Running the project
 
+To serve the project in browser, run:
+
+    $ npm start
+
+If you get error `Error: listen EADDRINUSE: address already in use :::3344`, then, either kill that port(not recommended) or you can use any other port.
+Say, If you want to use port `8080` then run:
+
+    $ export PORT=8080
+
+
 If you want to modify the script and let Browsersync live-reload your changes, run:
 
-    $ gulp dev
+    $ npm run gulpDev
 
 If you just want a one-off build, gulp's default task will do it:
 
-    $ gulp
+    $ npm run gulp
 
 Both tasks will compile your less (make sure to prefix partials with `_`, e.g. `_button.less`) and bundle up your js, then move it to the dist folder.
 
