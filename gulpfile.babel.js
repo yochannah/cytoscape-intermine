@@ -4,20 +4,24 @@
  * This is the file that configures the project build!
  */
 
-var gulp        = require('gulp'),
-    less        = require('gulp-less'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    gutil       = require('gulp-util'),
-    minifyCSS   = require('gulp-minify-css'),
-    uglify      = require('gulp-uglify'),
-    streamify   = require('gulp-streamify'),
-    watchify    = require('watchify'),
-    stringify   = require('stringify'),
-    browserify  = require('browserify'),
-    browserSync = require('browser-sync').create(),
-    source      = require('vinyl-source-stream'),
-    buffer      = require('vinyl-buffer'),
-    assign      = require('lodash.assign');
+
+import gulp from 'gulp';
+import less from 'gulp-less';
+import sourceMaps from 'gulp-sourcemaps';
+import gutil from 'gulp-util';
+import minifyCSS from 'gulp-minify-css';
+import uglify from 'gulp-uglify';
+import streamify from 'gulp-streamify';
+import watchify from 'watchify';
+import stringify from 'stringify';
+import browserify from 'browserify';
+import BrowserSync from 'browser-sync';
+import source from 'vinyl-source-stream';
+import buffer from 'vinyl-buffer';
+import assign from 'lodash.assign';
+
+const browserSync = BrowserSync.create();
+
 
     //browserify options
     var customOpts = {

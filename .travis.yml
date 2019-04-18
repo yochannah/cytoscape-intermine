@@ -2,6 +2,7 @@
 language:
   javascript
 install:
+  - npm install -g bower
   - npm install
   - bower install
 
